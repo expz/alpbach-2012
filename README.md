@@ -2,6 +2,8 @@
 
 Last update: 21:04 on 31.10.2012
 
+*To download files, click on the link, and then click on the button which says `raw`*
+
 ## PDF Files
 
 Download the [full pdf](alpbach-2012.pdf)
