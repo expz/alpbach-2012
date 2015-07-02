@@ -43,11 +43,8 @@ images)
 
 All at once in a [zip file](all.zip).
 
----
-
 ## Remarks
 
 If you take time to make improvements and mail them to me at [jonathan.skowera@phys.ethz.ch](mailto:jonathan.skowera@phys.ethz.ch), I'll incorporate them. There's no need to test that the TeX compiles. I'll take care of that.
 
 If you would like to compile your talk apart from the others, you can use [this test LaTeX file](test.tex) (just enter your filename on the `\input{talk-2.tex}` line). Note that compiling your talk apart from the others might cause warnings about broken references to other talks.
-
