@@ -1,0 +1,68 @@
+* Repaired Chapter 8
+
+* Updated test.tex with new macros
+
+* Placed a \TODO marker at all gaps in the notes
+
+* Revised Chapter 1
+
+* Incorporated notes from
+
+Talk 2: Fritz Hoermann
+Talk 3: Alberto Vezzani
+Talk 4: Thomas Weissschuh
+Talk 8: Konrad Völkel
+
+TO DO
+
+Update notation according to official program
+
+Add clarifying notes to talks based on official program
+
+Get notes for:
+Talk 0: Introduction
+Talk 1: Mario Huicochea and Roland Paulin 
+Talk 5: Sergey Rybakov
+Talk 10: Simon Pepin Lehalleur
+
+Look over notation and structure in comparison to offical program:
+Talk 0: Introduction
+Talk 1: Mario Huicochea and Roland Paulin 
+Talk 2: Fritz Hörmann
+Talk 3: Alberto Vezzani
+Talk 4: Thomas Weissschuh
+Talk 5: Sergey Rybakov
+Talk 6: Javier Fresan
+Talk 7: Rafael von Känel
+Talk 8: Konrad Völkel
+Talk 9: Martin Gallauer
+Talk 10: Simon Pepin Lehalleur
+Talk 11: Sergey Gorchinskiy
+Talk 12: Sergey Gorchinskiy
+
+Look over for linking to other talks:
+Talk 0: Introduction
+Talk 1: Mario Huicochea and Roland Paulin 
+Talk 2: Fritz Hörmann
+Talk 3: Alberto Vezzani
+Talk 4: Thomas Weissschuh
+Talk 5: Sergey Rybakov
+Talk 6: Javier Fresan
+Talk 7: Rafael von Känel
+Talk 8: Konrad Völkel
+Talk 9: Martin Gallauer
+Talk 10: Simon Pepin Lehalleur
+Talk 11: Sergey Gorchinskiy
+Talk 12: Sergey Gorchinskiy
+
+Send to be edited:
+Preliminary Talk 1: Brent Doran
+Preliminary Talk 2: Sergey Gorchinskiy
+Talk 0: Introduction
+Talk 1: Mario Huicochea and Roland Paulin 
+Talk 5: Sergey Rybakov
+Talk 7: Rafael von Känel
+Talk 10: Simon Pepin Lehalleur
+Talk 11: Sergey Gorchinskiy
+Talk 12: Sergey Gorchinskiy
+

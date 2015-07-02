@@ -1,0 +1,80 @@
+\BOOKMARK [1][-]{section*.2}{About these notes}{}
+\BOOKMARK [0][-]{chapter*.3}{**Preliminary Talk: Unipotence, periods and motivations by Brent Doran}{}
+\BOOKMARK [1][-]{section*.4}{Toplogical and geometric motivations}{chapter*.3}
+\BOOKMARK [1][-]{section*.5}{Classifying algebraic groups}{chapter*.3}
+\BOOKMARK [1][-]{section*.8}{Unipotent groups}{chapter*.3}
+\BOOKMARK [1][-]{section*.12}{Nilpotent groups}{chapter*.3}
+\BOOKMARK [0][-]{chapter*.14}{*Preliminary Talk: Cohomology, Hodge structure and Hopf algebras by Sergey Gorchinskiy}{}
+\BOOKMARK [1][-]{section*.15}{Fundamental groups and groupoids}{chapter*.14}
+\BOOKMARK [1][-]{section*.16}{Filtered vector space}{chapter*.14}
+\BOOKMARK [1][-]{section*.17}{Betti and de Rham cohomology}{chapter*.14}
+\BOOKMARK [1][-]{section*.20}{Mixed Hodge structures}{chapter*.14}
+\BOOKMARK [1][-]{section*.22}{Algebraic de Rham cohomology}{chapter*.14}
+\BOOKMARK [1][-]{section*.23}{Hopf algebras}{chapter*.14}
+\BOOKMARK [1][-]{section*.24}{dg-algebras}{chapter*.14}
+\BOOKMARK [0][-]{chapter.1}{Introduction to Multiple Zeta Values}{}
+\BOOKMARK [1][-]{section*.25}{Multiple Zeta Values}{chapter.1}
+\BOOKMARK [1][-]{section*.26}{Words and Products of Words}{chapter.1}
+\BOOKMARK [0][-]{chapter.2}{Chen's theorem: Iterated Integrals by Fritz H\366rmann}{}
+\BOOKMARK [1][-]{section*.30}{Differential forms on the path-space}{chapter.2}
+\BOOKMARK [1][-]{section*.31}{Multiple zeta values as iterated integrals}{chapter.2}
+\BOOKMARK [1][-]{section*.32}{Monodromy interpretation}{chapter.2}
+\BOOKMARK [1][-]{section*.33}{Cohomological interpretation}{chapter.2}
+\BOOKMARK [1][-]{section*.34}{Addendum: Multizetas are \(mixed\) periods!}{chapter.2}
+\BOOKMARK [1][-]{section*.36}{Introduction}{chapter.2}
+\BOOKMARK [1][-]{section*.37}{Quillen's theorem and corollaries}{chapter.2}
+\BOOKMARK [1][-]{section*.38}{The free case}{chapter.2}
+\BOOKMARK [1][-]{section*.39}{Malcev original construction}{chapter.2}
+\BOOKMARK [1][-]{section*.40}{Torsors}{chapter.2}
+\BOOKMARK [1][-]{section*.41}{The Tannakian approach}{chapter.2}
+\BOOKMARK [1][-]{section*.42}{More on the conilpotency filtration}{chapter.2}
+\BOOKMARK [0][-]{chapter.3}{Chen's Theorem: The Bar Complex by Thomas Wei\337schuh}{}
+\BOOKMARK [1][-]{section*.43}{The \(unreduced\) bar complex}{chapter.3}
+\BOOKMARK [1][-]{section*.44}{Hopf algebra structure on the bar complex}{chapter.3}
+\BOOKMARK [1][-]{section*.45}{The reduced bar complex}{chapter.3}
+\BOOKMARK [1][-]{section*.47}{Comparison reduced/unreduced bar complex}{chapter.3}
+\BOOKMARK [1][-]{section*.48}{The bar complex and iterated integrals}{chapter.3}
+\BOOKMARK [1][-]{section*.49}{The bar complex and relative cohomology}{chapter.3}
+\BOOKMARK [0][-]{chapter.4}{Hodge structure: Proof of Chen's theorem by Sergey Rybakov}{}
+\BOOKMARK [1][-]{section*.50}{The theorem}{chapter.4}
+\BOOKMARK [1][-]{section*.51}{Riemann-Hilbert correspondence}{chapter.4}
+\BOOKMARK [1][-]{section*.52}{Construction of the functor G from unipotent connections to comodules}{chapter.4}
+\BOOKMARK [1][-]{section*.53}{End of the proof}{chapter.4}
+\BOOKMARK [0][-]{chapter.5}{Hodge structure: Mixed Hodge structure of the fundamental group by Javier Fres\341n}{}
+\BOOKMARK [1][-]{section*.54}{Formal multiple zeta values}{chapter.5}
+\BOOKMARK [1][-]{section*.55}{Mixed Hodge structure}{chapter.5}
+\BOOKMARK [1][-]{section*.57}{Unipotent filtration}{chapter.5}
+\BOOKMARK [0][-]{chapter.6}{Hodge structure: The case of the punctured projective line by Rafael von K\344nel}{}
+\BOOKMARK [1][-]{section*.58}{Hodge structure on the fundamental group of the punctured projective line}{chapter.6}
+\BOOKMARK [1][-]{section*.59}{Tangential base points}{chapter.6}
+\BOOKMARK [1][-]{section*.60}{Mixed Hodge structure on the fundamental group with tangential base points}{chapter.6}
+\BOOKMARK [1][-]{section*.61}{The case of Gm}{chapter.6}
+\BOOKMARK [1][-]{section*.62}{MZV as periods of an affine MTH\(Q\)-scheme with non-negative weights}{chapter.6}
+\BOOKMARK [0][-]{chapter.7}{Motivic structure: Tannakian categories by Konrad V\366lkel}{}
+\BOOKMARK [1][-]{section*.63}{Basic notions}{chapter.7}
+\BOOKMARK [1][-]{section*.64}{Examples}{chapter.7}
+\BOOKMARK [1][-]{section*.65}{Upper bounds on periods}{chapter.7}
+\BOOKMARK [1][-]{section*.66}{Pro-unipotent groups}{chapter.7}
+\BOOKMARK [1][-]{section*.69}{Semi-direct product of a pro-unipotent group with Gm}{chapter.7}
+\BOOKMARK [1][-]{section*.70}{Periods in the graded pro-unipotent case}{chapter.7}
+\BOOKMARK [0][-]{chapter.8}{Mixed Tate motives over Z by Martin Gallauer}{}
+\BOOKMARK [1][-]{section*.75}{Introduction}{chapter.8}
+\BOOKMARK [1][-]{section*.76}{Mixed motives: Construction}{chapter.8}
+\BOOKMARK [1][-]{section*.82}{Mixed motives: Properties}{chapter.8}
+\BOOKMARK [1][-]{section*.88}{Mixed Tate motives}{chapter.8}
+\BOOKMARK [1][-]{section*.91}{Fundamental group and periods}{chapter.8}
+\BOOKMARK [0][-]{chapter.9}{Motivic structure: Motivic fundamental group by Simon Pepin Lehalleur}{}
+\BOOKMARK [1][-]{section*.94}{The case of interior base points}{chapter.9}
+\BOOKMARK [1][-]{section*.103}{The motivic fundamental group of Gm}{chapter.9}
+\BOOKMARK [1][-]{section*.104}{Realizations}{chapter.9}
+\BOOKMARK [1][-]{section*.105}{Tangential base points}{chapter.9}
+\BOOKMARK [1][-]{section*.109}{The theorem of Goncharov-Terasoma}{chapter.9}
+\BOOKMARK [0][-]{chapter.10}{Brown's proof: Strategy of the proof by Sergey Gorchinsky}{}
+\BOOKMARK [1][-]{section*.110}{Statements}{chapter.10}
+\BOOKMARK [1][-]{section*.111}{Motivic lift of Hodge class}{chapter.10}
+\BOOKMARK [1][-]{section*.116}{Strategy of the proof}{chapter.10}
+\BOOKMARK [0][-]{chapter.11}{Brown's proof: Part 2 by Sergey Gorchinsky}{}
+\BOOKMARK [1][-]{section*.118}{Step 1}{chapter.11}
+\BOOKMARK [1][-]{section*.120}{Step 2}{chapter.11}
+\BOOKMARK [1][-]{section*.124}{Step 3}{chapter.11}
+\BOOKMARK [1][-]{section*.127}{Step 4}{chapter.11}

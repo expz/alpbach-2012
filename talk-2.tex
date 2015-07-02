@@ -1,0 +1,835 @@
+\chapter{Chen's theorem: Iterated Integrals by Fritz H\"ormann}
+
+Fritz H\"ormann on September 3rd, 2012.
+
+\section{Differential forms on the path-space}
+
+This talk will explain that multiple zeta values are (limits of) iterated integrals. This is the starting point for establishing that they are, in fact, periods of mixed motives, and thus for using motivic methods to investigate them. 
+
+Iterated integrals, however, have been originally invented by Chen \cite{chen-1973} to establish a de Rham theory for the path-space $PM$ of a f.d. real manifold $M$. 
+
+In these notes we let $\sigma_n = \{ 0 \leq t_1 \leq \cdots \leq t_n \leq 1 \mid t_i \in \R\}$ be the standard $n$-simplex.
+
+Recall:
+
+\begin{defn}
+Let $M$ be a f.d. real manifold. Then the {\bf path-space} of $M$ is defined as 
+\[ PM = \{ f : \sigma_1 \to M \mid f \textrm{~is smooth} \}. \]
+\end{defn}
+
+\noindent It comes equipped with two maps
+\[
+\xymatrix{
+& PM \ar[dl]_s \ar[dr]^d & \\
+M & & M
+}
+\]
+$s=$ starting point and $d=$ endpoint of path. We denote $PM_{a,b}$ to be the 
+fiber over $(a,b)$, that is, the set of paths from $a$ to $b$.
+
+The first problem is to specify what a differential form on $PM$ should be. Since any reasonable structure on $PM$ would yield an infinite dimensional object, one cannot use charts in the usual sense. A nice way to circumvent this problem is to define instead a notion of smooth map from (finite dimensional) manifolds to $PM$, so called {\bf plots}, and to consider the set of all such maps as the additional structure. This is basically a functorial description of $PM$ in the style of Grothendieck, cf. \cite[Chapter 8]{peters-2008}.
+
+\begin{defn}
+An (infinite dimensional) real manifold is a set $P$ together with a 
+collection of {\bf plots} $\phi :  U \to P$ from f.d. real manifolds to $P$, such that
+\begin{enumerate}
+\item if $\phi: U \to P$ is a plot and $\psi: U' \to U$ is smooth, $\phi \circ \psi$ is a plot, 
+\item constant maps are plots,
+\item if for a map $\phi: U \to P$, and an open cover $U = \bigcup_i U_i$, each restriction
+$\phi_i: U_i \to P$ is a plot, $\phi$ itself is a plot.
+\end{enumerate}
+\end{defn}
+
+\begin{rem}
+By condition 1. and 3., one is even restricted to consider open subsets $U \subseteq \R^n$. 
+\end{rem}
+\begin{rem}
+This defines in the obvious way
+a category which contains the category of (finite dimensional) real manifolds as a full subcategory.
+\end{rem}
+
+The structure of infinite dimensional manifold on $PM$ is then easy to define:
+
+\begin{defn}
+A function $\phi: U \to PM$ is called a plot if  \[
+\begin{array}{rcl}
+\widetilde{\phi} : U \times \sigma_1 & \to & M \\
+(u, t) & \mapsto & \phi(u)(t)
+\end{array}
+\]
+is smooth.
+\end{defn}
+
+Differential forms can now be defined in literally the same way as for manifolds:
+
+\begin{defn}
+Let $P$ be an (infinite dimensional) real manifold. A differential form $\gamma$ on $P$ is a collection
+\[ \{ \gamma_\phi \in  A^*(U) \}_\phi \]
+indexed by all plots $\phi: U \to P$, satisfying the following compatibility condition: For a 
+commutative diagram
+\[
+\xymatrix{
+U \ar[r]^{\phi} \ar[d]_{\alpha} & PM \\
+U' \ar[ur]_{\phi'} &
+}
+\]
+where $\alpha$ is smooth, 
+we must have $\alpha^* \gamma_{\phi'} = \gamma_{\phi}$.
+\end{defn}
+
+This defines a complex 
+\[ A^\bullet(P) \]
+of differential forms on $P$, where the differential of a collection $\{ \gamma_\phi \}_\phi$ is 
+defined as $\{ \mathrm{d} \gamma_\phi \}_\phi$. Observe that if $P$ was itself a manifold, with the obvious notion of plot, 
+we get the same complex as in the classical definition.
+
+In the case of $PM$, $A^\bullet(PM)$ is too big, in the sense that it does not compute the right cohomology of $PM$.
+Chen considered therefore a subcomplex of $A^*(PM)$, which is more closely related to differential forms on $M$, 
+the subcomplex of {\bf iterated integrals}.
+
+
+
+Let $\omega_1, \ldots, \omega_n \in A^\bullet(M)$ be differential forms of
+degree $k_1, \dots, k_n$. We define their iterated integral to be the following differential form
+ $\int \omega_1 \otimes \cdots \otimes \omega_n \in A^k(PM)$, where $k=\sum_{i=1}^n (k_i-1)$.
+
+For a plot $\phi: U \to PM$, write
+\[
+\widetilde{\phi}^* \omega_i = \beta_i + \mathrm{d}t \wedge \gamma_i
+\]
+for the canonical decomposition, where $\beta_i$ and $\gamma_i$ do not contain $\mathrm{d}t$.
+We define
+\[
+\int_\phi \omega_1 \otimes \cdots \otimes \omega_n := \int_{\sigma_n} \gamma_1(t_1, u) \wedge \cdots \wedge \gamma_n(t_n, u) \mathrm{d}t_1 \cdots \mathrm{d}t_n \quad \in A^k(U)
+\]
+where the integral is an elementary integral over the $t_i$, not an integral of the forms $\gamma_i$.
+
+We extend this linearly to sums of tensors, i.e. to $\omega \in \bigoplus_{k=0}^\infty A^\bullet(M)^{\otimes k}$.
+For the special case that in the summands $\omega_1 \otimes \cdots \otimes \omega_k$ of $\omega$ all $\deg(\omega_i)=1$, we get an actual function 
+\[ \gamma \mapsto \int_\gamma \omega  \]
+on the path-space.
+This function is invariant under deformations of the path if and only if
+\[ \mathrm{d} \int \omega = 0. \]
+The derivative of iterated integrals in general is easy to compute: We have
+
+\begin{prop}\label{hoermannprop1}
+\[
+\mathrm{d} \int \omega_1 \otimes \cdots  \otimes  \omega_n = \mathrm{d}' \int \omega_1 \otimes  \cdots  \otimes \omega_n + \mathrm{d}'' \int \omega_1  \otimes \cdots  \otimes \omega_n
+\]
+where
+\[
+\begin{array}{rcl}
+\mathrm{d}' \int \omega_1  \otimes \cdots \otimes  \omega_n & = & \sum_{i = 1}^n (-1)^i \int \omega_1' \otimes  \cdots \omega_{i-1}'  \otimes \mathrm{d}\omega_i  \otimes \omega_{i+1}  \otimes \cdots  \otimes \omega_n \\
+\mathrm{d}'' \int \omega_1  \otimes \cdots  \otimes \omega_n & = & \sum_{i=1}^{n-1} (-1)^{i-1} \int \omega_1'  \otimes \cdots  \otimes \omega_{i-1}'  \otimes (\omega_i' \wedge \omega_{i+1})  \otimes \omega_{i+2}  \otimes \cdots  \otimes \omega_n \\
+&&- s^* \omega_1 \wedge (\int \omega_2  \otimes \cdots  \otimes \omega_n) + (-1)^n (\int \omega_1'  \otimes \cdots  \otimes \omega_{n-1}') \wedge d^* \omega_n,
+\end{array}
+\]
+where $\omega' = (-1)^{\deg \omega} \omega$. Recall that the maps $s$ and $d$ are given by begin and endpoint of paths.
+\end{prop}
+
+\begin{rem}
+The formula is also true if any of the $k_i$ is 0, that is $\gamma_i=0$, and hence, if the left hand side is 0. It still gives
+non-trivial information. 
+\end{rem}
+\begin{rem}
+If we restrict the iterated integral to a differential form on $PM_{a,b}$, $s^*\omega$, resp. $d^*\omega$, will be 
+zero, unless $\omega$ is of degree 0, i.e. a function.
+\end{rem}
+
+Before proving the proposition we will analyze the structure of the formula. It is convenient to make
+the following
+\begin{defn}
+\[
+A^{i,-j}_{iter}(PM_{a,b}) = \{ \textrm{degree $i$ elements in $(A^{\bullet}(M))^{\otimes j}$} \}
+\]
+\end{defn}
+The formulas appearing in the above proposition turn these groups into a double complex:
+
+\[
+\xymatrix{
+\ddots & & A_{iter}^{0,-2} \ar[dl]^{{\mathrm{d}''}} \ar[dr]^{{\mathrm{d}'}} & & \iddots & \\ %FROM mathdots package
+& A_{iter}^{0,-1}\ar[dl]^{{\mathrm{d}''}} \ar[dr]^{{\mathrm{d}'}}  & & A_{iter}^{1,-2} \ar[dl]^{{\mathrm{d}''}} \ar[dr]^{{\mathrm{d}'}} & \\
+A_{iter}^{0, 0} \ar[dr]^0 & & A^{1,-1}_{iter} \ar[dl] \ar[dr]^{{\mathrm{d}'}} & & A_{iter}^{2,-2} \ar[dl]^{{\mathrm{d}''}} \ar[dr]^{{\mathrm{d}'}} \\
+& 0 \ar[dr] & & A_{iter}^{2,-1} \ar[dl] \ar[dr]^{{\mathrm{d}'}} & & A_{iter}^{3,-2} \ar[dl]^{{\mathrm{d}''}} \\
+& &  0 \ar[dr] & & A_{iter}^{3,-1} \ar[dl] & \\
+& & & 0 & & \ddots
+}
+\]
+
+and the proposition may be restated as:
+\begin{cor}
+\begin{eqnarray*}
+\mathrm{Tot}^{\oplus}(A^{\bullet,\bullet}_{\textrm{iter}}(PM_{a,b})) &\to& A^{\bullet}(PM_{a,b}) \\
+\omega_1 \otimes \cdots \otimes \omega_n &\mapsto& \int \omega_1 \otimes \cdots \otimes \omega_n
+\end{eqnarray*}
+is a homomorphism of complexes.
+\end{cor}
+
+By the very definition of iterated integral,
+this map factorizes via the quotient by tensors $\omega_1 \otimes \cdots \otimes \omega_n$, where one of the $\omega_i$ has degree zero, and their differentials. We will recognize $A^{\bullet,\bullet}_{iter}(PM_{a,b})$, resp. its quotient, as a {\bf bar complex}, resp. a {\bf reduced bar complex} in talk 4. The point of introducing this special
+kind of differential forms on $PM$ is the following
+
+\begin{thm}[Chen]
+$\mathrm{Tot}^{\oplus}(A^{\bullet,\bullet}_{\textrm{iter}}(PM_{a,b}))$ (and also its image under the above map) computes the cohomology of $PM_{a, b}$.
+\end{thm}
+
+We will see a proof of the special case for $H^0(PM_{a,b},\C)=\C[\pi_1(M,a,b)]^\vee$ of this theorem in the course of this seminar.
+
+\begin{exam}
+Assume that $\omega$ is a sum of tensors of forms of degree 1. We have seen, that its iterated integral is a {\em function} on $PM_{a,b}$, which
+is a homotopy invariant, i.e. a function on $\pi_1(M, a, b)$, if and only if $\mathrm{d}\omega = 0$.
+In low degrees, this formula explicitly means the following:
+
+\noindent If $\deg \omega \leq 1$, then $\omega = \omega_1 + c$. Hence $\mathrm{d}\omega = 0$ if and only if $\mathrm{d}\omega_1 = 0$.
+
+\noindent If $\deg \omega \leq 2$, then $\omega = \omega_1 \otimes \omega_2 + \omega_{12} + c$ and hence $\mathrm{d}\omega = 0$ if and only if
+\[
+\mathrm{d}\omega_1 = \mathrm{d}\omega_2 = 0 \quad \textrm{and} \quad \omega_1 \wedge \omega_2 = \mathrm{d}\omega_{12}.
+\]
+\end{exam}
+
+\begin{exam} Let $\omega_i$ be forms of degree 1.
+If $\mathrm{d} \omega_i = 0$ and $\omega_i \wedge \omega_{i+1} = 0$, then $\mathrm{d} (\omega_1 \otimes \cdots \otimes \omega_n) = 0$.
+\end{exam}
+
+
+\begin{proof}[Proof of the proposition.]
+Recall $\widetilde{\phi}^* \omega_i = \beta_i + \mathrm{d}t \wedge \gamma_i$. 
+We will need this decomposition also for the forms $\omega_i \wedge \omega_{i+1}$ and $\mathrm{d}\omega_i$ respectively occurring in the claimed formula. We have
+\begin{eqnarray}\label{hoermann_eqn1}
+ \widetilde{\phi}^* \mathrm{d} \omega_i &=&  \mathrm{d}\widetilde{\phi}^* \omega_i = \mathrm{d}_u \beta_i - \mathrm{d}t \wedge \frac{\partial}{\partial t} \beta_i - \mathrm{d}t \wedge \mathrm{d} \gamma_i \\
+\label{hoermann_eqn2}
+ \widetilde{\phi}^* (\omega_i \wedge \omega_{i+1}) &=& \beta_i \wedge \beta_{i+1} + \mathrm{d}t \wedge (\gamma_i \wedge \beta_{i+1} + \beta_i' \wedge \gamma_{i+1})
+\end{eqnarray}
+\noindent Now we start calculating the derivative. Unless otherwise specified, we substitute $t \to t_i$ in $\gamma_i$ and $\beta_i$, respectively.
+\begin{eqnarray*}
+&&\mathrm{d} \int_{\sigma_n} \gamma_1 \wedge \cdots \wedge \gamma_n \mathrm{d}t_1 \cdots \mathrm{d}t_n  \\
+& = & \sum_{i=1}^n \int_{\sigma_n} \gamma_1' \wedge \cdots \gamma_{i-1}' \wedge \mathrm{d}\gamma_i \wedge \gamma_{i+1} \wedge \cdots \wedge \gamma_n \mathrm{d}t_1 \cdots \mathrm{d}t_n \\
+& = & \sum_{i=1}^n (-1)^i \int_\phi  \omega_1' \otimes \cdots \otimes \omega_{i-1}' \otimes \mathrm{d}\omega_i \otimes \omega_{i+1} \otimes \cdots \otimes \omega_n \\
+& & + \int_{\sigma_n} \gamma_1' \wedge \cdots \wedge \gamma_{i-1}' \wedge \frac{\partial}{\partial t_i} \beta_i \wedge \gamma_{i+1} \wedge \cdots \wedge \gamma_n \mathrm{d}t_1 \cdots \mathrm{d}t_n\\
+ & = & \sum_{i=1}^n (-1)^i \int_\phi  \omega_1' \otimes \cdots \otimes \omega_{i-1}' \otimes \mathrm{d}\omega_i \otimes \omega_{i+1} \otimes \cdots \otimes \omega_n \\
+& & + \sum_{i=1}^n \int_{\sigma_{n-1}} \gamma_1' \wedge \cdots \wedge \gamma_{i-1}' \wedge ( \beta_i(t_{i+1}, u) - \beta_i(t_{i-1}, u)) \wedge \gamma_{i+1} \wedge \cdots \wedge \gamma_n \mathrm{d}t_1\cdots \mathrm{d}t_{i-1}\mathrm{d}t_{i+1}\cdots \mathrm{d}t_{n}
+\end{eqnarray*}
+where we set $t_0 = 0$ and $t_{n+1} = 1$. We get:
+\begin{eqnarray*}
+&=& \sum_{i = 1}^n (-1)^i \int \omega_n' \otimes  \cdots \omega_{i-1}'  \otimes \mathrm{d}\omega_i  \otimes \omega_{i+1}  \otimes \cdots  \otimes \omega_n \\
+&&+ \sum_{i=1}^{n-1} (-1)^{i-1} \int \omega_1'  \otimes \cdots  \otimes \omega_{i-1}'  \otimes (\omega_i' \wedge \omega_{i+1})  \otimes \omega_{i+2}  \otimes \cdots  \otimes \omega_n \\
+&&- s^* \omega_1 \wedge (\int \omega_2  \otimes \cdots  \otimes \omega_n) + (-1)^n (\int \omega_1'  \otimes \cdots  \otimes \omega_{n-1}') \wedge d^* \omega_n,
+\end{eqnarray*}
+\end{proof}
+
+
+
+\begin{prop}\label{hoermannitintprop}
+The iterated integrals have the following properties:
+\begin{enumerate}
+\item $(\int \omega_1 \otimes \cdots \otimes  \omega_n) \wedge (\int \omega_{n+1} \otimes \cdots \otimes \omega_{n+m}) = \sum_{\sigma \in S_{n,m}} \mathrm{sgn}(\sigma) \int \omega_{\sigma^{-1}(1)} \otimes \cdots \otimes \omega_{\sigma^{-1}(n+m)}$,
+
+where $S_{n,m}$ is the set of shuffles introduced in talk 1, and $\mathrm{sgn}(\sigma)$ is a sign depending
+on $\sigma$ and the degrees of the $\omega_i$. It is 1, if all of them have degree 1.
+\item If $d \phi_1 = s \phi_2$, we have
+\[ \int_{\phi_1 \circ \phi_2} \omega_1 \otimes \cdots \otimes \omega_n = \sum_{i=0}^n \left( \int_{\phi_1} \omega_1 \otimes  \cdots \otimes \omega_i \right) \left( \int_{\phi_2} \omega_{i+1} \otimes \cdots \otimes  \omega_n \right). \] Recall that $\phi_1 \circ \phi_2$ means (according to our convention) that the path $\phi_1(u)$ is taken first. 
+\item $\int_{\phi^{-1}} \omega_1 \otimes \cdots \otimes \omega_n = \pm \int_\phi  \omega_n \otimes \cdots \otimes \omega_1$.
+\end{enumerate}
+\end{prop}
+
+\begin{rem}
+1. will later yield the shuffle formula for the multiple zeta values (cf. \ref{hoermannshuffle}).
+\end{rem}
+
+We will denote $H^i(\mathrm{Tot}^{\oplus}(\cdots))$ also by $\mathbb{H}^i(\cdots)$ in the sequel.
+
+\begin{cor}
+Under the pairing:
+\[
+\int : \C[\pi_1(M, a,b)] \times \mathbb{H}^0(A^{\bullet,\bullet}_{\textrm{iter}}(PM_{a,b})) \to \C
+\]
+the product $\C[\pi_1(M, a, b)] \times \C[\pi_1(M, b,c)] \rightarrow \C[\pi_1(M,a,c)] $ is dual to the following (deconcatenation) coproduct:
+\begin{equation}\label{hoermann_coproduct}
+\begin{array}{rcl}
+\mathbb{H}^0(A^{\bullet,\bullet}_{\textrm{iter}}(PM_{a,c})) & \to & \mathbb{H}^0(A^{\bullet,\bullet}_{\textrm{iter}}(PM_{a,b})) \otimes \mathbb{H}^0(A^{\bullet,\bullet}_{\textrm{iter}}(PM_{b,c})) \\
+\omega_1 \otimes \cdots \otimes \omega_n & \mapsto & \sum_{i=0}^{n} \left(\omega_1 \otimes \cdots \otimes \omega_{i}\right) \otimes \left( \omega_{i+1} \otimes \cdots \otimes \omega_n \right).
+\end{array}
+\end{equation}
+\end{cor}
+
+\begin{proof}[Proof of proposition \ref{hoermannitintprop}]
+1. and 2. of the proposition itself follow immediately from the following combinatorial Lemma about decompositions of (products) of simplexes. For 1., note that reordering the $\gamma_i$ in the integral gives a sign which is the one denoted $\mathrm{sgn}(\sigma)$ in the formula. However, if all $k_i$ are equal to one, the $\gamma_i$ are functions. 3. is an easy calculation which we leave as an exercise.
+\end{proof}
+
+\begin{lemma}\label{hoermannlemmadecomp}
+\begin{enumerate}
+\item There is a bijection (on an open dense subset):
+\begin{eqnarray*}
+\sigma_n(0, 1) \times \sigma_m(0, 1) & \overset{\sim}{\dashrightarrow} & \bigcup_{\sigma \in S_{m,n}} \sigma_{n+m}(0,1) \\
+\{ 0 \leq t_1 \leq \cdots t_n \leq 1 \} \times \{ 0 \leq t_{n+1} \leq \cdots \leq t_{n+m} \leq 1 \} & \mapsto & \{ 0 \leq t_{\sigma^{-1}(1)} \leq \cdots \leq t_{\sigma^{-1}(n+m)} \leq 1 \}
+\end{eqnarray*}
+\item There is a bijection (on an open dense subset):
+\begin{eqnarray*}
+\sigma_n(0, 1) & \overset{\sim}{\dashrightarrow}  & \bigcup_{i=0}^n \sigma_i(0, \frac{1}{2}) \times \sigma_{n-i}(\frac{1}{2}, 1) \\
+\{ 0 \leq t_1 \leq \cdots \leq t_n \leq 1 \} & \mapsto & \{ 0 \leq t_1 \leq \cdots \leq t_i \leq \frac{1}{2} \} \times \{\frac{1}{2} \leq t_{i+1} \leq \cdots \leq t_n \leq 1 \}
+\end{eqnarray*}
+\end{enumerate}
+\end{lemma}
+\begin{proof} 1. The shuffle $\sigma$ in the first line is chosen such that
+\[ 0 \leq t_{\sigma^{-1}(1)} \leq \cdots \leq t_{\sigma^{-1}(n+m)} \leq 1 \]
+holds true. It is uniquely determined whenever all $t_i$ are different from each other.
+There is an obvious inverse to this map which just forgets the $\sigma$.
+2. The map is given by choosing an $i$ such that $t_i \le \frac{1}{2} \le t_{i+1}$.
+It is uniquely determined whenever all $t_i$ are different from each other and from $\frac{1}{2}$.
+There is an obvious inverse to this map which just forgets the $i$.
+\end{proof}
+
+
+\section{Multiple zeta values as iterated integrals}
+
+Let $M = \Pspace_{\C}^1 \setminus \{0, 1, \infty\}$. The differential forms $\omega_0 = \frac{dz}{z}$ and $\omega_1 = \frac{dz}{1-z}$ generate $H^1_{dR}(M)$.
+
+Recall from the first talk, that 
+there is a bijection
+\begin{eqnarray*}
+\left\{ (s_1, \dots, s_n) \in \N^n \mid s_n \geq 2 \right \} &\overset{\sim}{\longrightarrow} & \{ \textrm{admissible words in $0, 1$} \}\\
+(s_1, \cdots, s_n) &\mapsto & (1 \underbrace{0 \cdots 0}_{s_1 -1} 1 \underbrace{0 \cdots 0}_{s_2 -1} \cdots 1 \underbrace{0 \cdots 0}_{s_n -1}).
+\end{eqnarray*}
+Recall that admissible means: starting by 1 and ending by 0.
+This bijection mimics the way multiple zeta values are expressed as iterated integrals:
+
+
+\begin{prop}\label{prop:mzviterint}
+\begin{eqnarray*}
+\zeta(s_1, \ldots, s_n) &\overset{\text{Def.}}=& \zeta((1 \underbrace{0 \cdots 0}_{s_1 -1} 1 \underbrace{0 \cdots 0}_{s_2 -1} \cdots 1 \underbrace{0 \cdots 0}_{s_n -1}))\\
+&=& \int_0^1 \omega_1  \otimes  \underbrace{\omega_0 \otimes \cdots  \otimes  \omega_0}_{s_1 -1} \otimes  \omega_1  \otimes \underbrace{\omega_0  \otimes \cdots \otimes  \omega_0}_{s_2 - 1}  \otimes \cdots \otimes  \omega_1  \otimes \underbrace{\omega_0  \otimes \cdots  \otimes \omega_0}_{s_n - 1}
+\end{eqnarray*}
+This is an improper integral, which is, however, convergent as soon as $s_n\ge 2$.
+\end{prop}
+\begin{proof}
+This follows by induction from Lemma \ref{lem:Li} because $\zeta(s_1, \ldots, s_n) = \mathrm{Li}(s_1, \ldots, s_n; 1)$.
+\end{proof}
+
+
+
+Putting $\mathrm{S} \omega := \int_0^{z'} \omega |_{z'=z}$, we have obviously:
+\begin{lemma}
+For $\omega_1, \dots, \omega_n$ 1-forms
+\[
+\int_0^z \omega_1\otimes  \cdots \otimes  \omega_n = \mathrm{S}( \cdots \mathrm{S}(\mathrm{S} \omega_1 \cdot \omega_2) \cdot \omega_3) \cdots \omega_n)
+\]
+\end{lemma}
+(which explains, by the way, the name `iterated integral').
+
+\begin{defn}
+The multiple polylogarithm function is defined as
+\[
+\mathrm{Li}(s_1, \ldots, s_n; z) = \sum_{0 < i_1 < \cdots < i_n} \frac{z^{i_n}}{i_1^{s_1} \cdots i_n^{s_n}}
+\]
+\end{defn}
+
+\begin{lemma}\label{lem:Li}
+\begin{enumerate}
+\item $\mathrm{S}(\mathrm{Li}(s_1, \ldots, s_n; z) \cdot \frac{dz}{z}) = \mathrm{Li}(s_1, \ldots, s_n + 1; z)$.
+\item $\mathrm{S}(\mathrm{Li}(s_1, \ldots, s_n; z) \frac{dz}{1-z}) = \mathrm{Li}(s_1, \ldots, s_n, 1; z)$.
+\item $\mathrm{S}(\frac{dz}{1-z}) = \mathrm{Li}(1; z) = -\log(1-z)$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+The proof of 1. is straightforward from the definitions.
+
+The proof of 2. follows by the calculation:
+\[
+\int_0^{z'} \left( \sum_{0 < i_1 < \cdots < i_n} \frac{z^{i_n}}{i_n^{s_1} \cdots i_n^{s_n}} \right) \left( \sum_{k=0}^{\infty} z^k \right) \mathrm{d}z = \int_0^{z'} \sum_{0 < i_1 < \cdots < i_{n+1}} \frac{z^{i_{n+1}-1}}{i_1^{s_1} \cdots i_n^{s_n}}\mathrm{d}z = \sum_{0 < i_1 < \cdots < i_{n+1}} \frac{(z')^{i_{n+1}}}{i_1^{s_1} \cdots i_n^{s_n} i_{n+1}}
+\]
+where $i_{n+1} := i_n + k + 1$.
+\end{proof}
+
+\begin{cor}[Shuffle formula for multiple zeta values]\label{hoermannshuffle}
+For $(x_1 \cdots x_n)$ and $(x_{n+1} \cdots x_{n+m})$ admissible words, we have
+\[ \zeta((x_1 \cdots x_n)) \cdot \zeta((x_{n+1} \cdots x_{n+m})) =  \sum_{\sigma \in S_{n,m}} \zeta((x_{\sigma^{-1}(1)} \cdots x_{\sigma^{-1}(n+m)})). \]
+\end{cor}
+
+\begin{cor}
+For $(x_1 \cdots x_n)$ an admissible word, we have
+\[ \zeta((x_1 \cdots x_n)) = \zeta((1-x_n \cdots 1-x_1)). \]
+\end{cor}
+
+\begin{exam}
+\[ \zeta(3) = \zeta((100)) = \zeta((110)) = \zeta(1,2). \]
+\end{exam}
+
+\section{Monodromy interpretation}
+Iterated integrals are useful to express the monodromy of vector bundles with connection, and can even be so characterized. To that end, let $M$ be again a real manifold and let $V = \C^k \times M \to M$ be a trivial vector bundle. Let
+a strictly upper triangular matrix of 1-forms be given:
+\[
+N = \left(
+\begin{array}{cccc}
+0 & \omega_{12} & \cdots & \omega_{1k} \\
+& & \vdots & \\
+0 & 0 & \cdots & \omega_{(k-1)k} \\
+0 & 0 & \cdots & 0
+\end{array}
+\right) \in \textrm{End}(\C^k) \otimes A^1(M).
+\]
+It defines a connection
+\begin{eqnarray*} 
+\nabla: V &\rightarrow& V \otimes A^1(M)  \\
+v & \mapsto &\mathrm{d}v + Nv
+\end{eqnarray*}
+on $V$.
+
+
+Define the following function on the path-space $PM$:
+\begin{eqnarray*}
+\int N^{\otimes} : PM & \to & \textrm{End}(\C^k), \\
+\gamma & \mapsto & \int_{\gamma} \sum_{n=0}^\infty N^{\otimes n}.
+\end{eqnarray*}
+Here $N^{\otimes n}$ involves the usual matrix product using the tensor product of forms, for example:
+\[
+N = \left(
+\begin{array}{ccc}
+0 & \omega_1 & 0 \\
+0 & 0 & \omega_2 \\
+0 & 0 & 0
+\end{array}
+\right) \qquad
+N^{\otimes 2} = \left(
+\begin{array}{ccc}
+0 & 0 & \omega_1 \otimes \omega_2 \\
+0 & 0 & 0 \\
+0 & 0 & 0
+\end{array}
+\right) \qquad
+N^{\otimes 3} = 0.
+\]
+
+\begin{prop}\label{prop:flatconn}
+The following are equivalent
+\begin{enumerate}
+\item $N$ gives a flat connection, i.e., $\nabla^2 = 0$.
+\item $dN + N \wedge N = 0$.
+\item The function $\int N^{\otimes}$ is homotopy invariant.
+\end{enumerate}
+\end{prop}
+
+Recall that, given a vector bundle $(E, \nabla)$ with flat connection, any vector $v \in E_a$ in the fibre above a point $a$ can be
+extended uniquely to a flat section $\overline{v}: U \rightarrow E|_U$ (i.e. $v_a = v$) in a small neighborhood $U \ni a$.
+Performing the unique extension along a path yields a map ({\bf parallel transport}):
+\[  \pi_1(M, a, b) \rightarrow \Hom(E_a, E_b),  \]
+which, for $a=b$, yields a representation of $\pi_1(M, a)$, the {\bf monodromy representation}.
+
+The main result of this section is
+\begin{prop}\label{prop:intismonodromy}
+Assume any one of the three conditions of \ref{prop:flatconn} (and hence all) holds. 
+Then the parallel transport of $(V, \nabla)$ is given by the map
+\begin{eqnarray*}
+\pi_1(M, a, b) &\rightarrow& \Hom(V_a, V_b) = \End(\C^k), \\
+\gamma &\mapsto& \int_\gamma N^\otimes. 
+\end{eqnarray*}
+\end{prop}
+
+\begin{exam} The above holds true even if $N$ is not nilpotent:
+Let $M = \R$ and $N = \mathrm{d}x$. Then 
+\[
+\int_\gamma \mathrm{d}x^{\otimes n} = \frac{x^n}{n!} \qquad \int_\gamma \mathrm{d}x^\otimes = \exp(x),
+\]
+where $\gamma$ is any path from $0$ to $x$.
+$\int N^\otimes$, therefore, may be seen as a generalization of the exponential series.
+\end{exam}
+
+\begin{proof}[Partial proof of proposition \ref{prop:flatconn}.]
+It is well-known that 1. and 2. are equivalent. We will show that 2. implies 3. Consider a plot
+$\phi: U \rightarrow PM$ with fixed endpoints. Using Proposition \ref{hoermannprop1}, we get
+\begin{eqnarray*}
+\mathrm{d} \sum_{n=0}^\infty \int_\phi N^{\otimes n} &=& -  \sum_{n=0}^\infty \sum_{i=1}^n \int_\phi N^{\otimes i-1} \otimes \mathrm{d}N \otimes N^{\otimes n-i}  \\
+&&- \sum_{n=0}^\infty \sum_{i=1}^{n-1} \int_\phi N^{\otimes i-1} \otimes (N \wedge N) \otimes N^{\otimes n - i - 1} \\
+&=&0 
+\end{eqnarray*}
+by property 2.
+\end{proof}
+
+\begin{proof}[Proof of proposition \ref{prop:intismonodromy}.]
+Consider two points $a, b \in M$.
+Let $U \subset M$ be a small open subset around a point $b$.
+Choose a smooth morphism $\widetilde{\phi}: U \times \sigma_1 \rightarrow M$ 
+such that $\widetilde{\phi}(u, 0) = a$ and $\widetilde{\phi}(u, 1) = u$.
+By definition, it determines a plot $\phi: U \rightarrow PM$.
+The statement follows, if we can show that
+\[ \nabla (\int_\phi N^\otimes) v = 0 \]
+for all $v \in \C^k$.
+Note that $\int_\phi N^\otimes$ is a function on $U$ with values in $\End(\C^k)$. Using Proposition \ref{hoermannprop1} and the previous calculation, we get
+\begin{eqnarray*}
+\nabla \int_\phi N^{\otimes} & = & \sum_{n=1}^\infty  (-1) (\int_\phi N^{\otimes n - 1}) \cdot   (d \circ \phi)^* N + \sum_{n=0}^\infty N \cdot (\int_\phi N^{\otimes n}) \\
+& = & 0.
+\end{eqnarray*}
+Observe, that $d \circ \phi= \id$ by construction, and that $N$ commutes with $\int_\phi N^{\otimes n}$.
+\end{proof}
+
+\begin{rem}Even if condition 2. on $N$ is not true, i.e. if $\nabla$ is not flat, there is still a notion of parallel transport, which depends on
+the particular element in the homotopy class of the path, though. The formula above remains true in this case. We will not need this.
+\end{rem}
+
+%Recall that $\pi_1(M;a,b)$ is a set and a left $\pi_1(M;a)$-torsor ($M$ is path-connected), so $\Q[\pi_1(M;a,b)]$ is a $\Q$-vector space with basis $\pi_1(M;a,b)$ and also a free $\Q[\pi_1(M;a)]$-module of rank one (Cf. Definition \ref{def:fundgroup}).
+
+
+%We have seen that iterated integration gives a pairing. If we restrict this pairing to $H^\sigma(C)^{\leq n}$, then it will factor
+%\[
+%\begin{array}{rcl}
+%\Q[\pi_1(M; a, b)] / I^{n+1} \times H^{\sigma}(C)^{\leq n} & \to & \C \\
+%\left( \left[ \sum_i a_i \gamma_i \right], \alpha \right) & \mapsto & ??
+%\end{array}
+%\]
+%where $I$ is the augmentation ideal.
+%\begin{thm}[Chen]\label{thm:chenpairing}
+%The above is a perfect pairing\footnote{A perfect pairing $V \times W \to k$ is a bilinear mapping whose induced morphisms $V \to W^{\vee}$ and $W \to V^{\vee}$ are isomorphisms.} if $a \neq b$. Hence there is an isomorphism,
+%\[
+%c_n : \Q_{a,b} (H^{\sigma}(C)^{\leq n} \cong \oplus H_n(M^n, Z^n_{a,b}) \isom \left(\Q[\pi_1(M; a, b)] / I^{n+1}\right)^{\vee}
+%\]
+%Why the second isomorphism?
+%\end{thm}
+
+%\begin{prop}
+%If $n < m$, then
+%\[
+%\int_{(1-\gamma_1) \circ \cdots \circ (1-\gamma_m) \circ \gamma} \omega_1 \cdots \omega_n = 0.
+%\]
+%\end{prop}
+
+
+\section{Cohomological interpretation}
+Let $X$ be a smooth variety and $a, b \in X$. 
+
+\begin{defn}\label{defn:Zab}
+Define the union of hyperplanes 
+\[
+Z_{a,b}^n = \{ x_1 = a \} \cup \{ x_1 = x_2 \} \cup \cdots \cup \{x_n = b\} \subset X^n=\underbrace{X \times \cdots \times X}_{\textrm{$n$ times}}.
+\]
+\end{defn}
+
+Consider the following cosimplicial scheme
+\[ \xymatrix{
+ \{\cdot \} \ar@<0.5ex>[r] \ar@<-0.5ex>[r] & X \ar@<-1ex>[r] \ar[r] \ar@<+1ex>[r] & X^2 \cdots  
+ }\]
+ where $\delta_{1,0} = a$, $\delta_{1,1} = b$,  $\delta_{2,0} = a \times \id$,  $\delta_{2,1} = \Delta$,  $\delta_{2,2} = \id \times b$, etc. and the 
+ degeneracies are just the projections forgetting one of the factors.
+ Note that the joint image of the $\delta_{n}$-maps is just $Z_{a,b}^n$.
+ 
+Taking {\bf de Rham complexes} of the entries of this cosimplicial scheme induces a simplicial object in the category of complexes of Abelian groups
+\[ \xymatrix{
+ \C& A^{\bullet,-1}_{iter}(PX_{a,b}) \ar@<0.5ex>[l] \ar@<-0.5ex>[l]  & A^{\bullet,-2}_{iter}(PX_{a,b}) \ar@<-1ex>[l] \ar[l] \ar@<+1ex>[l] \cdots  
+ }\]
+whose associated ``alternating face map''-complex is just the double complex $A^{\bullet,\bullet}_{iter}(PX_{a,b})$ (bar complex) introduced before, such that
+the alternating face map becomes $\mathrm{d}''$.
+Its normalized complex $\widetilde{A}^{\bullet,\bullet}_{iter}$ (dividing out images of the degeneracies) has the same homology and also the map
+`iterated integration' factors through it. This is not the reduced bar complex, however. It lies in between the bar complex and the reduced one.
+
+Dually, taking {\bf chain complexes} (with rational coefficients) induces a cosimplicial object in the category of complexes of Abelian groups
+\[ \xymatrix{
+ \C \ar@<0.5ex>[r] \ar@<-0.5ex>[r] & C_{\bullet,-1}^{iter}(PX_{a,b}) \ar@<-1ex>[r] \ar[r] \ar@<+1ex>[r] & C_{\bullet,-2}^{iter}(PX_{a,b}) \cdots,  
+ }\]
+i.e. 
+\[ C_{i,-j}^{iter}(PX_{a,b}) := C_{i}(X^j, \Q). \] 
+ 
+In the 4th talk, it will be shown that the total complex of {\em the truncation} of the normalized complex 
+\[
+\xymatrix{
+\C & \widetilde{A}_{iter}^{ \bullet, -1}(PX_{a,b})  \ar[l]_-{\mathrm{d}''} & \widetilde{A}_{iter}^{\bullet,-2}(PX_{a,b})  \ar[l]_-{\mathrm{d}''} & \cdots   \ar[l]_-{\mathrm{d}''} & \widetilde{A}_{iter}^{\bullet,-n}(PX_{a,b})  \ar[l]_-{\mathrm{d}''}
+}
+\]
+denoted $\widetilde{A}_{iter}^{\bullet , \bullet \ge -n}$ actually computes the relative cohomology group $\C_{a,b} \oplus H^n(X^n, Z^n_{a,b})$\footnote{$\C_{a,b}$ is $\C$, if $a=b$ and $0$ otherwise.}.
+
+Dually, the total complex of the truncated normalized complex $\widetilde{C}_{\bullet , \bullet \ge -n}^{iter}(PX_{a,b})$ computes the homology $\Q_{a,b} \oplus H_n(X^n, Z^n_{a,b})$.
+We may and will normalize this complex by dividing out the images of the $\delta_{n,i}$ for $i<n$. 
+
+The first step towards Chen's theorem is to construct a map
+\[  \widetilde{c}_n: \Q[\pi_1(X, a,b)] \rightarrow \mathbb{H}_0(\widetilde{C}_{\bullet ,\bullet \ge -n}^{iter}(PX_{a,b})) \cong \Q_{a,b} \oplus H_n(X^n, Z^n_{a,b}). \]
+
+To this end, let $\gamma$ be a path from $a$ to $b$. It induces a chain $\gamma_n \in C_n(X^n)$ by restricting the map
+\[ \gamma^n: \sigma_1^n \rightarrow X^n \]
+to the simplex $\sigma_n$.
+The sequence
+\[ (\gamma_0, \dots, \gamma_n) \]
+is a {\em cycle} in $\mathbb{H}_0(\widetilde{C}_{\bullet ,\bullet \ge -n}^{iter})(PX_{a,b})$ because the boundary $\mathrm{d'} \gamma_n$ is minus the image 
+$\mathrm{d}'' \gamma_{n-1}$ of $\gamma_{n-1}$ under the alternating face map.
+Here $\gamma_0=1=\textrm{aug}(\gamma)$.
+
+Let $\delta: \sigma_1^2 \rightarrow X$ be a homotopy from $\gamma_1$ to $\gamma_2$.
+We have then 
+\[ \mathrm{d} (\delta_0, \dots, \delta_n) = (\gamma_{2,0}, \dots, \gamma_{2,n}) - (\gamma_{1,0}, \dots, \gamma_{1,n})  \]
+where $\delta_n$ is the chain\footnote{decomposed into a sum of simplexes in any way you like}:
+\[ \delta_n: \sigma_1 \times \sigma_n \rightarrow X^n \]
+\[ t, (t_1, \dots, t_n) \mapsto (\delta(t, t_1), \dots, \delta(t, t_n)).  \]
+
+In other words, we get a well-defined map 
+\begin{eqnarray*} 
+\widetilde{c}_n: \Q[\pi_0(X, a,b)] &\rightarrow& \mathbb{H}_0(\widetilde{C}^{iter}_{\bullet,\bullet  \ge -n}(PX_{a,b})) \quad (\cong \Q_{a,b} \oplus  H_n(X^n, Z^n_{a,b}))  \\
+ \gamma &\mapsto&  (\gamma_0, \dots, \gamma_n). 
+\end{eqnarray*}
+
+By definition of iterated integral, we have for a form $\omega \in \mathbb{H}^0(\widetilde{A}_{iter}^{\bullet, \bullet}(PX_{a,b}))$
+\[ \int_\gamma \omega = \langle \widetilde{c}_n(\gamma), \omega \rangle.  \]
+In particular the product $\Q[\pi_0(X, a,b)] \times \Q[\pi_0(X, b,c)] \rightarrow \Q[\pi_0(X, a,c)]$
+is compatible with the dual of the coproduct (\ref{hoermann_coproduct}), i.e. with the product
+\begin{equation}\label{hoermann_product} 
+(\alpha_0, \dots, \alpha_n) \cdot (\beta_0, \dots, \beta_n) = (\alpha_0 \cdot \beta_0, \alpha_0 \cdot \beta_1 + \alpha_1 \cdot \beta_0, \alpha_0 \cdot \beta_2 + \alpha_1 \cdot \beta_1 + \alpha_2 \cdot \beta_0, \dots).
+\end{equation}
+Its $k$-th entry is $\sum_{i=0}^k \alpha_i \cdot  \beta_{k-i}$. 
+The product $`\cdot'$ in this formula is the usual Cartesian product of chains $C^i(X^n) \times C^j(X^m) \rightarrow C^{i+j}(X^{n+m})$ (formed, say, using the canonical decomposition of Cartesian products \ref{hoermannlemmadecomp}, 1. into subsimplices).
+
+Recall the following
+\begin{defn}\label{def:augmentationideal}
+Let $M$ be a path-connected topological space and $a \in M$. Let
+\[
+\begin{array}{rcl}
+\mathrm{aug} : \Q[\pi_1(M;a)] & \to & \Q \\
+\sum_i a_i \gamma_i & \mapsto & \sum_i a_i
+\end{array}
+\]
+be the augmentation. Its kernel in $\Q[\pi_1(M;a)]$
+\[
+I = \ker \mathrm{aug}.
+\]
+is called the augmentation ideal.
+\end{defn}
+The augmentation ideal is generated by elements of the form $1-\gamma$ for $\gamma \in \pi_1(M;a)$.
+
+
+\begin{cor}
+The map $\widetilde{c}_n$ factors via 
+\[ c_n:  \Q[\pi_0(X, a,b)]/I^{n+1} \Q[\pi_0(X, a,b)] \rightarrow \mathbb{H}_0(\widetilde{C}_{\bullet ,\bullet \ge -n}^{iter}(PX_{a,b})).   \]
+\end{cor}
+\begin{proof}
+The image of the augmentation ideal has the property, that the first entry $\alpha_0$ is 0. If we define a filtration
+$F^i \mathbb{H}_0(\widetilde{C}_{\bullet ,\bullet \ge -n}(PX_{a,b}))$ by the property that the first $i$-entries be zero, we have by formula (\ref{hoermann_product}) that
+\[ F^i \mathbb{H}_0(\widetilde{C}_{\bullet,\bullet  \ge -n}(PX_{a,b})) \cdot  F^j \mathbb{H}_0(\widetilde{C}_{\bullet,\bullet  \ge -n}(PX_{b,c})) \subseteq F^{i+j} \mathbb{H}_0(\widetilde{C}_{\bullet,\bullet  \ge -n}(PX_{a,c})). \]
+In paricular, if $\gamma \in I^m$, $\widetilde{c}_n(\gamma) = (\gamma_0, \dots, \gamma_n)$ lies in $F^m \mathbb{H}_0(\widetilde{C}_{\bullet,\bullet  \ge -n}(PX_{a,a}) )$. Since trivially
+\[ F^{n+1} \mathbb{H}_0(\widetilde{C}_{\bullet,\bullet  \ge -n}(PX_{a,b}) = 0, \]
+the statement follows.
+\end{proof}
+
+\begin{thm}[Chen]
+$c_n$ is an isomorphism.
+\end{thm}
+\begin{proof}
+This will be proven in talk 5, relating the two sides to unipotent representations of $\pi_1$ and bundles with nilpotent connection, respectively. 
+We prove here that $c_n$ is surjective by induction on $n$:
+It suffices to consider the case $a=b$. Consider the diagram
+
+\[ 
+\xymatrix{
+0 \ar[d] \\
+I^{n+1}/I^n \ar[d] & H_{1}(X, \Q)^{\otimes n} \ar@{.>}[l]^{\rho} \ar[d]^{\epsilon} \\
+\Q[\pi_0(M, a)]/I^{n+1} \ar[d] \ar[r]_-{c_{n}} & \mathbb{H}_0(\widetilde{C}_{\bullet,\bullet  \ge -n}^{iter}(PX_{a,b})) \ar[d] \\
+\Q[\pi_0(M, a)]/I^{n} \ar[d] \ar@{->>}[r]_-{c_{n-1}} & \mathbb{H}_0(\widetilde{C}_{\bullet,\bullet  \ge -n+1}^{iter}(PX_{a,b})) \ar[d] \\
+0 & 0 
+}
+\]
+The map $\epsilon$ is defined as follows. It maps $\gamma_1 \otimes \cdots \otimes \gamma_n$ to 
+$(0, \dots, 0, \gamma_1 \cdot \cdots \cdot \gamma_n)$. 
+The map $\rho$ sends $\gamma_1 \otimes \cdots \otimes \gamma_n$ to $(1-\gamma_1) \cdot \cdots \cdot (1-\gamma_n)$. (Note that $H_1(X, \Q) \cong I/I^2$ via $\gamma \mapsto 1-\gamma$.)
+The lower horizontal map is surjective by the induction hypothesis. 
+
+We claim that the right column is an exact sequence. The lower vertical map is surjective because $c_{n-1}$ is an surjective. 
+For the exactness in the middle, observe that an element in the kernel of the truncation is represented (modulo boundaries) by an element of the form
+$(0, \dots, 0, \alpha_n)$ with $\mathrm{d}' \alpha_n = 0$ (usual $\mathrm{d}$ of chains), i.e. where $\alpha_n$ is a cycle.
+By K\"unneth, modulo boundaries again, which do not affect the zeros, we may write $\alpha_n = \sum_i \alpha_{i,1} \cdot \cdots \cdot \alpha_{i,n}$ where each summand has total degree $n$.
+An element $\alpha_{i,1} \cdot \cdots \cdot \alpha_{i,n}$ with $\deg \alpha_{i,j} = 0$ for some $j$, however, lies in the sum of the images
+of the $\delta_{n,i}$ with $i<n$. The claim follows. 
+
+Formula (\ref{hoermann_product}) shows that the top square of the above diagram is commutative (up to sign). A small diagram chase shows that $c_{n}$ is
+surjective, too.
+\end{proof}
+ 
+
+
+%\begin{lemma}
+%$d\sigma_n \in Z^{n-1}(Z^n_{a,b})$
+%\end{lemma}
+%\begin{lemma}
+%If $\gamma$ and $\gamma'$ are homotopic by $\delta$, then there exists a $\delta_n$ such that $d\delta_n = \gamma_n - \gamma_n'$ modulo $Z^n$ ($Z^n_{a,b}$) (i.e., a $\delta_n$ showing $\gamma_n$ and $\gamma'_n$ are homotopic modulo an open subset.
+%\end{lemma}
+%\[
+%\xymatrix{
+%0 \ar[r] & Z^2(Y) \ar[r] \ar[d] & Z^2(Y) \ar[d] \ar[r] & \cdots\\
+%0 \ar[r] & Z^1(Y) \ar[r] \ar[d] & Z^1(Y) \ar[d] \ar[r] & \cdots \\
+%0 \ar[r] & Z^0(Y) \ar[r] & Z^0(Y) & 
+%}
+%\]
+
+%De Rham cohomology
+%\[
+%\xymatrix{
+%0 \ar[r] & \Omega^2(Y) \ar[r] \ar[d] & \Omega^2(Y) \ar[r] \ar[d] & \cdots \\
+%0 \ar[r] & \Omega^1(Y) \ar[r] \ar[d] & \Omega^1(Y) \ar[r] \ar[d] & \cdots \\
+%0 \ar[r] & \Omega^0(Y) \ar[r] & \Omega^0(Y) \ar[r] &
+%}
+%\]
+
+\section{Addendum: Multizetas are (mixed) periods!}
+
+We have seen that iterated integrals are periods of relative motives $h^n(X^n, Z^n_{a,b})$, and that
+multiple zeta values can be expressed as iterated integrals on $X= \Pspace^1 \setminus \{0, 1, \infty\}$.
+The problem is, of course, that we integrate over a simplex which is not entirely contained in $X_{\C}$.
+This will be resolved later by introducing tangential base points and quite indirectly. 
+It can also be resolved ``manually'' by blowing up $X^n$. We will illustrate this in the example $n=2$.
+
+
+%We review and slightly enlarge on the above material.
+
+%\subsection{Iterated integrals are (mixed) periods}
+
+%\begin{prop}\label{prop:isompione}
+%Let $X$ be a smooth variety over $k$. Then, for any $a, b \in X$ such that $a \neq b$,
+%\[
+%c_H : 
+%\begin{array}{rcl}
+%\Q[\pi_1(X, a, b)]/I^{n+1} & \isom & \Q_{a,b} \oplus H^n(M^n, Z^n_{a,b}) \\
+%\gamma & \mapsto & (\gamma_n : \sigma_n \mapsto (\gamma(t_1), \ldots, \gamma(t_n))
+%\end{array}
+%\]
+%where $Z^n_{a,b} = \{x_1 = a\} \cup \{x_1 = x_2\} \cup \cdots \cup \{x_n = b\}$ and $\Q_{a,b} = \Q$ if $a \neq b$ and $0$ otherwise. Note that the right hand side is a directed system.
+%\end{prop}
+
+%Let $\omega_1, \ldots, \omega_n \in A^1 = \Omega^1(X)$ be complex differential forms on $X$ such that $\deg \omega_i = 1$, $d \omega_i = 0$ for all $i$ and $\omega_i \wedge \omega_{i+1} = 0$. Define
+%\[
+%\omega = \omega_1 \otimes \cdots \otimes \omega_n \in H^n(X^n, Z^n_{a,b})
+%\]
+%Then there is a pairing
+%\[
+%\langle \gamma_n, \omega \rangle = \int \omega_1 \cdots \omega_n
+%\]
+%\begin{exam}
+
+Recall the differential forms
+\[
+\omega_0 = \frac{\mathrm{d}z}{z} \qquad \omega_1 = \frac{\mathrm{d}z}{1-z}
+\]
+which generate $H^1_{dR}(X)$.
+
+We consider the iterated integral
+\[ \zeta(2) = \int_\gamma \omega_1 \otimes \omega_0 \]
+where $\gamma$ is the straight path from 0 to 1.
+Recall that this iterated integral is, by definition, the integral of
+\[
+\omega = \omega_1 \boxtimes \omega_0 = \frac{dz_1}{1-z_1} \wedge \frac{dz_2}{z_2}
+\]
+over the simplex
+\[ \sigma_2 = \{ 0 \le t_1 \le t_2 \le 1 \mid t_i \in \R \}, \]
+which we consider as subset of $(\Pspace^1_{\C})^2$.
+
+The following picture visualizes the simplex (filled region) and the singularities of $\omega$.
+%\end{exam}
+%This defines a well-defined element in $\mathbb{H}^0(\widetilde{A}^{\bullet \ge -2, \bullet})$ because the $\delta_{2,i}$'s of it are zero.
+
+%The simplex bla-bla defines an element in bla-bla whose pairing with $\omega$ is the iterated integral bla-bla. 
+%Problem: The simplex does not lie in bla-bla.
+
+\begin{center}
+\setlength{\unitlength}{2cm}
+\begin{picture}(4,4)
+\linethickness{1mm}
+\thicklines
+\put(1,0){\line(0, 1){4}}
+\put(0,3){\line(1,0){4}}
+\thinlines
+\put(0,1){\line(1,0){4}}
+\put(0,0){\line(1,1){4}}
+\put(3,0){\line(0,1){4}}
+\put(1.1,2){$z_1 = 0$}
+\put(2,1){$z_2 = 0$}
+\put(2,2){$z_1 = z_2$}
+\put(2,1.5){unfilled region}
+\put(1,2.5){filled region}
+\end{picture}
+\end{center}
+Observe that $\omega$ is actually a differential form not only on $M^2$ but on 
+\[ (\Pspace^1)^2 \setminus ( \{z_1= 1 \} \cup \{ z_2 = 0\} \cup \{ z_1 = \infty \} \cup \{ z_2 = \infty\}). \]
+Still, $\sigma_2$ is not contained in this larger space. However, if we consider the blow-up $\widetilde{M}$ of $(\Pspace^1)^2$ at $(0,0)$, $(1,1)$ and $(\infty, \infty)$, 
+we get the following picture: 
+\begin{center}
+\setlength{\unitlength}{1cm}
+\begin{picture}(7,7)
+\thicklines
+\put(1,2){\line(0,1){5}}
+\put(0,6){\line(1,0){5}}
+\thinlines
+\put(2,1){\line(1,0){5}}
+\put(6,0){\line(0,1){5}}
+\put(0,0){\line(1,1){7}}
+\put(0,0){\oval(6,6)[tr]}
+\put(7,7){\oval(6,6)[bl]}
+%\put(3,1){\circle{3}}
+\put(4,1.1){$z_2' = 0$}
+\put(3,2.5){$z_1' = 0$}
+\end{picture}
+\end{center}
+In the blown-up coordinates $z_1', z_2'$ transformed by
+\[ z_1 = z_1' z_2' \qquad z_2 = z_2'  \]
+the differential form becomes
+\[
+\omega = \frac{\mathrm{d}z_1' z_2' + \mathrm{d}z_2' z_1' }{1-z'_2 z'_1} \wedge \frac{\mathrm{d} z_2'}{z_2' } = \frac{\mathrm{d} z_1' \mathrm{d}z_2'}{1 - z_2' z_1'}
+\]
+This means that the singularities of $\omega$ occur only at the strict transforms of $\{z_1= 1 \}$ and $\{z_2= 0 \}$ and the preimage of 
+ $\{z_1= \infty \}$ and $\{z_2= \infty \}$. A slightly more refined argument shows that actually
+\begin{gather*} \omega \in H^n(\widetilde{M} \setminus (\{z_1= 1\} \cup \{z_2= 0\} \cup \{z_1= \infty \} \cup \{z_2= \infty \} \cup E_{\infty, \infty}), \\
+(\{z_1= 0\} \cup \{z_2= 1\} \cup \{z_1 = z_2\} \cup E_{0,0} \cup E_{1,1}) \cap \cdots).
+\end{gather*}
+where, by abuse of notation, we denoted the strict transform of e.g. $\{z_1= 1\}$ again by the same term.
+Alike, $\sigma_2$, appropriately reparametrized, is now an element of
+\begin{gather*} H_n(\widetilde{M} \setminus (\{z_1= 1\} \cup \{z_2= 0\} \cup \{z_1= \infty \} \cup \{z_2= \infty \} \cup E_{\infty, \infty}), \\
+(\{z_1= 0\} \cup \{z_2= 1\} \cup \{z_1 = z_2\} \cup E_{0,0} \cup E_{1,1}) \cap \cdots).
+\end{gather*}
+and the period pairing $\langle \sigma_2, \omega \rangle$ is still $\zeta(2)$.
+
+Actually, we have the following connection to the theory of moduli of curves:
+
+\begin{itemize}
+\item
+$X^2 \setminus \Delta$ is the moduli space of {\bf smooth} genus 0 curves with 5 distinct marked points.
+\item
+$\widetilde{M}$ is the moduli space of {\bf stable} genus 0 curves with 5 distinct marked points.
+\end{itemize}
+A point $(z_1,z_2) \in X^2 \setminus \Delta$ classifies the curve $C=\Pspace^1$ with $(0,1,\infty,z_1,z_2)$ marked. Every smooth genus 0 curve with 5 marked points is isomorphic to one of those.
+
+The boundary divisor of $\widetilde{M}$ has the following interpretation, where 
+we write, for instance, $(0, z_1, \infty| 1, z_2)$ for a chain of 2 $\Pspace^1$'s with 3 points $0,z_1,\infty$ marked in the first and 2 points $1, z_2$ marked in the second.
+The symbols $0,1,\infty$ are considered as {\em abstract} symbols here.
+\[
+\begin{array}{rl}
+\text{ boundary component} &  \text{moduli of singular marked curves of type }\\
+\{z_1=0\} & (1,z_2,\infty|0,z_1) \\
+\{z_2=0\} &  (1,z_1,\infty|0,z_2) \\
+\{z_1=1\} &  (0,z_2,\infty|1,z_1) \\
+\{z_2=1\} &  (0,z_1,\infty|1,z_2) \\
+\{z_1=\infty\} &  (0,1,z_2|\infty,z_1) \\
+\{z_2=\infty\} & (0,1,z_1|\infty,z_2) \\
+\{z_1=z_2\} & (0,1,\infty|z_1,z_2) \\
+E_{0,0} &  (0,z_1,z_2|1,\infty) \\
+E_{1,1} &  (1,z_1,z_2|0,\infty) \\
+E_{\infty,\infty} &  (\infty,z_1,z_2|0,1) 
+\end{array}
+\]
+These correspond precisely to the ${5 \choose 2}$ possible ways of putting $\{ 0,1,\infty,z_1,z_2\}$ into 2 boxes such that none of those contains
+less than 2 elements.
+The intersections correspond to maximally singular stable curves, for example:
+\[
+\begin{array}{rl}
+\text{ boundary component}&  \text{{\em the} singular marked curve of type }\\
+\{z_1=0\} \cap E_{0,0} & (1,\infty|z_2|0,z_1) \\
+\{z_1=z_2\} \cap E_{\infty,\infty} & (z_1,z_2|\infty|0,1) \\
+\vdots & \vdots
+\end{array}
+\]
+
+The ultimate generalization of the above is (cf. \cite{goncharov-2004}) the
+
+%Then 
+%\[
+%\widetilde{\gamma_2} \in H_2(\widetilde{M}) \setminus \left(\{z_1=0\} \cup \{z_2=1\} \cup E_{\infty, \infty} \cup \{z_1=\infty\} \cup \{z_2=\infty\}\right)
+%\]
+
+%\subsection{Multizetas are iterated integrals}
+
+\begin{thm}[Goncharov, Manin]
+$\zeta(n_1, \dots, n_k)$ is a period of $h^n(\overline{\mathcal{M}_{0, n+3}} \setminus E_1, E_2 \cap (\cdots))$, where $n$ is the total weight of $(n_1,\dots,n_k)$.
+\end{thm}
+Here $\overline{\mathcal{M}_{0, n+3}}$ is the moduli space of stable genus 0 curves with $n+3$ marked points and
+$E_1$ and $E_2$ are each the union over one of two disjoint sets of boundary divisors, whose combinatorial description 
+as above can be given explicitly in terms of $(n_1, \dots, n_k)$.

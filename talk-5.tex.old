@@ -1,0 +1,217 @@
+\chapter*{Hodge structure: Proof of Chen's theorem}
+\addcontentsline{toc}{chapter}{*Hodge structure: Proof of Chen's theorem by Sergey Rybakov}
+
+Sergey Rybakov on September 4th, 2012.
+
+\medskip
+\medskip
+
+\noindent Recall that $M$ is a smooth connected manifold, $A_M$ is the de Rham complex of rings of complex differential forms, and $B(A_M;a,b)$ is the bar complex.
+
+\section{The theorem}
+
+Recall the definition of $\mathrm{iter}$ (Definition \ref{def:iter}) and its dual. As explained in the previous lecture, the dual morphism,
+\[
+\mathrm{iter}^{\vee} : H^0(B(A_M;a,b)) \to \C \otimes_{\Q} \cO(\pi_1(M;a,b)^{un}),
+\]
+is an isomorphism of algebras and respects coproducts. Recall additionally that for an algebraic group $G$, $G^{un}$ denotes its pro-unipotent completion (Cf. Definition \ref{def:prounipotentcomp}).
+
+\begin{rem}
+Both algebras are torsors under their corresponding Hopf algebras for $a=b$.
+\end{rem}
+
+\begin{thm}[Chen's theorem]\label{thm:chentwo}
+Let $H(M,a) = H^0(B(A^1_M;a,a))$. Then
+\[
+\mathrm{iter}^{\vee} : H(M,a) \isom \C \otimes_{\Q} \cO(\pi_1(M,a)^{un})
+\]
+is an isomorphism of Hopf algebras.
+\end{thm}
+
+\begin{thm}\label{thm:comodsandreps}
+The morphism
+\[
+\Phi : \begin{array}{rcl}
+\mathrm{Comod~} H(M,a) & \longrightarrow & \mathrm{Rep}^{un}(\pi_1(M,a)) \\
+V & \mapsto & \left( \gamma \mapsto \left( V \to V \otimes H(M,a) \stackrel{1 \otimes \int_{\gamma}}{\longrightarrow} V \right) \right)
+\end{array}
+\]
+is an equivalence of categories.
+\end{thm}
+
+\begin{lemma}[Key fact]
+The theory of Tannakian categories shows that $\phi$ is an equivalence of categories if and only if $\mathrm{iter}^{\vee}$ is an isomorphism.
+\end{lemma}
+
+\noindent To prove Theorem \ref{thm:comodsandreps}, we construct an inverse functor:
+\[
+\xymatrix{
+\mathrm{Rep}^{un}(\pi_1(M,a)) \ar[r]^{\Phi} \ar[dr]^{RH} & \mathrm{Comod}(H(M,a)) \\
+& \mathrm{Conn}^{un}(M) \\
+}
+\]
+
+\section{Riemann-Hilbert correspondence}
+
+\begin{notation}
+We denote by $\mathrm{Conn~}M$ the category of complex vector bundles with flat connection. There are adjoint functors
+\[
+\xymatrix{\mathrm{Conn~}M \ar@<0.2em>[r] & \mathrm{Rep~} \pi_1(M,a) \ar@<0.2em>[l]}.
+\]
+\end{notation}
+
+Given a representation $V$ of $\pi_1(M,a)$, form $L = V \times \widetilde{M} / \pi_1(M,a)$, where $\widetilde{M}$ denotes the universal cover of $M$. Then
+\[
+V \mapsto L \otimes_{\C} \cA^0_M = \cE
+\]
+where $\cE$ is the sheaf of sections of $E$.
+\[
+L \otimes_{\C} \cA^0_M \stackrel{\nabla - \overline{d} \otimes_{\C} d}{\longrightarrow} L \otimes_{\C} \cA^1_M \cong L \otimes_{\C} \cA^0_M \otimes_{\cA^0_M} \cA^1_M \cong \cE \otimes_{\cA^0_M} \cA^1_M
+\]
+
+\begin{prop}
+The Riemann-Hilbert correspondence takes uniipotent representations to unipotent connections. In particular, it is an equivalence,
+\[
+RH : \mathrm{Rep}^{un}(\pi_1(M,a)) \isom \mathrm{Conn}^{un}(M)
+\]
+\end{prop}
+
+\subsection{Construction of the functor $G$ from unipotent connections to comodules}
+
+Let $(E, \nabla) \in \mathrm{Conn}^{un}(M)$. The sheaf of sections of $E$ with respect to a trivialization is 
+\[
+\phi : \cE \isom E_a \otimes_{\C} \cA^0_M
+\]
+Choose $\phi$ such that $\phi$ induces $id_{E_a}$.
+
+$\nabla = d -N$ where $N \in \End_{\C} E \otimes A'_M$. $N$ is nilpotent.
+\[
+N^{\rk E} = 0 \in \End_{\C} E \otimes (A'_M)^{\otimes n}
+\]
+
+\begin{defn}
+Let
+\[
+P_E = 1 + N + N^{\otimes 2} + \cdots \in (\End_{\C}E_a) \otimes_{\C} B(A_M,a)^0
+\]
+This is a finite sum.
+\end{defn}
+
+\begin{prop}
+Given a vector bundle $E$ on $M$, $P_E$ is a cocycle.
+\end{prop}
+\begin{proof}
+\TODO
+\end{proof}
+
+\begin{cor}
+\TODO
+\end{cor}
+
+Recall that
+\begin{eqnarray*}
+d'(\omega_1 \otimes \cdots \otimes \omega_n) & = & -\sum_{i=1}^n \omega_1 \otimes \cdots \otimes d \omega_i \otimes \cdots \otimes \omega_n \\
+d''(\omega_1 \otimes \cdots \otimes \omega_n) & = & - \sum_{i=1}^{n-1} \omega_1 \otimes \cdots \otimes \omega_i \wedge \omega_{i+1} \otimes \cdots \otimes \omega_n
+\end{eqnarray*}
+
+\begin{prop}[Flatness criteria]
+Given a vector bundle with connection $(E,\nabla)$, $\nabla$ is flat if and only if $dN = N \wedge N$.
+\end{prop}
+
+\begin{rem}
+Note that $d' N^{\otimes n} = d'' N^{\otimes (n+1)}$.
+\end{rem}
+
+\begin{defn}\label{def:tensorbialgebra}
+Given a vector space $V$, we define an associated bialgebra $T(V) := \bigoplus_{n \geq 0} V^{\otimes n}$ with product given by shuffle and coproduct given by deconcatenation.
+\end{defn}
+
+Let $f : (E, \nabla_E) \to (F, \nabla_F)$ be a morphism in $\mathrm{Conn}^{un}(M)$.
+
+\begin{prop}
+The morphism
+\[
+P_F \cdot f_a \to f_a \cdot P_E
+\]
+is a coboundary in $\Hom_C(E_a,F_a) \otimes_{\mathbf{C}} B(A_M, a)^0$.
+\end{prop}
+
+For an application, consider the case when $E = F$ and $\phi_1, \phi_2 : \cE \to E_a \otimes \cA_M^0$. Denote by $P_i$ the sum which come from $\phi_i$ for $i=1,2$. Since the $\phi_i$ are $1_{E_a}$, $P_1 - P_2$ is a coboundary in $\End(E_a) \otimes_{\C} B(A^1_m,a)^0$. Hence $[P_1] = [P_2]$.
+
+\begin{proof}
+Consider the following isomorphism of complexes, independent of $\nabla$:
+\[
+\Hom_{\C}(E_a,F_a) \otimes_{\C} B(A_M,a) \isom \Hom_{\cA^0_M}(\cE,\cF) \otimes_{\cA^i_M} B(A_M,a)
+\]
+The differential of the right hand side is
+\[
+\delta : M \otimes \omega \mapsto dM \otimes_{cA^0_M} \omega + M \otimes d\omega
+\]
+where $d\omega$ is a differential in $B(A_M,a)$ and $dM \in \Hom_{\cA_M^0}(\cE,\cF) \otimes_{\cA^0_M} \cA^1_M$. The key formula
+\[
+P_E f_a - f_a P_F = \delta \left( \sum_{n \geq 0} \sum_{i=0}^n N^{\otimes i}_F \otimes f \otimes N^{\otimes(n-i)}_E \right)
+\]
+where the terms of the right hand sum are elements of $\Hom(\cE,\cF) \otimes_{\cA^0_M} B(A_M, a)$.
+
+\TODO
+
+\end{proof}
+
+\begin{defn}
+Concatenation of $P_E$ is the tensor square of $P_E$. Hence define
+\[
+G : \mathrm{Conn}^{un}(M) \to \textrm{$H(M,a)$-Comod}
+\]
+to be the functor induced by $[P_E] \in \End(E_a) \otimes \Hom(H,a)$.
+\end{defn}
+
+\begin{prop}
+The composition,
+\[
+\Phi \circ \Psi = 1
+\]
+is the identity on $\mathrm{Rep}^{un}(\pi_1(M;a))$.
+\end{prop}
+\begin{proof}
+Let $V$ be a representation of $\pi_1(M;a)$. Let $\Psi(V) = G(RH(V))$ where $RH(V)$ is given by some nilpotent $N$.
+\[
+P = \sum_{n=0}^{\infty} N^{\otimes n}
+\]
+By Proposition \ref{prop:intismonodromy} the monodromy of $V$ is given by $\gamma \mapsto \int_{\gamma} P$.
+\end{proof}
+
+\begin{prop}
+The functor $\Psi$ is essentially surjective.
+\end{prop}
+
+\begin{cor}
+The composition,
+\[
+\Psi \circ \Psi = 1,
+\]
+is the identity on $\textrm{$H(M,a)$-Comod}$.
+\end{cor}
+
+\begin{proof}
+The functor $\Psi$ send a unipotent connection described by a unipotent matrix to a comodule whose coproduct is described by a matrix. To show essential surjectivity, we begin with a matrix describing a coproduct and try to produce a connection that maps to the coproduct.
+
+Decompose $A^0_M = V \oplus dA^0_M$. Then $A_M$ is quasi-isomorphic to the dg-algebra
+\[
+\widetilde{A}_M = (0 \to \C \stackrel{\sigma}{\to} V \stackrel{d}{\to} A^2_M \stackrel{d}{\to} \cdots )
+\]
+There is a subcoalgebra
+\[
+H^0B(A^0_M,a)) \isom H^0(B(\widetilde{A}_M,a)) \isom H^0(\overline{B}(\widetilde{A}_M,a)) \subset T(V)
+\]
+where $T(V)$ is the bialgebra described above in Definition \ref{def:tensorbialgebra}. Any comodule $C$ over $H(M,a)$ is also a comodule over $T(V)$. Any comodule over $T(V)$ comes from a comodule over $T(U)$ for $U \subset V$ with $\dim U < \infty$ because $\dim C < \infty$. So $U \subset A^1_M$ and $C$ is a comodule over $T(U)$.
+
+Let $e_1, \ldots, e_n$ be a basis of $U^{\vee}$ and $f_1, \ldots, f_n$ a basis of $U$.Then $T(U)^{\vee} = \C\langle\langle \phi_1, \ldots, \phi_n \rangle\rangle$. $\Gamma = \langle \gamma = \exp e_i \rangle$ is a free group.
+
+Then $\gamma_i$ gives a unipotent matrix $M_i \in \End_{\C} C$.
+\begin{eqnarray*}
+N_i = \log M_i \\
+N = \sum_i N_i \otimes f_i \in \End C \otimes A'_M \\
+\exp e_j \cdot \left( \sum_{i=1}^n N_i \otimes f_i \right)^{\otimes k} = \frac{e_i^{\otimes k}}{k!} N_i^k \times f_j^{\otimes k} = \frac{N_i^k}{k!} \\
+\gamma_i(P) = \exp(e_i)(P) = \exp N_i = M_i
+\end{eqnarray*}
+\end{proof}

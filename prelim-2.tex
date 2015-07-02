@@ -1,0 +1,378 @@
+\chapter*{Preliminary Talk: Cohomology, Hodge structures and Hopf algebras}
+\addcontentsline{toc}{chapter}{*Preliminary Talk: Cohomology, Hodge structure and Hopf algebras by Sergey Gorchinskiy}
+
+Sergey Gorchinskiy on September 30th, 2012.
+
+\section{Fundamental groups and groupoids}
+
+\begin{defn}[Fundamental groups and sets]\label{def:fundgroup}
+Let $M$ be a path-connected topological space and $a, b \in M$. The \emph{fundamental group} $\pi_1(M;a)$ of $M$ is the group of homotopy classes of loops based at $a$ where multiplication denotes concatenation of loops. We use the convention that $\gamma_1 \circ \gamma_2$ denotes going along $\gamma_1$ and then $\gamma_2$. 
+
+Let $\pi_1(M; a, b)$ denote the set of homotopy classes of paths from $a$ to $b$. It has no group structure, but is a left torsor under $\pi_1(M; a)$ and a right torsor under $\pi_1(M; b)$. 
+
+These torsors combine to form the \emph{fundamental groupoid} with a multiplication of the form $\pi_1(M; a, b) \times \pi_1(M; b, c) \to \pi_1(M; a, c)$:
+\[
+\xymatrix{
+& \coprod_{a,b} \pi_1(M; a, b) \ar[dl]_s \ar[dr]^t & \\
+M & & M
+}
+\]
+\end{defn}
+
+\section{Filtered vector space}
+Let $V$ be a $k$-vector space. $F^iV$ will denote a decreasing filtration of sub-$k$-vector spaces of $V$, e.g.,
+\[
+V \supset \cdots \supset F^{-1}V \supset F^0V \supset F^1V \supset \cdots,
+\]
+and $F_iV$, an increasing one. For example, a graded vector space $V = \bigoplus_{i \in I} V^i$ induces filtrations $F^pV = \bigoplus_{i \geq p} V^i$ and $F_p V = \bigoplus_{i \leq p} V^i$.
+\begin{defn}[Associated Graded Vector Space]\label{def:assocgraded}
+Given a decreasing filtration $F^iV$ on a vector space $V$, there is an associated graded vector space with a decreasing filtration,
+\[
+\gr_F V = \bigoplus_{i \in \Z} F^i V / F^{i+1}V, \qquad \gr_F^n = \bigoplus_{i \geq n} F^i V / F^{i+1}V.
+\]
+Given an increasing filtration $F_iV$, there is an analogous associated graded vector space $\gr^F V$ with graded parts $\gr_n^F V = \bigoplus_{i \leq n} F^{i+1} V / F^i V$.
+\end{defn}
+\begin{defn}[Exhaustive filtration]
+A filtration $F$ on a vector space $V$ is \emph{exhaustive} if $\cup_{i \in \Z} F^i V = V$.
+\end{defn}
+\begin{defn}[Separated filtration]
+A filtration $F$ on a vector space $V$ is \emph{separated} if $\cap_{i \in \Z} F^i V = \{0\}$.
+\end{defn}
+\begin{defn}[Completion of a filtered vector space]
+The \emph{completion} of a filtered vector space is
+\[
+\widehat{V} = \varprojlim_i V / F^i V
+\]
+\end{defn}
+\begin{defn}[Morphism of filtered vector spaces]
+A \emph{morphism} $f : V \to U$ of filtered vector spaces satisfies $f(F^iV) = F^iU$. Its kernel is a filtered vector space with filtration,
+\[
+F^i\ker f := \ker f \cap F^iV.
+\]
+The filtration on $\coker f$ is similarly defined.
+\end{defn}
+\noindent Let $f$ be an endomorphism of the filtered vector space $V$. If the filtration $F^iV$ is exhaustive and separated, then $f$ is an isomorphism of filtered vector spaces (use $\gr^i f : \gr^i V \to \gr^i V$). Note that
+\[
+\ker (\coker) \neq \coker(\ker)
+\]
+\begin{prop}
+Filtered vector spaces with strict morphisms form an abelian category.
+\end{prop}
+
+\section{Betti and de Rham cohomology}
+\subsection{Betti cohomology}
+\begin{defn}[Singular complex]
+Let $M$ be a topological space. The \emph{singular complex} of $M$ is the complex of freely generated abelian groups,
+\[
+\cdots \to S_1(M) \to S_0(M) \to 0, \qquad S_i(M) := \langle f : \Delta^i \to M \rangle_{\Z},
+\]
+with alternating sums of faces for boundary maps. The singular cocomplex is the dual complex $S^i(M) := \Hom(S_i(M), \Z)$.
+\end{defn}
+\begin{defn}[Betti cohomology]\label{def:betti}
+Given a topological space $M$, its Betti homology and cohomology is the 
+\[
+H^B_i(M) := H_i(S_{\bullet}(M)), \qquad H_B^i(M) := H_i(S^{\bullet}(M))
+\]
+The Betii homology with coefficients in a $\Z$-module $F$ is
+\[
+H^B_i(M, F) = H_i(S_{\bullet}(M)) \otimes_{\Z} F
+\]
+\end{defn}
+\begin{prop}
+Let $M$ be a (nice enough?) topological space and $a \in M$ a point. Then
+\[
+\pi_1(M;a)^{ab} := \pi_1(M;a) / [\pi_1(M;a), \pi_1(M;a)] \cong H_1(M, \Z)
+\]
+\end{prop}
+\begin{defn}[Relative cohomology]
+Let $M$ be a topological space, and let $N \inj M$ be a closed subspace. Let $F$ be a $\Z$-module. Form the relative complex and cocomplex
+\[
+S_i(M,N) := S_i(M) / S_i(N), \qquad S^i(M,N) = \ker (S^i(M) \to S^i(N))
+\]
+Then the cohomology of $M$ relative to $N$ is
+\[
+H^i_B(M,N;F) := H^i(S,(M,N;F))
+\]
+\end{defn}
+There is an alternative formulation of relative cohomology using sheaves:
+\begin{defn}[Relative cohomology by sheaves]
+Let $M$ be a topological space, and let $N \inj M$ be a closed subspace. Let $F$ be a $\Z$-module. Form the relative cohomology
+\[
+H^i_B(M,N;F) := H^i(M,j_{!}F|_{M \setminus N})
+\]
+where $F$ is the constant sheaf of abelian groups on $M$ and $j_{!}$, where $j : N \inj M$, extends the sheaf by 0 over the closed subspace $N$.
+\end{defn}
+
+\subsection{de Rham Cohomology}
+\begin{defn}[de Rham complex]\label{def:derham}
+Let $M$ be a smooth manifold. Define the de Rham complex to be the complex $\C$-vector spaces,
+\[
+A^i_M := \{ \textrm{smooth $i$-forms on $M$} \},
+\]
+with the usual differential $d$.
+\end{defn}
+\begin{defn}[de Rham cohomology]
+Let $M$ be a smooth manifold. Its de Rham cohomology is the complex of $\C$-vector spaces:
+\[
+H^i_{dR}(M, \C) := H^i(A^{\bullet}_M)
+\]
+\end{defn}
+
+\begin{thm}[De Rham's theorem]
+Let $M$ be a smooth manifold. Then there is an isomorphism,
+\[
+H^i_B(M, \C) \cong H^i_{dR}(M, \C),
+\]
+arising from the pairing
+\[
+\begin{array}{rcl}
+S_i(M,\C) \otimes_{\C} A_M & \to & \C \\
+(\sigma, f) \otimes \omega & \mapsto & \int_{\sigma} f^* \omega
+\end{array}
+\]
+\end{thm}
+
+\section{Mixed Hodge structures}
+\begin{defn}\label{def:qpurehodge}
+Let $H$ be a finite dimensional $\Q$-vector space. A $\Q$-pure Hodge structure of weight $n$ on $H$ is a decreasing filtration, $F^{\bullet}H_{\C}$, of $H_{\C} = H \otimes_{\Q} \C$ such that
+\[
+\bigoplus_{p \in \Z} H^{p,n-p}_{\C} \isom H_{\C},
+\]
+where
+\[
+H^{p,n-p}_{\C} := F^p H_{\C} \cap \overline{F^{n-p}H_{\C}}.
+\]
+\end{defn}
+
+\begin{thm}[Hodge Theorem]\label{thm:hodge}
+Let $X$ be a smooth complex variety and $X(\C)$ its corresponding topological space. Then $H_B(X(\C),\Q)$ admits a $\Q$-pure Hodge structure.
+\end{thm}
+\begin{proof}
+Using the isomorphisms $H^n_B(X(\C),\Q)_{\C} = H^n_B(X(\C),\C) = H^n_{dR}(X(\C),\C) = H^n(A_{X(\C)})$ ($A^n_{X(\C)}$ is the $\C$-vector space of rank $n$ smooth, complex differential forms on $X(\C)$), it suffices to find a filtration on $H^n(A_{X(\C)})$. Define
+\[
+A^{p,q}_{X(\C)} = f(z) dz_{i_1} \wedge \cdots \wedge dz_{i_p} \wedge d\overline{z}_{j_1} \wedge \cdots \wedge d\overline{z}_{j_q}
+\]
+These form a double complex
+\[
+\xymatrix{
+A^{1,0}_M \ar[r] & A^{1,1}_M \ar[r] & A^{1,2}_M \\
+A^{0,0}_M \ar[u]^{\partial} \ar[r]^{\overline{\partial}} & A^{0,1}_M \ar[u]^{\partial} \ar[r]^{\overline{\partial}} & A^{0,2}_M \ar[u]
+}
+\]
+where the differentials satsify $\partial \overline{\partial} = \overline{\partial} \partial$, $\partial^2 = \overline{\partial}^2 = 0$, and $d = \partial + \overline{\partial}$. Then
+\[
+A^n_{X(\C)} = \bigoplus_{p+q = n} A^{p,n-q}_{X(\C)}.
+\]
+Hence $A^{p,q}_{X(\C)}$ defines a Hodge structure.
+\end{proof}
+
+Compare this to the Hodge structure $H^{p,q} = H^q(X, \Omega^p)$, where $\Omega^p$ is the sheaf of holomorphic $p$-forms on $X$. There is an inclusion
+\[
+0 \to \Omega^p \to \cA^{p,0} \to \cA^{p,1} \to \cdots \to \cA^{p,d} \to 0
+\]
+where $\cA^{p,q}$ is the sheaf of smooth $(p,q)$-forms on the underlying manifold.
+
+\subsection{Mixed Hodge Structure}
+Let $X \subset \overline{X}$ be a subvariety of a smooth projective curve over $\C$, where $X = \overline{X} \setminus D$ for a non-empty divisor $D$.
+\begin{notation}\label{not:qminusone}
+We let $\Q(-1) = H^2(\Pspace^1)$.
+\end{notation}
+There is an exact sequence:
+\[
+0 \to H^1(\overline{X}, \Q) \to H^1(X, \Q) \to \bigoplus_{p \in D} \Q(-1) \to \Q(-1) \to 0
+\]
+Define a filtration on $H(\overline{X}, \Q)_{\C}$ by
+\[
+F^nH^1(\overline{X},\Q)_{\C} := \left\{ \begin{array}{ll}
+H^2(\overline{X}, \Q)_{\C} & i < 1 \\
+H^0(\overline{X}, \Omega_{\overline{X}}^1 \langle D \rangle) & i = 1 \\
+0 & i > 1
+\end{array} \right.
+\]
+Then
+\[
+\im(F^1H^1(X) \stackrel{r}{\longrightarrow} \bigoplus \Q_{\C} = H^0(D, \C) = \left\{ (a_x)_{x \in D} \left| \sum_{x \in D} a_x = 0 \right. \right\}
+\]
+Hence the Tate twist.
+
+\begin{defn}[Mixed Hodge Structure]\label{def:mixedhodge}
+Given a $\Q$-vector space $H$, a mixed Hodge structure on $H$ consists of two filtrations: 
+\begin{itemize}
+\item[] $W_{\bullet} H$: The weight filtration, an increasing filtration on $H$
+\item[] $F^{\bullet}H_{\C}$: The Hodge filtration, a decreasing filtration on $H_{\C}$
+\end{itemize}
+These must satisfy the condition that the vector space associated to the weight filtration, $\gr^W H$ (Cf. Definition \ref{def:assocgraded}), is a pure $\Q$-Hodge structure of weight $n$ with respect to the strict subquotient filtration induced by $F^{\bullet}H$. In other words,
+\[
+\gr_n^W H \cap F^nH_{\C} = \bigoplus_{r \geq n} W_rH \cap F^nH_{\C} 
+\]
+is a pure $\Q$-Hodge structure of weight $n$. A morphism of mixed Hodge structures $H$ and $H'$ is a $\Q$-linear map $f : H \to H'$ which respects the filtrations, i.e., such that $f(W_nH) \subset W_nH'$ and $f_{\C}(F^nH_{\C}) \subset F^nH'_{\C}$.
+\end{defn}
+
+\begin{cor}
+The category $\mathrm{MHS}$ of $Q$-vectors spaces with mixed Hodge structures is a tensor abelian category.
+\end{cor}
+
+\begin{thm}[Deligne]
+Let $X$ be an arbitrary complex algebraic variety. Then $H^n(X(\C), \Q)$ has a canonical mixed Hodge structure, and given a morphism $\phi : X \to Y$ of complex varieties, the induces morphism on cohomology $\phi : H^n(Y(\C)) \to H^(X(\C))$ is a morphism of mixed Hodge structures.
+\end{thm}
+
+\begin{exam}
+How many mixed Hodge structures are there on $H \cong \Q^2$ fitting into the exact sequence in $\mathrm{MHS}$:
+\[
+0 \to \Q(1) \stackrel{\iota}{\to} H \stackrel{p}{\to} \Q \to 0 ? 
+\]
+The extension are classified by 
+\[
+\Ext^1_{\mathrm{MHS}}(\Q, \Q(1)) = \C^* / \mathrm{Tor~}\C^* \stackrel{\exp(2\pi i t)}{\isom} \C / \Q
+\]
+The weight filtrations can be easily calculated,
+\[
+\begin{array}{lrcccccccl}
+-3 \qquad & 0 & \to & 0 & \to & W_{-3}H & \to & 0 & \to 0 & \quad W_{-3}H = 0 \\
+-2 \qquad & 0 & \to & \Q(1) & \to & W_{-2}H & \to & 0 & \to 0 & \quad W_{-2}H = \Q(1) \\
+-1 \qquad & 0 & \to & \Q(1) & \to & W_{-1}H & \to & 0 & \to 0 & \quad W_{-1}H = \Q(1) \\
+0 \qquad & 0 & \to & \Q(1) & \to & W_0H = H & \to & \Q & \to & \quad W_0H = H \\
+1 \qquad & 0 & \to & \Q(1) & \to & W_1H & \to & \Q & \to 0 & \quad W_1H = H
+\end{array}
+\]
+as well as the Hodge filtration (note the reversed direction!),
+\[
+\begin{array}{lrcccccccl}
+1 \qquad & 0 & \to & 0 & \to & F^{1}H_{\C} & \to & 0 & \to 0 & \quad F^{1}H_{\C} = 0 \\
+0 \qquad & 0 & \to & \C & \to & F^{0}H_{\C} & \to & 0 & \to 0 & \quad F^{0}H_{\C} = \C \\
+-1 \qquad & 0 & \to & \C & \to & F^{-1}H_{\C} & \to & 0 & \to 0 & \quad F^{-1}H_{\C} = \C \\
+-2 \qquad & 0 & \to & \C & \to & F^{-2}H_{\C} = H_{\C} & \to & \C & \to 0 & \quad F^{-2}H_{\C} = H_{\C} \\
+\end{array}
+\]
+This shows that the mixed Hodge structure on $H$ is determined by a 1-dimensional subspace $F^H_{\C} \subset H_{\C}$ such that
+\[
+\iota(\Q(1)_{\C}) \cap F = 0.
+\]
+Let $e \in \Q(1)$ and $f \in H$ be defined by $\langle e\rangle_{\Q} = \Q(1)$ and $\langle p(f) \rangle_{\Q} = \Q$. Then $H = \langle e, f \rangle_{\Q}$ and $F = \langle ae + bf \rangle_{\Q} = \langle ae + f \rangle_{\C}$ for $b \neq 0$ and $a \in \C / \Q$.
+\end{exam}
+
+\begin{exam}
+Let $X = \Gm \setminus \{a'\}$ for some $a' \in \C^*$. Then $H^1(X) \isom \Q(-1) \oplus \Q(-1)$, $a' = \exp(a)$.
+\end{exam}
+\begin{exam}
+$a' \neq 1$ $(a + a' = 1) = \Gm / \{ a'=1 \} = X$. Hence
+\[
+0 \to \Q \to \Q \oplus \Q \to H^1(\Gm, \{1, a'\}) \to H^1(\Gm) \cong \Q(-1) \to 0
+\]
+The extension corresponding to $a \in \C / \Q \cong \C^* / \mathrm{Tor~}\C^*$.
+\[
+0 \to \Q(1) \to H^1(\Gm, \{1, a'\})(1) \to \Q \to 0
+\]
+$H(i) := H \otimes \Q(i)$.
+\end{exam}
+
+\section{Algebraic de Rham cohomology}
+Let $X$ be a smooth projective algebraic variety over $C$. Let $\Omega_X$ be the sheaf of algebraic forms on $X$
+\begin{prop}[GAGA]
+\[
+H^p(X, \Omega_X^q) \cong H^p(X(\C), \Omega^q_{X, an})
+\]
+\end{prop}
+Let
+\[
+\Omega_X^0 \stackrel{d}{\to} \Omega_X^1 \stackrel{d}{\to} \cdots \stackrel{d}{\to} \Omega_X^d
+\]
+be a complex of Zariski sheaves on $X$.
+\[
+H^n_{dR}(X) := H^n(X, \Omega_X^*) \stackrel{\alpha}{\isom} H^n_{dR}(X(\C),\C)
+\]
+There is a filtration on $H^n_{dR}(X(\C),\C)$ induced by the filtration $F^p \Omega_X^* = \bigoplus_{r \geq p} \Omega_X^r$.
+
+Let $k$ be a subfield of $\C$ and $X$ a $k$-variety. Then
+\[
+H^n_{dR}(X) \otimes_k \C \cong H^n_{dR}(X_{\C}) \cong H^n_{dR}(X(\C),\C)
+\]
+
+\begin{rem}
+The same is true for any smooth algebraic variety $X$ over $k$, i.e., there exist filtrations $W_{\bullet}H^{\bullet}_{dR}(X)$ and $F^{\bullet}H^n_{dR}(X)_{\C}$.
+\end{rem}
+
+\begin{defn}[Period isomorphism]\label{def:periodisom}
+Given a field $k \inj \C$ and a smooth $k$-variety $X$, the period isomorphism is
+\[
+H^n_B(X, \Q)_{\C} \isom H^n_{dR}(X) \otimes_k \C
+\]
+After fixing $\Q$-basis $\delta_1, \ldots, \delta_m$ of $H_n(X, \Q)$ and $k$-basis $\omega_1, \ldots, \omega_m$ of $H^n(X)_{\C}$, the isomorphism is specified by a choice of matrix $[M] \in GL_m(k) \\ GL_m(\C) / GL_m(\Q)$.
+\end{defn}
+\begin{exam}
+\[
+\Q(-1) = H^(\Pspace^1) \in \mathrm{Q}, \qquad \Pspace^1 / \Q \subset \C, \qquad \C^* / \Q^* \ni [2\pi i]
+\]
+\end{exam}
+\begin{exam}
+Let $X = \{y^2 = x^3 + ax + b\}$ be a (chart on a) torus. Then $H^1_{dR}(X) \supset F^1H^1_{dR}(X) = H^0(X, \Omega_X^1) = \langle \frac{dx}{y} \rangle_k$. Let $H^B_1(X, \Q) = \langle \sigma_1, \sigma_2 \rangle$ be a basis. Then the period matrix is
+\[
+\left( \begin{array}{cc}
+\int_{\sigma_1} \frac{dx}{y} & \int_{\sigma_1} \frac{xdx}{y} \\
+\int_{\sigma_2} \frac{dx}{y} & \int_{\sigma_2} \frac{xdx}{y}
+\end{array}
+\right)
+\]
+\end{exam}
+
+\section{Hopf algebras}
+In the section, let $G$ be a linear algebraic group and $A = \cO(G)$ its ring of regular functions. The multiplication $G \times G \to G$ induces a comultiplication $\Delta : A \to A \otimes_k A$. Similarly, $e \in G$ induces $\epsilon : A \to k$ and $g^{-1}$ induces $c : A \to A$.
+
+\begin{defn}[Category of representations]
+Given a group $G$, its category of \emph{finite dimensional} representations with $G$-equivariant linear maps between them will be denoted $\mathrm{Rep}(G)$.
+\end{defn}
+\begin{defn}[Category of comodules]
+Given an commutative, associative, unital $k$-algebra $A$, its category comodules $\mathrm{Comod}(A)$ is the category of diagrams
+\begin{eqnarray*}
+\mathrm{Comod}(A) & = & \{ \xymatrix{
+V \ar[r]^{\Delta} & V \otimes_k A \ar@<0.3em>[r]^{\Delta \otimes 1} \ar@<-0.3em>[r]_{1 \otimes \Delta} & V \otimes_k A \otimes_k A
+} \} \\
+& = & \{ \textrm{matrices with coefficients in $A$} \}
+\end{eqnarray*}
+\end{defn}
+There is an equivalence of categories
+\[
+\mathrm{Rep}(G) \cong \mathrm{Comod}(A)
+\]
+\begin{exam}
+If $G = \Gm$, then $G$ maps under the above equivalence to $A = k[t,t^{-1}]$ with $\Delta(t) = t \otimes t$.
+\end{exam}
+\begin{exam}
+If $G = \Ga$, then $G$ maps under the above equivalence to $A = k[t]$ with $\Delta(t) = 1 \otimes t + t \otimes 1$.
+\end{exam}
+\begin{defn}[Lie algebra]
+Given an algebraic group $G$, its Lie algebra is
+\[
+\mathrm{Lie}(G) = \fm / \fm^2, \quad \fm := \ker(\epsilon)
+\]
+where $\epsilon : \cO(G) \to k$, as above.
+\end{defn}
+\begin{rem}
+There are such things as filtered and graded Hopf algebras. They are as you might guess.
+\end{rem}
+
+\section{dg-algebras}
+\begin{defn}[dg-algebra]\label{def:dgalgebra}
+Given a field $k$, a dg-algebra over $k$ is a complex $A$ of $k$-vector spaces with an associative product $\cdot : A \otimes_k \otimes \to A$ compatible with the differential of the complex by the Leibniz rule,
+\[
+d(a \cdot b) = da \cdot b + (-1)^{\deg(a)} a \cdot db.
+\]
+\end{defn}
+\begin{defn}[Commutative dg-algebra]
+A dg-algebra $(A, d)$ is commutative if
+\[
+a \cdot b = (-1)^{\deg a \deg b} b \cdot a
+\]
+\end{defn}
+
+\begin{rem}
+Given a dg-algebra $A$, its cohomology $H(A)$ is a graded $H^0(A)$-algebra.
+\end{rem}
+
+\begin{defn}[dg-Hopf algebra]
+A dg-Hopf algebra is a commutative dg-algebra equipped with a coproduct $\Delta : A \to A \otimes_k A$, a counit $\epsilon : A \to k$ and coinverse $s : A \to A$ satisfying the usual commutative diagrams.
+\end{defn}
+
+\begin{rem}
+Given a dg-Hopf algebra, its zeroth cohomology $H^0(A)$ is a Hopf algebra.
+\end{rem}

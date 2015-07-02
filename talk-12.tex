@@ -1,0 +1,349 @@
+\chapter{Brown's proof: Part 2 by Sergey Gorchinsky}
+%\addcontentsline{toc}{chapter}{Brown's proof: Part 2 by Sergey Gorchinsky}
+
+Sergey Gorchinsky on September 7th, 2012.
+
+\medskip
+\medskip
+
+\subsection{Plan of the proof}
+\begin{enumerate}
+\item Prove the property of $\partial$ and $3_{\ell} \cZ_M$. ``Then'' $\partial_{2r+1}(\zeta_M(2, \ldots, 2)) = 0$.
+\item $\partial_{2r+1}(\zeta_M(2s+1)) \sim \delta_{rs}$.
+\item Case $\ell = 1$: Motivic lift of Zeta function.
+\item Case $\ell \geq 2$: Recurrency process.
+\end{enumerate}
+Step 1 is algebro-geometric. Steps 2, 3 and 4 require step 1.5, the use of Goncharov's formula which gives restrictions on these derivations $\partial_{2r+1}(\zeta_M(2s+1))$. This combinatorial results will be applied to show Steps 3 and 4.
+
+\section{Step 1}
+\subsection{Motivic origin of $3_{\ell} \cZ_M$}
+
+We would like to show that $3_{\ell}\cZ_M \subset \cZ_M$ is a $G_M$-subrepresentation and moreover, that
+\[
+3_{\ell} \cO(0,1)_{dR} = 3_{\ell} T(\Omega) := \langle \textrm{ $\overline{\omega}$ that contain only $\omega^1 \omega^0 \omega^1 \cdots \omega^1_{\leq \ell} \omega^0 \cdots \omega^0$} \rangle_{\Q}
+\]
+\begin{prop}
+\[
+3_{ell}\cO(0,1)_{dR} \subset \cO(0,1)_{dR}
+\]
+\end{prop}
+The action of $G_M$ on that path space is a difficult object. But we have a geometric interpretation of all this. By the Tannakian theory, we see that subrepresentations of $G_M$ correspond to mixed motives.
+\[
+\MTMZ \isom \Rep(G_M)
+\]
+Equivalently, we want that $3_{\ell} \cO(0,1)_{dR}$ is motivic, i.e., that there exists a subobject in $\cO(0,1)_{dR}$ whose $\omega_{dR}(-)$ is $3_{ell} \cO(0,1)_{dR}$. To do this, we prove two lemmas.
+
+We will first show that the subspace of admissible $\overline{\omega}$ are admissible, and then we will show a lemma to extend the result to all $\overline{\omega}$ in $3_{\ell} \cO(0,1)_{dR}$.
+
+\begin{lemma}\label{lem:sergeylem1}
+The span
+\[
+\langle \overline{omega} \mid \overline{\omega} = \omega \otimes \cdots \omega^0 \textrm{~is admissible} \rangle_{\Q} \subset \cO(0,1)_{dR}
+\]
+is motivic.
+\end{lemma}
+\begin{proof}
+Consider
+\[
+\cO(\Q(1) \setminus \pi_1(X;0,1)_M / \Q(1)) \subset \cO(\pi_1(X;0,1)_M)
+\]
+The left $\Q(1)$ corresponds to a loop around 0 exiting and reentering the point along the tangent vector pointing toward 1. The right $\Q(1)$ similarly corresponds to a loop around 1 exiting and reentering the point along the tangent vector pointing toward 0. The paths of the $\pi_1$ exit the point 0 along the vector pointing toward 1 and enter the point 1 along the vector pointing from 0. This geometric picture shows that
+\[
+\omega_{dR}(\cO(\Q(1) \setminus \pi_1(X;0,1)_M / \Q(1))) = a concave diamond
+\]
+\begin{eqnarray*}
+\overline{\omega} & \mapsto & \sum \overline{\omega}_{i_1} \otimes \overline{\omega}_{i_2} \otimes \overline{\omega}_{i_3} \\
+& \mapsto & \sum \mathrm{res}_0(\overline{\omega}_{i_1}) \otimes \overline{\omega}_{i_2} \otimes \mathrm{res}_1(\overline{\omega}_{i_3}) \\
+& \stackrel{?}{=} \overline{\omega}
+\end{eqnarray*}
+\end{proof}
+The difference is $\sum \mathrm{res}_0(\overline{\omega} \otimes \overline{\omega}_{i_2} \otimes \mathrm{res}_1(\overline{\omega}_{i_3})$. The first factor of the tensor product has positive coefficients. The third factor does as well. Hence $\omega_1 = \omega^1$ and $\omega_n = \omega^0$.
+\begin{lemma}\label{lem:sergeylem2}
+Fix p.m. Then
+\[
+\heartsuit = \left\langle \overline{\omega} \mid \textrm{$\overline{\omega}$ does not contain $p$ blocks of $\omega^0$'s of total length $m$} \right\rangle_{\Q} \subset \cO(0,1)_{dR} = T(\Omega)
+\]
+is motivic.
+\end{lemma}
+\begin{cor}
+$3_{\ell}\cO(0,1)$ is motivic.
+\end{cor}
+The proof of the corollary is left as an exercise, but we consider the example of canceling those series of 0's of length greater than 4. Lemma \ref{lem:sergeylem1} implies
+\[
+\underbrace{10\cdots 0}_{n_1} \underbrace{10\cdots 0}_{n_2} 10 \cdots 01 \cdots \underbrace{10 \cdots 0}{n_n}
+\]
+Apply Lemma \ref{lem:sergeylem2} with $p=1$ and $m=3$. For a general $3_{\ell}$, $p=\ell$ and $m=2\ell$ apply Lemma \ref{lem:sergeylem2} with reg'd by 1 $p=1$, $m=2$.
+
+\begin{proof}[Proof of Lemma \ref{lem:sergeylem2}]
+Define $S := \pi_1(X;0)_M^{\times p} \times \pi_1(X;0,1)_M$. Consider
+\[
+f: \Q(1) \times S \to \pi_1(X;0,1)_M
+\]
+The Betti realization is $(n, \gamma_1, \ldots, \gamma_0, \gamma) \mapsto (\gamma_1 \gamma_2 \ldots \gamma_p \gamma)$.
+
+Then $\heartsuit$ is $\omega_{dR}$.
+\[
+(f^*)^{-1}((\Q(0) \oplus \Q(-1) \oplus \cdots \oplus \cO(-n)) \otimes \cO(s)) \subset \cO(0,1)
+\]
+Blocks correspond to $\partial^n$'s. The degree of polynomials is exactly the length.
+\end{proof}
+
+\begin{prop}[Step 1]
+$\mathfrak{u}_M$ acts trivially on the graded pieces $\gr_{\ell}^3 \cZ_M$.
+\end{prop}
+\begin{proof}
+\[
+\partial_{2r+1}(\zeta_M(\ldots, 3, 2, \ldots, 2, 3, \ldots) \mapsto \sum \zeta_M(2, \ldots, 2, 3, \ldots, 3, 2, \ldots, 2)
+\]
+...missing...
+\end{proof}
+This immediately implies Step 1.
+
+\section{Step 2}
+Consider the action of $\partial_{\geq r+1}$ on $\cO(0,1)_{dR} = T(\Omega)$. We identify tensors $(\omega^1 \omega^0 \cdots \omega^0)$ with words $(10 \cdots 0)$.
+\begin{thm}[Goncharov's Formula]\label{thm:goncharov}
+Let $\partial \in \mathfrak{u}_M$ be a derivation. Then the following relation between words holds in $\cO(01)_{dR}$.
+\[
+\partial(w) = \sum_{\begin{subarray}{c}
+v \neq \varnothing \\
+(0v1) \subset (0w1)
+\end{subarray}}
+c t(\partial(v)) \cdot (w \setminus v) + \sum_{\begin{subarray}{c}
+v \neq \varnothing \\
+(1v0) \subset (0w1)
+\end{subarray}} (-1)^{|v|} c t(\partial(v^*)) \cdot (w \setminus w)
+\]
+where $v^{*}$ denotes the inverse word to $v$.
+\end{thm}
+There is nothing motivic behind this formula. There is some Lie algebra canonically acting on $T(\Omega)$, and a chain of reasoning proves it, but we omit it.
+
+\subsection{$\partial_{2r+1}(\zeta_M(2s+1))$}
+
+\begin{lemma}
+The images of $\underbrace{0 \ldots 0}_m = (\omega^0)^{\otimes m}$ under $\cO(0,1)_{dR} \surj \cZ_M$ vanish. The same is true when 0 is replaced by 1, i.e., $(\omega^1)^{\otimes m} \mapsto 0$.
+\end{lemma}
+\begin{proof}
+Consider $\gr_{0,1}^w \cO(0,1)_M$. Looking at the de Rham realization, we see that
+\begin{eqnarray*}
+\gr_0^w \cO(0,1)_M & = & \Q(0) \\
+\gr_1^w \cO(0,1)_M & = & \Q(-1) \oplus \Q(-1)
+\end{eqnarray*}
+
+$\Ext^{1,0}_{\MTMZ}(\Q(0),\Q(1)) = 0$. Hence there is a canonical splitting, so that $\omega_1\cO(0,1) \cong \Q(0) \otimes (\Q(1) \otimes \Q(-1))$ by a canonical isomorphism. Also, $\omega_{dR} = \Q \otimes \Omega$.
+
+So the images of $\omega^{0/1}$ in $\cZ_M \subset \cO(I)$ are $G_M$-eigenfunctions of $I$. Evaluating at $\mathrm{comp} \in I(\C)$ gives
+\[
+\langle \mathrm{comp}(\overline{\omega})(\gamma) = \int_{\gamma} \overline{\omega} \rangle
+\]
+\[
+\int_{\mathrm{dch}} \omega^{0/1} = 0
+\]
+Since $G_M$ acts transitively on $I$, we see that 
+\[
+\begin{array}{rcl}
+\cO(0,1)_{dR} & \to & \cO(I) \\
+\omega^{0/1} & \mapsto & 0 \in \cO(I)
+\end{array}
+\]
+Since $\int_{\gamma}(\omega^0)^{\otimes n} = \frac{1}{m!}\int_{\gamma} \omega^0$, $(\omega^0)^{\otimes m} \mapsto 0^m = 0$.
+\end{proof}
+
+\begin{prop}
+\[
+\partial_{2r+1}(\zeta_M(2s+1)) \sim \delta_{r,s}
+\]
+\end{prop}
+\begin{proof}
+\subsubsection{Proof Part 1}
+We show that $\zeta_M(2s+1) \in \cO(I)$ is a linear function with respect to $U_M$. The proof proceeds by cases.
+\begin{itemize}
+\item[] In the case $r > s$, $\partial_{2r+1}(\zeta_M(2s+1)) = 0$. 
+\item[] In the case $r=s$, $\partial_{2r+1}(1 \underbrace{0 \ldots 0}_{2r}) = ct(\partial_{2r+1}(10\cdots0)$. $(0v1) \subset (0|1\underbrace{0 \ldots 0}_{2r}|1)$. $|r| = 2r+1$. $(1v0) \subset (0|10\ldots0)|1) \to 0$.
+\item[] In the case $r < s$, $\partial_{2r+1}(1\underbrace{0\ldots0}_{2s} = ct(\partial_{2r+1}(\underbrace{0\ldots0}_{2r+1}))(1\underbrace{0 \ldots 0}_{2s-2r-1}) - ct()$. Because the map $\cO(0,1)_{dR} \to \cO(I)$ is graded, the term $\partial_{2r+1}(0 \cdots 0)$ vanishes.
+\begin{eqnarray*}
+(0v1) \subset (0|1\underbrace{0\ldots0}_{2s}|1) & |v|=2r+1 \\
+(1v0) \subset (0|1\underbrace{0\ldots0}_{2s}|1) & |v|=2r+1
+\end{eqnarray*}
+\end{itemize}
+
+\subsubsection{Proof Part 2}
+To show: $\partial_{2r+1}(\zeta_M(2r+1)) \neq 0$. Suppose the converse. Then $\zeta_M(2r+1) \in \cO(I)^{U_M}$ as computed by Konrad (Cf. missing).
+\[\label{eq:explicitdesc}
+\cO(I)^{\epsilon}_+ \cong \Q[t^2] \otimes_{\Q} T(\bigoplus_{r \geq 1} \Q e_{2r+1})
+\]
+is graded and $\deg t = 1$. So $\cO(I)^{\epsilon}_+)^{U_M} \cong \Q[t^2]$ has only even components. Hence $\zeta_M(2r+1)=0$. Contradiction! We already know that $\zeta_M(2r+1) > 0$.
+\end{proof}
+
+This completes Step 2.
+
+\section{Step 3}
+\begin{rem}
+Now we fix a normalization $\partial_{2r+1}$ so that $\partial_{2r+1}(\zeta_M(2r+1)) = 1$.
+\end{rem}
+
+\begin{prop}
+The embedding $\cZ \inj \cO(I)^{\epsilon}_+$ of $U_M$-representations induces equalities
+\begin{eqnarray*}
+N_0 \cZ_M & = & N_0 \cO(I)^{\epsilon}_+ \\
+\{\textrm{$V_M$-linear}\}\cZ_M & = & \{ \textrm{$U_M$-linear} \} \cO(I)^{\epsilon}_+ \\
+N_1 \cZ_M & = & N_1 \cO(I)^{\epsilon}_+
+\end{eqnarray*}
+\end{prop}
+\begin{proof}
+The proof is by calculation using the explicit description of $\cO(I)^{\epsilon}_+$ given in Equation \ref{eq:explicitdesc}. Then
+\[
+N_0 \cZ_M \subset N_0 \cO(I)_+^{\epsilon}.
+\]
+The left hand side equals $\langle 0 \neq \zeta_M(\underbrace{2, \ldots, 2}_m) \rangle_{\Q}$ and the right hand side, $\Q[t^2]$. But these are equal, hence $N_0 \cZ_M$ is the improper subset.
+
+\begin{rem}
+It follows that $\zeta_M(\underbrace{2, \ldots, 2}_m) \sim \zeta_M(2)^m$. Hence $\zeta(\underbrace{2, \ldots, 2}_m) \sim \zeta(2)^m \sim \mathrm{comp}^*(t)^{2m}$. Then $t$ is the period of $\Q(-1)$, so $\mathrm{comp}^*(t) \sim 2\pi i$. Hence $\zeta(\underbrace{2, \ldots, 2}_m) \sim \pi^{2m}$.
+\end{rem}
+Note that
+\[
+\begin{array}{ccc}
+\{ \textrm{linear in $\cZ_M$} \} & \subset & \{ \textrm{linear in $\cO(I)^{\epsilon}_+$} \} \\
+\parallel & & \parallel \\
+\langle \zeta_M(2r+1) \neq 0, \zeta_M(\underbrace{2,\ldots,2}) \rangle_{\Q} & \subset & \langle t^{2m}, e_{2r+1} \rangle_{\Q}
+\end{array}
+\]
+Since $\zeta_M(2r+1) \sim e_{2r+1}$, the bottom subset relation is actually an equality, and hence the top one is too.
+\[
+\begin{array}{ccc}
+N_1 \cZ_M & \subset & N_1 \cO(I) \\
+\cup & & \parallel \\
+\langle \zeta_M(\underbrace{2, \ldots, 2}_m), \zeta_M(2r+1) \rangle & \subset & \langle t^{2m} \cdot e_{2r+1} \rangle_{\Q}
+\end{array}
+\]
+\end{proof}
+
+\begin{cor}
+There exists a Zagier type formula:
+\[
+\zeta_M(2, \ldots, 2, 3, 2, \ldots, 2) = \sum_{r \geq 1} c \zeta_M(2, \ldots, 2) \cdot \zeta_M(2r+1)
+\]
+where $c \in \Q$ is a constant.
+\end{cor}
+\begin{proof}
+The Lie algebra $\mathfrak{u}_M$ acts trivially on $\gr^3_{\ell} \cZ_M$. Hence
+\[
+3_1\cZ_M \subset N_1 \cZ_M.
+\]
+\end{proof}
+
+\subsection{The Goncharov formula and combinatorial part}
+\subsubsection{The Ihara group: An explanation of the Gondcharov formula}
+\begin{rem}
+The action of $G_M$ preserves the following structure.
+\begin{itemize}
+\item The groupoid structure of $\pi_1(X;0)_{dR}$, $\pi_1(X;0,1)_{dR}$, and $\pi_1(X;1)_{dR}$.
+\item The morphisms $\Q(1)_{dR} \to \pi_1(X;0)_{dR}$ and $\Q(1)_{dR} \to \pi_1(X;1)_{dR}$.
+\end{itemize}
+The action of $U_M$ leaves the images of
+\[\label{eq:invariantim}
+\Q(1)_{dR} \to \pi_1(X;0)_{dR} \qquad \Q(1)_{dR} \to \pi_1(X;1)_{dR}
+\]
+\end{rem}
+
+\begin{defn}[Ihara group]
+Given a smooth scheme $X$ over $k$, its Ihara group is
+\[
+IH := \{ (\phi_1, \phi_2, \phi_3) \in \Aut(\pi_1(X;0)_{dR}, \pi_1(X;0,1)_{dR}, \pi_1(X;1)_{dR}) \mid \textrm{$\phi_1$, $\phi_2$ and $\phi_3$ preserve the groupoid structure} \}
+\]
+\end{defn}
+The action of $U_M$ on $\pi(X;0,1)_{dR}$ factors through $U_M \to IH$. The Goncharov formula holds for $\partial \in \mathrm{Lie~}(IH)$.
+
+\begin{prop}
+\[
+\begin{array}{rcl}
+IH & \isom & \pi_1(X;0,1)_{dR} \\
+g & \mapsto & g(dc_{dR})
+\end{array}, \qquad
+dc_{dR} \in \pi_1(X;0,1)_{dR}(\Q) \textrm{~corresponding to $ct$}
+\]
+\end{prop}
+The explicit description of $IH$ begins with the free group on two generators, $\Gamma := \langle \gamma_1, \gamma_2 \rangle$. We associate to $\Gamma$ three its pro-unipotent completion $\Gamma^{un}$ and two sets, $\Gamma^{un}_l$ and $\Gamma^{un}_r$ which are left and right torsors under $\Gamma^{un}$.
+\[
+IH \cong \{ \phi \in \Aut(\Gamma^{un}_l, \Gamma^{un}, \Gamma^{un}_r) \mid \textrm{$\phi$ preserves $\gamma_1 \in \Gamma^{un}_l$, $\gamma_2 \in \Gamma^{un}_r$ and the product groupoid structure} \}
+\]
+\begin{prop}
+\[
+\begin{array}{rcl}
+IH & \isom & \Gamma^{un} \\
+g & \mapsto & g(1)
+\end{array}
+\]
+\end{prop}
+To prove the proposition, one does this for $(\Gamma_l, \Gamma, \Gamma_r)$.
+
+Moreover, one obtains a new group structure $\ast$ on $\Gamma$ and $\Gamma^{un}$ defined as
+\[
+\gamma \ast \gamma' = \gamma(\gamma') \cdot \gamma
+\]
+where $\gamma' \mapsto \gamma(\gamma')$ is a group automorphism of $\Gamma$ such that
+\[
+\gamma_1 \mapsto \gamma_1, \quad \gamma_2 \mapsto \gamma \gamma_2 \gamma^{-1}
+\]
+From this one gets a new
+\[
+\Delta^{\ast} : \cO(\Gamma^{un}) \to \cO(\Gamma^{un}) \otimes_{\Q} \cO(\Gamma^{un})
+\]
+But $\cO(\Gamma^{un}) \cong T(\Omega)$. In ``our Goncharov formula''
+
+\begin{exam}
+We would like to find the coefficients
+\[
+\zeta_M(2,3) = c_1 \zeta_M(5) + c_2 \zeta_M(2) \cdots \zeta_M(3)
+\]
+Then $\partial_3 \zeta_M(2,3) = \underbrace{ct(\partial_3(100)) \cdot (10)}_{\zeta_M(2)} - \underline{ct(\partial_3(010)) \cdot (10)}_{-2\zeta_M(2)} = 3\zeta_M(2)$.
+$(0|10100|)$, $|v| = 3$.
+The trick is
+\[
+\begin{array}{rcl}
+\cO(01) & \to & \cZ_M \\
+(0) = \omega^0 & \mapsto & 0
+\end{array}
+\qquad
+\begin{array}{rcccc}
+(0) \cdot (10) & = &(010) & + & 2(100) \\
+\downarrow & & \downarrow & & \downarrow \\
+0 & = & (010) & + & 2\zeta_M(3)
+\end{array}
+\]
+
+\[
+\partial_5 \zeta_M(2,3) = ct(\partial_5(10100)) = ct(\partial_5 \zeta_M(2,3))
+\]
+$(0|10100|1) \supset (0v1)$ for $|v|=5$ implies $v=w$.
+Hence
+\[
+\zeta_M(2,3) - 3\zeta_M(2) \cdot \zeta_M(3) = c \cdot \zeta_M(5)
+\]
+for some $c \in \Q$. Apply the morphism $\mathrm{comp}^*$ and Zagier's formula to see that $c = -11/2$.
+\end{exam}
+
+\begin{prop}
+Zagier's formula holds for $\zeta_M(2//3)$.
+\end{prop}
+\begin{proof}
+Apply $\partial_{2r+1}$ to $\zeta_M(2 \ldots 232 \ldots 2)$ such that $2r+1 < n$, where $n$ is the weight of $\zeta_M(2 \ldots 232 \ldots 2)$. One obtains words $v$ that are either $(10)^{?}(100)(10)^{?}$, in which case $n = 2r+1$ or $0(10)^{?}$, in which case the weight $n > 2r+1$. Examining the weights gives $ct(\partial_{2r+1}(v))$. Then
+\[
+\zeta_M(2 \ldots 232 \ldots 2) = c \cdot \zeta(n) + \epsilon
+\]
+Apply $\mathrm{comp}$ to get $c = c_{\cZ}$.
+\end{proof}
+
+This completes Step 3.
+
+\section{Step 4}
+
+Consider the case $\ell \geq 2$. We are interested in describing $\partial = \sum_{r \geq 1} \partial_{2r+1}$ from $\gr^3_{\ell} \cZ_{\ell} \to \gr^3_{\ell-1} \cZ_M$. That is, we want to describe $\partial_{2r+1} \zeta_M(\underbrace{2\ldots2332\ldots3\ldots3}_{\ell 3's})$ modulo $\zeta_M(2//3)$ with at most $\ell-2$ 3's. Apply Goncharov's formula. We get many $v$'s and those which matter are in $3_1 \cZ_M$. Apply motivic Zagier and do an explicit calculation. By the explicit Zagier formula, one knows $v_2$.
+
+If you look more precisely at the Zagier formula. We need to show that the matrix is invertible. The point is that the coefficients in Goncharov's formula (\ref{thm:goncharov}), the only non-integrality comes out of $ct(\partial(v))$. But if you look in the explicit Zagier formula, there are only powers of two in the denominators.
+
+\begin{prop}
+For all $\ell \geq 2$. Let $A$ be the matrix for $\partial$. There exists a way to multiply columns by a power of 2 such that $A(mod 2)$ is lower triangular with ones along the diagonal. Hence it is invertible.
+\end{prop}
+We use induction on $\ell$ where the base case, $\ell=1$ follows from Zagier's formula.
+
+This completes Step 4 and the proof.

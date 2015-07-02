@@ -1,0 +1,284 @@
+\chapter{Hodge structure: The case of the punctured projective line by Rafael von K\"anel}
+%\addcontentsline{toc}{chapter}{*Hodge structure on fundamental groups: The case of the punctured projective line}
+
+Rafael von K\"anel on September 4th, 2012.
+
+\medskip
+\medskip
+
+\noindent In the first section, we shall apply the theory of the previous chapters to the variety $X=\overline{X}-D$, where $\overline{X}$ is the projective line over $\C$ and $D$ are finitely many complex points of $\overline{X}$. 
+In this fundamental case, we shall be able to describe explicitly the Betti and de Rham realizations of the affine $\mathrm{MH}(k)$-scheme $\pi_1(X;a,b)_H$ associated to $X$ and $a,b$, where $k\subseteq \mathbb \C$ is a field over which all points of $D$ are defined  and  $a,b$ are $k$-rational points of $X$. Furthermore, we shall show that $\pi_1(X;a,b)_H$ is of mixed Tate type and has non-negative weights.
+
+
+In the second section, we shall use Deligne's theory of fundamental groups with tangential base points to define affine $\MTH$-schemes $\pi_1(X;u,v)_H$ with non-negative weights, where $u,v$ are non-zero tangential vectors to the curve $\overline{X}$ at points in $D$. We also work out explicitly the example $D=\{0,\infty\}$, which will play an important role in the following chapters.
+
+In the last section, we shall apply the theory of tangential base points in the crucial case $X=\overline{X}-\{0,1,\infty\}$. This shall lead to the main result of this chapter which asserts that multi zeta values are real periods of an affine $\mathrm{MTH}(\Q)$-scheme, with non-negative weights.
+
+
+\section{Hodge structure on the fundamental group of the punctured projective line}\label{sec:hodgepuncteredpline}
+
+Let $\overline{X}$ be the projective line over $\C$ and write $D=\{a_1,\dotsc,a_r,\infty\}$ with $a_1,\dotsc,a_r$ distinct points in a field $k\subseteq \C$, where $r\in \Z_{\geq 1}$. We take $k$-rational points $a,b$ of $X=\overline{X}-D$. The structure sheaf $\mathcal O_{\overline{X}}$ of the smooth compactification $\overline{X}$ of $X$ satisfies  
+\begin{equation}\label{eq:h1=0}
+H^1(\overline{X},\cO_{\overline{X}})=0.
+\end{equation}
+We remark that (\ref{eq:h1=0}) holds more generally for any rational variety over $k$, and thus several results in this chapter may be generalized to rational varieties over $k$.
+
+We now consider the de Rham realization $\pi_1(X;a,b)_{dR}$  of the affine $\textnormal{MH}(k)$-scheme $\pi_1(X;a,b)_H$ associated to $X$ and $a,b$. See the previous chapter for a definition of $\pi_1(X;a,b)_H$. 
+Let $$\Omega= H^0(\overline{X}, \Omega_{\overline{X}}^1(\log D))$$ be the $k$-vector space of algebraic differential 1-forms on $\overline{X}$, with at most first order poles along $D$. We remark that the differentials $\frac{dz}{z-a_i}, 1\leq i\leq r$, form a basis of the $k$-vector space $\Omega$. Let $T(\Omega)$ be the tensor algebra of $\Omega$. 
+
+The next lemma gives an explicit description of the coordinate ring  $\cO(\pi_1(X;a,b)_{dR})$ of the pro-unipotent group $\pi_1(X;a,b)_{dR}$ over $k$.
+
+\begin{lemma}\label{lem:explicitderham}
+There is an isomorphism of Hopf algebras between $\cO(\pi_1(X;a,b)_{dR})$ and $T(\Omega).$
+\end{lemma}
+\begin{proof}
+Let $\Omega_{\overline{X}}^{\bullet}(\log D)$ be the Godement resolution and let $A_X^{\bullet} = R\Gamma(\overline{X}, \Omega^{\bullet}_{\overline{X}}(\log D))$ be the derived complex. 
+Since $X$ is an affine curve with (\ref{eq:h1=0}), we obtain a quasi-isomorphism
+ $$A_X^{\bullet}\cong k\oplus \Omega[-1].$$ 
+On the other hand, we observe that $T(\Omega)$ is isomorphic to the $H^0$ of the bar complex associated to $k\oplus \Omega[-1]$ and the natural morphisms induced by $a,b$, 
+and we recall that $$\pi_1(X;a,b)_{dR}\cong\spec H^0(B(A_X^{\bullet};a,b))$$ for $B(A_X^{\bullet};a,b)$ the bar complex associated to $A_X^{\bullet}$ and $a,b$, see Chapter \ref{chapxavier}. 
+Then the statement follows from the existence of a quasi-isomorphism between $B(A_X^{\bullet};a,b)$ and the bar complex associated to $k\oplus \Omega[-1]$ and $a,b$, which is induced by the quasi-isomorphism $A_X^{\bullet}\cong k\oplus \Omega[-1]$.
+\end{proof}
+The above lemma, which relies on computations with the bar complex, shows in particular that $\pi_1(X;a,b)_{dR}$ is independent of $a,b$. 
+We remark that the independence of $a,b$ can also be seen without computing with the bar complex. 
+Indeed, we get $$\pi_1(X;a,b)_{dR}\cong\underline{\textnormal{Aut}}^{\otimes}_k(\omega)$$ with $\omega$ a fiber functor, independent of $a$ and $b$, of the Tannakian category given by vector bundles on $X$ with unipotent flat connection. 
+Moreover, the Tannakian approach allows to show  that $\pi_1(X;a,b)_{dR}$ does not depend on $a,b$ for any smooth variety $X$ over $k$, with smooth compactification  $\overline{X}$ such that $H^1(\overline{X},\cO_{\overline{X}})=0$ and such that $\overline{X}-X$ is a normal crossing divisor. Here one uses the assumption $H^1(\overline{X},\cO_{\overline{X}})=0$ to construct a suitable fiber functor $\omega$ which is independent of $a$ and $b$, see Deligne's \cite[Section 12]{deligne:galoisgroups}.
+We mention that further interesting properties of Tannakian categories shall be discussed in Chapter \ref{chapterkonrad}. 
+
+
+
+Next, we consider the Betti realization $\pi_1(X;a,b)_{B}$ of $\pi_1(X;a,b)_{H}$. 
+Let $\pi_1(X;a)$ be the topological fundamental group of $X$ with base point $a$. 
+It is a free group of rank $r$. 
+A result of Chapter \ref{chap:alberto} gives that the Lie algebra of the pro-unipotent completion $\pi_1(X;a)^{un}$ of $\pi_1(X;a)$ is the completion of the free graded Lie algebra over $\Q$,
+on generators $e_1,\dotsc,e_r$ in degree one, by the lower central series.  We define $$V=(e_1\cdot\Q\oplus\dotsc\oplus e_r\cdot\Q)^{\vee}.$$ 
+The generators of $\pi_1(X;a)$ are given by the homotopy classes of simple loops around points in $D$ based at $a$. 
+We remark that they are related to the $e_i$. Let $T(V)$ be the Tensor algebra of $V$.
+
+The following lemma provides an explicit description of the coordinate ring  $\cO(\pi_1(X;a,b)_{B})$ of the pro-unipotent group $\pi_1(X;a,b)_{B}$ over $\Q$.
+
+\begin{lemma}\label{lem:explicitbetti}
+There is an isomorphism of Hopf algebras between $\cO(\pi_1(X;a,b)_{B})$ and $T(V).$
+\end{lemma}
+\begin{proof}
+The set $\pi_1(X;a,b)$ is a torsor under $\pi_1(X;a)$. Hence the functioriality observations in Chapter \ref{chapteralberto} give a torsor $\pi_1(X;a,b)^{un}$ under  $\pi_1(X;a)^{un}$. 
+Let $\cO(\pi_1(X;a,b)^{un})$  be the coordinate ring of the pro-unipotent group $\pi_1(X;a,b)^{un}$ over $\Q$.
+The bar complex construction of $\pi_1(X;a,b)_{B}$ in Chapter \ref{chapxavier} implies  $$\cO(\pi_1(X;a,b)_{B})\cong\cO(\pi_1(X;a,b)^{un}).$$  
+On the other hand, the computations in Chapter \ref{chapalberto} are applicable to our finitely generated free group $\pi_1(X;a)$ and they show that $\cO(\pi_1(X;a,b)^{un})\cong T(V)$. Therefore we conclude the statement.
+\end{proof}
+
+To consider the comparison isomorphism between 
+$\pi_1(X;a,b)_{B}\times_{\Q} \C$ and  $\pi_1(X;a,b)_{dR}\times_k \C$, we take $n\in \Z_{\geq 1},$ $\omega_1,\dotsc,\omega_n\in \Omega$  and a homotopy class of paths $[\gamma]\in \pi_1(X;a,b)$. 
+It follows that the iterated integral $\int_{\gamma}\omega_1\cdots\omega_n$ depends only on the homotopy class $[\gamma]$. We obtain a morphism
+$$\iterch: T(\Omega)\otimes_k \C\to T(V)\otimes_{\Q} \C$$
+induced by $\omega_1\otimes\dotsc\otimes\omega_n\mapsto \{[\gamma]\mapsto \int_{\gamma}\omega_1\cdots\omega_n \}$. Now we can state
+
+\begin{prop}\label{prop:hodgeactualbasepoints}
+The affine $\textnormal{MH}(k)$-scheme $\pi_1(X;a,b)_H$ has the following properties. 
+\begin{itemize}
+\item[(i)] The coordinate ring $\cO(\pi_1(X;a,b)_{dR})$ of its de Rham realization $\pi_1(X;a,b)_{dR}$ satisfies
+$$\cO(\pi_1(X;a,b)_{dR})\cong T(\Omega),$$
+and the weight and Hodge filtration are given by $W_{2m}\cO(\pi_1(X;a,b)_{dR})=\bigoplus_{i\leq m}\Omega^{\otimes i}$  and $F^p\cO(\pi_1(X;a,b)_{dR})=\bigoplus_{i\geq p}\Omega^{\otimes i}$ respectively. 
+\item[(ii)] The coordinate ring $\cO(\pi_1(X;a,b)_{B})$ of its Betti realization $\pi_1(X;a,b)_{B}$ satisfies
+$$\cO(\pi_1(X;a,b)_{B})\cong T(V),$$
+and the weight filtration, which is twice the unipotent filtration induced by the action of $\pi_1(X;a)^{un}$ on $\pi_1(X;a,b)_B\cong \pi_1(X;a,b)^{un}$, has non-negative weights. 
+\item[(iii)] The comparison isomorphism is induced by $\iterch$, and $\pi_1(X;a,b)_H$ is of mixed Tate type.
+\end{itemize}
+\end{prop}
+\begin{proof}
+Chen's thereom gives that $\iterch$ is an isomorphism and then Lemma \ref{lem:explicitderham} and \ref{lem:explicitbetti} imply all assertions of the proposition, except the second part of (ii) and (iii). 
+To show these remaining claims we recall that (\ref{eq:h1=0}) gives $H^1(\overline{X},\cO_{\overline{X}})=0$. Further, we observe that $H^1(X)$ is a finite direct sum of $\Q(-1)$, since $D$ may be identified with a normal-crossing divisor whose irreducible components are all defined over $k$.
+Hence all assumptions of the example of the previous chapter are satisfied. 
+This example therefore shows that the                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+                                                          filtration of $\pi_1(X;a,b)_H$ is twice the unipotent filtration which is induced by the action of $\pi_1(X;a)_H$, and that $\pi_1(X;a,b)_H$ is of mixed Tate type. Then the definition of the unipotent filtration implies that all weights of $\pi_1(X;a,b)_H$ are non-negative. Thus we verified all claims and this completes the proof of the proposition.
+\end{proof}
+
+\section{Tangential base points}\label{sec:tangentialpoints}
+
+In this section we review Deligne's concept of fundamental groups with tangential base points. 
+Here we shall restrict again to the case $X=\overline{X}-D$, where $\overline{X}$ is the projective line over $\C$ and $D$ are finitely many complex points of $\overline{X}$ which are all defined over a field $k\subseteq \C$. 
+We mention that Deligne \cite{deligne:galoisgroups} developed his theory for arbitrary smooth projective curves over $k$ and Deligne-Goncharov \cite{dego:motivicfundamentalgroups} studied the case of unirational varieties over $k$.
+
+We take $x,y \in D$. Let $u$ and $v$ be non-zero tangent vectors of $\overline{X}$ at $x$ and $y$ respectively, and let $M$ and $\overline{M}$ be the complex points of $X$ and $\overline{X}$ respectively. We define the set of paths $P_{u,v}$ from $u$ to $v$ by
+\begin{align*}P_{u,v} = \{ &\gamma : I \to \overline{M} \mid \textrm{$\gamma$ piecewise smooth}, \gamma(]0,1[) \subset M, \\
+&\gamma(0) = x, \gamma(1) = y, \gamma'(x) = u, \gamma'(y) = -v \}
+\end{align*}
+for $\gamma'(x)$ and $\gamma'(y)$ the tangent vectors of $\gamma$ at $x$ and $y$ respectively; here we choose a coordinate function on the real interval $I=[0,1]$. 
+We say that $\gamma_1,\gamma_2\in P_{u,v}$ are homotopic if there is a homotopy $F:I\times I\to \overline{M}$ relating $\gamma_1,\gamma_2$ as paths in $\overline{M}$, with $F\rvert_{\{t\}\times I}\in P_{u,v}$ for any $t\in [0,1]$. 
+This gives an equivalence relation $\sim$ on $P_{u,v}$ and then we define
+$$\pi_1(M; u,v)=P_{u,v}/\sim.$$ 
+Let $w$ be a non-zero tangent vector to $\overline{X}$ at $z\in D$. 
+The condition on the tangent vectors allows to define a composition $\gamma=\gamma_1\circ_{\epsilon}\gamma_2$ of paths $\gamma_1\in P_{u,w}$ and $\gamma_2\in P_{w,v}$  such that  $$\circ:\pi_1(M;u,w)\times \pi_1(M;w,v)\to \pi_1(M;u,v),$$ given by $([\gamma_1],[\gamma_2])\mapsto [\gamma_1\circ_{\epsilon}\gamma_2]$,   does not depend on any choices.
+Then $(\pi_1(M;u),\circ)$ is a group. 
+For example, there is a canonical small counter-clockwise loop $$[\gamma_x]\in \pi_1(M; u)$$ ``almost around" $x$. %Its class is non-trivial, which is a crucial difference to the case of base points in $X$. 
+We say that $\pi_1(M;u)$ is the fundamental group of $M$ with tangential base point $u$. 
+
+Let $E$ be a unipotent vector bundle on $\overline{X}$ with a connection $\nabla$, which has at most first order poles along $D$.  From (\ref{eq:h1=0}) we get $$\textnormal{Ext}^1(\cO_{\overline{X}},\cO_{\overline{X}})=H^1(\overline{X},\cO_{\overline{X}})=0.$$ Then on doing induction on the rank of $E$ we see that $E$ is trivial as a vector bundle, since it is an iterated extension of trivial vector bundles. We fix a trivialization of $E$ and we write $$\nabla=d+N, \ \ \ N\in \Omega\otimes_k \textnormal{End}(E),$$ 
+where $\Omega=H^0(\overline{X},\Omega^1_{\overline{X}}(\log D))$ is as in the previous section. 
+We view $N$ as a matrix with values in $\Omega$. %This matrix is nilpotent, since $\nabla$ is unipotent. 
+Let $\epsilon>0$ be a real number and let $U$ be a nilpotent matrix. We write $\mathrm{res}_x(N)$ for the matrix of residues of $N$ at $x$ and we define 
+$$\textnormal{res}_x(\nabla)= \textnormal{res}_x(N), \ \ \ \epsilon^U = \exp(\log(\epsilon)U).$$
+For any $[\gamma] \in \pi_1(M; u,v)$, we let $\gamma_{\epsilon}:[\epsilon,1-\epsilon]\to M$ be the restriction of $\gamma$ to $[\epsilon,1-\epsilon]$. Next, we define the monodromy along $\gamma$ by the regularization
+$$
+\int_{\gamma} \nabla= \lim_{\epsilon \to 0} \epsilon^{\mathrm{res}_y(\nabla)} \circ \int_{\gamma_\epsilon}\nabla \circ \epsilon^{-\mathrm{res}_x(\nabla)}.
+$$
+A local calculation shows that this limit exists. Further, one can prove that $\int_{\gamma} \nabla$ depends only on the homotopy class of $\gamma$. 
+For example, we get  $$\int_{\gamma_x} \nabla=\exp(2\pi i\cdot \textnormal{res}_x(\nabla)),$$
+where $\gamma_x$ is the canonical counter-clockwise loop ``almost around" $x$ introduced above.
+
+\section{Mixed Hodge structure on the fundamental group with tangential base points}\label{sec:hodgetangential}
+
+We continue the notation introduced above. The purpose of this section is to define an affine $\MTH$-scheme $\pi_1(X;u,v)_H$ with non-negative weights. To construct an analogue of the map $\iterch$ we take $n\in\Z_{\geq 1}, \omega_1, \ldots, \omega_n \in \Omega$
+and
+$$
+N = \left( \begin{array}{cccc}
+0 & \omega_1 & \cdots & 0 \\
+ & \ddots & \ddots &  \vdots \\
+ & &  \ddots & \omega_n \\
+ & &     & 0
+\end{array}
+\right).
+$$
+We define $\int_{\gamma} \omega_1 \cdots \omega_n$ by the monodromy interpretation from Chapter \ref{chap:fritz} applied to the connection $\nabla=d+N$. This gives the explicit formula,
+$$
+\int_{\gamma} \omega_1 \cdots \omega_n = \lim_{\epsilon \to 0} \sum_{0 \leq i \leq j \leq n} \frac{(-1)^i}{i!(n-j)!} \prod_{l=1}^i \mathrm{res}_y(\omega_l) \cdot \int_{\gamma_{\epsilon}} \omega_{i+1} \cdots \omega_{i+j} \cdot \prod_{l=j+1}^n \mathrm{res}_x(\omega_l) \log(\epsilon)^{i+n-j}.
+$$
+Let $\Q[\pi_1(M;u,v)]$ be the $\Q$-vectorspace, freely generated by the set $\pi_1(M;u,v)$, and let $T(\Omega)^\vee$ be the dual of the Tensor algebra of $\Omega$. 
+We get a map
+$$\iter: \Q[\pi_1(M;u,v)]\to T(\Omega)^\vee\otimes_k\C$$
+defined by $\gamma\mapsto \{\omega_1\otimes\dotsc\otimes\omega_n\mapsto\int_\gamma \omega_1\cdots\omega_n\}$. 
+The definition of $\int_\gamma \omega_1\cdots\omega_n$  by the monodromy interpretation implies the composition of path formula for iterated integrals, and the explicit formula of $\int_\gamma \omega_1\cdots\omega_n$ shows the product of integrals formula. 
+Then, in exactly the same way as in the case of actual base points in $M$, we see that the map $\iter$ induces a morphism
+$$\iter^\vee:  T(\Omega)\otimes_k\C\to \cO(\pi_1(M;u,v)^{un})\otimes_{\Q}\C.$$
+Here $\cO(\pi_1(M;u,v)^{un})$ is the coordinate ring of the pro-unipotent group $\pi_1(M;u,v)^{un}$ over $\Q$, which is a torsor under the pro-unipotent completion $\pi_1(M;u)^{un}$ of $\pi_1(M;u)$, see Chapter \ref{chap:alberto}. 
+
+\begin{lemma}
+The morphism $\iterch$ is an isomorphism.
+\end{lemma}
+\begin{proof}
+We recall that $a$ is a $k$-rational point of $X$. Then we observe that all statements above have a version when we replace $u$ or $v$ by the actual base point $a$.
+
+First, we consider the case when $u$ is replaced by the actual base point $a$.
+Then Proposition \ref{prop:hodgeactualbasepoints} gives an isomorphism  of coordinate rings of pro-unipotent groups over $\C$
+\begin{equation*}
+\iterch_a: T(\Omega)\otimes_k\C\cong \cO(\pi_1(M;a)^{un})\otimes_{\Q}\C.
+\end{equation*}
+Chapter \ref{chap:alberto} delivers a  $\pi_1(M;a)^{un}$-torsor $\pi_1(M;a,v)^{un}$  coming from the $\pi_1(M;a)$-torsor $\pi_1(M;a,v)$,
+and we see that the isomorphism $\iterch_a$ is compatible with the morphism of torsors
+\begin{equation*}
+\iterch_{a,v}:  T(\Omega)\otimes_k\C\to \cO(\pi_1(M;a,v)^{un})\otimes_{\Q}\C.
+\end{equation*}
+Then basic torsor theory shows that $\iterch_{a,v}$ is  an isomorphism as well. 
+
+To consider the case where both $u$ and $v$ are tangential base points of $M$, we observe that $\pi_1(M;u,a)$ is a $\pi_1(M;a)$-torsor. Hence, on  replacing $v$ by $u$ in the case above, we obtain
+\begin{equation*}
+\iterch_{u,a}: T(\Omega)\otimes_k\C\cong \cO(\pi_1(M;u,a)^{un})\otimes_{\Q}\C.
+\end{equation*}
+We form the product of right and left $\pi_1(M;a)^{un}$-torsors, given by  $\pi_1(M;u,a)^{un}$ and $\pi_1(M;a,v)^{un}$ respectively, and then we quotient by the relation $(g_1g,g_2) \sim (g_1,gg_2)$ with $g\in \pi_1(M;a)^{un}$, $g_1\in \pi_1(M;u,a)^{un}$ and $g_2\in\pi_1(M;a,v)^{un}$. 
+It follows that the resulting quotient
+$$
+\pi_1(M;u,a)^{un} \times \pi_1(M;a,v)^{un}/ \sim
+$$
+is isomorphic to $\pi_1(M;u,v)^{un}$.
+Then, on using the isomorphisms $\iterch_{u,a}$ and  $\iterch_{a,v}$ of pro-unipotent groups over $\C$, we deduce that the morphism
+\begin{equation*}
+\iter^\vee:  T(\Omega)\otimes_k\C\to \cO(\pi_1(M;u,v)^{un})\otimes_{\Q}\C
+\end{equation*}
+is an isomorphism as well. This completes the proof of the lemma.
+\end{proof}
+
+As in the case of actual base points, we see that 
+$\pi_1(M;u)$ is a finitely generated free group of rank $r$, and that the Lie algebra of $\pi_1(M;u)^{un}$ is the completion of the free graded Lie algebra over $\Q$,
+on generators $e_1,\dotsc,e_r$ in degree one, by the lower central series. Let $V$ be the dual to the $\Q$-vector space spanned by the $e_i$. We obtain
+
+\begin{prop}\label{prop:hodgetangbasepoints}
+There is an affine $\MTH$-scheme $\pi_1(X;u,v)_H$ with the following properties. 
+\begin{itemize}
+\item[(i)] The coordinate ring $\cO(\pi_1(X;u,v)_{dR}$ of its de Rham realization $\pi_1(X;u,v)_{dR}$ is defined by
+$$\cO(\pi_1(X;u,v)_{dR})=T(\Omega),$$
+and the weight and Hodge filtration are given by $W_{2m}\cO(\pi_1(X;u,v)_{dR})=\bigoplus_{i\leq m}\Omega^{\otimes i}$ and $F^p\cO(\pi_1(X;u,v)_{dR})=\bigoplus_{i\geq p}\Omega^{\otimes i}$ respectively. 
+\item[(ii)] The coordinate ring $\cO(\pi_1(X;u,v)_{B})$ of its Betti realization $\pi_1(X;u,v)_{B}$ satisfies
+$$\cO(\pi_1(X;u,v)_{B})=\cO(\pi_1(M;u,v)^{un})\cong T(V),$$
+and the weight filtration, which is twice the unipotent filtration induced by the action of $\pi_1(M;u)^{un}$ on $\pi_1(X;u,v)_{B}$, has non-negative weights. 
+\item[(iii)] The comparison isomorphism is induced by $\iterch$.
+\end{itemize}
+\end{prop}
+\begin{proof}
+All claims follow on combining the above lemma with exactly the same arguments as used in the proof of Proposition \ref{prop:hodgeactualbasepoints}.
+\end{proof}
+
+\section{The case of $\Gm$}
+
+We continue the notation of the previous sections. In addition, we assume that $X=\overline{X}-\{0,\infty\}$. 
+Then we get that $k=\Q$, that $X$ is the multiplicative group $\Gm$ and that $\pi_1(M;a)$ is generated by the homotopy class $[\gamma]$ of a simple loop $\gamma$, around 0, based at a $\Q$-rational point $a$ of $X$. Here $M$ denotes the complex points of $X$. 
+In particular, it follows that the group $\pi_1(M;a)$ is commutative and does not depend on the choice of $a$. Further, we obtain
+\begin{prop}
+There is an isomorphism in $\textnormal{Ind MTH}(\Q)$ $$\cO(\pi_1(X;a,b)_H)\cong \bigoplus_{n \geq 0}\Q(-n)_H\cong T(\Q(-1)_H).$$ 
+\end{prop}
+\begin{proof}
+To prove this proposition we may and do assume that $a=b$. We now explicitly compute the comparison isomorphism of 
+$\pi_1(X;a)_H$. In our case of $D=\{0,\infty\}$, we get that the $\Q$-vector spaces $V$ and $\Omega$ of Section \ref{sec:hodgepuncteredpline} satisfy $V=e_1^{\vee}\cdot \Q$ and  $\Omega=\frac{dz}{z}\cdot \Q$. 
+To simplify notation we write $\omega=\frac{dz}{z}$ and $e=e_1^{\vee}$. 
+Let $n\geq 1$ be an integer. We obtain $$n!\int_\gamma \omega^{\otimes n}=\left(\int_\gamma \omega\right)^n=(2\pi i)^n,$$
+where the first equality follows from the shuffle product formula. Further, we recall that the isomorphism $\cO(\pi_1(M;a)^{un})\cong T(V)$ is induced by $\gamma\mapsto \exp(e_1)$ and that $\iterch$ is defined by $\omega^{\otimes n}\mapsto \{\gamma\mapsto \int_\gamma \omega^{\otimes n}\}$. Then we deduce  $$\iterch(\omega^{\otimes n})=(2\pi i)^ne^{\otimes n}.$$ This implies the statement, since Proposition \ref{prop:hodgeactualbasepoints} shows that $\iterch$ induces the comparison isomorphism of $\pi_1(X;a)_H$. 
+\end{proof}
+
+We remark that the proof of the above proposition shows in addition that $\pi_1(X;a)_{dR}=\Ga$ and that the comparison isomorphism identifies $\pi_1(\Gm;a)_B(\Q)$ with $2\pi i\Q$ in $\Ga(\C)$. 
+
+By abuse of notation, we denote by $\Q(1)_H$ the affine $\textnormal{MTH}(\Q)$-scheme that corresponds to $T(\Q(-1)_H)$. More generally, we now return to the setup of Section \ref{sec:hodgetangential} and we assume that $X=\overline{X}-D$ is the projective line $\overline{X}$ over $\C$ without finitely many $k$-rational points $D$ of $\overline{X}$, where $k\subseteq \C$ is a field. 
+Let $\pi_1(X;u)_H$ be the affine $\MTH$-scheme associated to $X$ and $u$, where $u$ is a tangential base point of $X$. We get
+
+\begin{prop}
+There is a morphism $\Q(1)_H \to \pi_1(X;u)_H$ of affine $\MTH$-schemes.
+\end{prop}
+\begin{proof}
+We start with the Betti realization, and we recall that $u$ is a non-zero tangent vector to $\overline{X}$ at $x\in D$. 
+Let $\gamma_x$ be a small counter-clockwise simple loop around $x$. 
+The morphism $\Z\to \pi_1(M;u)$, defined by $1 \mapsto \gamma_x$, induces a map between the coordinate rings of the corresponding pro-unipotent completions $\cO(\Z^{un})\to \cO(\pi_1(M;u)^{un})$, where $M$ is  the set of complex points of $X=\overline{X}-D$. 
+This gives a morphism
+$$\cO(\Q(1)_B)\to \cO(\pi_1(X;u)_B),$$
+since $\cO(\Q(1)_B)\cong \cO(\Z^{un})$ and  $\cO(\pi_1(M;u)^{un})=\cO(\pi_1(X;u)_B)$. Next, we consider the de Rham realization. 
+Taking residues of differential forms at $x$ gives a morphism $\mathrm{res}_x : \Omega \to k$, where we recall that $\Omega=H^0(\overline{X},\Omega^1_{\overline{X}}(\log D))$. This induces a morphism
+$$
+\cO(\pi(X;u)_{dR})\to \cO(\Q(1)_{dR})\otimes_{\Q} k,
+$$
+since $\cO(\pi(X;u)_{dR})=T(\Omega)$ and $T(k)\cong \cO(\Q(1)_{dR})\otimes_{\Q}k$.
+We now use that iterated integrals are defined via the monodromy interpretation and that $\iterch$ induces the comparison isomorphisms, see Proposition \ref{prop:hodgeactualbasepoints} and \ref{prop:hodgetangbasepoints}. 
+Then we see that the above displayed morphisms between the Betti and de Rham realizations are compatible with the comparison isomorphisms. Hence, they define a morphism $\Q(1)_H \to \pi_1(X;u)_H$ of affine $\MTH$-schemes as desired.
+\end{proof}
+
+
+\section{MZV as periods of an affine $\textnormal{MTH}(\Q)$-scheme with non-negative weights}
+
+In this section, we apply the theory of tangential base points in the fundamental case $X=\overline{X}-D$, where
+$D= \{0,1,\infty\}$ and  $\overline{X}$ is the projective line over $\C$. Let $u$ and $v$ be the tangential vectors $(0,1)$ and $(1,0)$ of $\overline{X}$ at 0 and 1 respectively. An application of Proposition \ref{prop:hodgetangbasepoints}, with $X$ and $u,v$, gives an affine $\textnormal{MTH}(\Q)$-scheme $\pi_1(X;u,v)_H$, with non-negative weights. We write $\pi_1(X;0,1)_H=\pi_1(X;u,v)_H$ and we obtain
+
+\begin{thm}
+Multi zeta values are real periods of $\pi_1(X;0,1)_H$.
+\end{thm} 
+\begin{proof}
+In the case $D=\{0,1,\infty\}$, we get $k=\Q$ and $\Omega = \omega_0\cdot\Q \oplus \omega_1\cdot\Q$ with $\omega_0=\frac{dz}{z}$  and $\omega_1=\frac{dz}{1-z}$. 
+For any $m,n_1,\dotsc,n_{m-1}\in \Z_{\geq 1}$ and $n_m\in \Z_{\geq 2}$, we define $\overline{n} = (n_1, \ldots, n_m)$. 
+As in Definition \ref{def:word}, we see that $\overline{n}$ corresponds to a word $w(\overline{n})$ in $0$ and $1$ starting in $0$ and ending in $1$. 
+Let $\overline{w} = w(\overline{n})$ be the corresponding sequence in $w_0$ and $w_1$. 
+We denote by $\mathrm{dch}$ the real interval $[0,1]$ viewed as a path in $\overline{M}$ from 0 to 1, where we recall that $M$ and $\overline{M}$ are the complex points of $X$ and $\overline{X}$ respectively. It follows  
+$$[\mathrm{dch}] \in \pi_1(M;u,v).$$ 
+For any real $\epsilon>0$, let $dch_{\epsilon}:[\epsilon,1-\epsilon]\to M$ be the restriction of dch to the closed interval $[\epsilon,1-\epsilon]$. Then  a computation in Chapter \ref{chap:fritz} gives
+$
+\zeta(\overline{n}) = \lim_{\epsilon \to 0} \int_{dch_{\epsilon}} \overline{w},
+$
+and the definitions show that $\lim_{\epsilon \to 0}\int_{dch_{\epsilon}}\overline{w}=\int_{dch} \overline{w}
+= \iterch(\overline{w})(\mathrm{dch})$. On combining these equalities we deduce
+$$\zeta(\overline{n})=\iterch(\overline{w})(\mathrm{dch}).$$
+Proposition \ref{prop:hodgetangbasepoints} gives that $\iterch$ induces the comparison isomorphism. Therefore the above displayed representation of $\zeta(\overline{n})$ shows that multi zeta values are real periods of $\pi_1(X;0,1)_H$. This completes the proof of the theorem.
+\end{proof}
+

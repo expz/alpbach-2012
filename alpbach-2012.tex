@@ -1,0 +1,270 @@
+\documentclass[12pt]{report}
+\usepackage{amsmath, amsthm, amssymb, amsfonts, latexsym, url, hyperref, tikz, enumerate, comment, colonequals, mathdots, stmaryrd}
+\usepackage[utf8x]{inputenc}
+\usepackage[OT2,OT1]{fontenc}
+%\usepackage[russian,english]{babel}
+\usepackage[all]{xypic}
+
+\oddsidemargin		-0.25 in
+\evensidemargin		-0.25 in
+\textwidth		6.75  in
+\headheight		0 in
+\topmargin		0 in
+\textheight		8.5 in
+
+% -------- Environments ----------
+
+\newtheorem{thm}{Theorem}[chapter]
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{conj}[thm]{Conjecture}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{exam}[thm]{Example}
+\newtheorem{xca}[thm]{Exercise}
+\newtheorem{notation}[thm]{Notation}
+
+\theoremstyle{remark}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{note}[thm]{Note}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{todo}[thm]{TO DO}
+
+\numberwithin{equation}{chapter}
+
+% --------------- Other Alpbach Commands ----------------
+
+\DeclareMathOperator{\Ab}{\bf{Ab}}
+\DeclareMathOperator{\AdicDM}{\bf{AdicDM}}
+\DeclareMathOperator{\Aff}{\bf{Aff}}
+\DeclareMathOperator{\lAlg}{\bf{-Alg}}
+\DeclareMathOperator{\Blpr}{\bf{Blpr}}
+\DeclareMathOperator{\Ch}{\bf{Ch(R)}}
+\DeclareMathOperator{\CHA}{\bf{CHA}}
+\DeclareMathOperator{\DM}{\bf{DM}}
+\DeclareMathOperator{\FSch}{\bf{FSch}}
+\DeclareMathOperator{\Gps}{\bf{Gps}}
+\DeclareMathOperator{\HA}{\bf{HA}}
+\DeclareMathOperator{\LA}{\bf{LA}}
+\DeclareMathOperator{\LRS}{\bf{LRS}}
+\DeclareMathOperator{\MGps}{\bf{MGps}}
+\DeclareMathOperator{\MLA}{\bf{MLA}}
+\DeclareMathOperator{\Mod}{\bf{-Mod}}
+\DeclareMathOperator{\Mon}{\bf{Mon}}
+\DeclareMathOperator{\MS}{\bf{MS}}
+\DeclareMathOperator{\PerfSH}{\bf{PerfSH}}
+\DeclareMathOperator{\PerfDM}{\bf{PerfDM}}
+\DeclareMathOperator{\RigDM}{\bf{RigDM}}
+\DeclareMathOperator{\RigSH}{\bf{RigSH}}
+\DeclareMathOperator{\Ring}{\bf{Ring}}
+\DeclareMathOperator{\Psh}{\bf{Psh}}
+\DeclareMathOperator{\PshAff}{\bf{Psh(Aff)}}
+\DeclareMathOperator{\Set}{\bf{Set}}
+\DeclareMathOperator{\lSet}{\bf{-Set}}
+\DeclareMathOperator{\Sh}{\bf{Sh}}
+\DeclareMathOperator{\Top}{\bf{Top}}
+\DeclareMathOperator{\pUAG}{p\bf{UAG}}
+\DeclareMathOperator{\UAG}{\bf{UAG}}
+\DeclareMathOperator{\lVar}{\bf{-Var}}
+\DeclareMathOperator{\Zar}{\bf{Zar}}
+
+\newcommand \DMT  {\mathrm{DMT}(k)}
+\newcommand \MHM {\mathrm{MHM}}
+\newcommand \MTM {\mathrm{MTM}}
+\newcommand \MTH  {\mathrm{MTH}(k)}
+\newcommand \Ao   {\mathrm{Ao}}
+\newcommand \MTMZ {\mathrm{MTM}(\mathbf{Z})}
+\newcommand \DMk {\mathrm{DM}(k)}
+\newcommand \SmCorr {\mathrm{SmCorr}(k)}
+\newcommand \Smk  {\mathrm{Sm}/k}
+\newcommand \MMk  {\mathrm{MM}(k)}
+\newcommand \DbA  {\mathrm{D}^b(A)}
+\newcommand \DbMMk {\mathrm{D}^b(\mathrm{MM}(k))}
+\newcommand \DMeff {\mathrm{DM}^{\mathrm{eff}}(k)}
+\newcommand \iterch {\mathrm{iter}^{\vee}}
+
+% Martin's talk (talk-9.tex)
+
+\providecommand{\DM}{\ensuremath{\mathbf{DM}}}
+\providecommand{\mTm}{\ensuremath{\mathbf{MTM}}}
+\providecommand{\Sm}{\ensuremath{\mathbf{Sm}}}
+\providecommand{\MM}{\ensuremath{\mathbf{MM}}}
+\providecommand{\ie}{\mbox{i.\,e.}\ }
+\providecommand{\eg}{\mbox{e.\,g.}\ }
+\providecommand{\SmCor}{\ensuremath{\mathbf{SmCor}}}
+\providecommand{\D}{\ensuremath{\mathbf{D}}}
+\providecommand{\Mod}{\ensuremath{\text{-}\mathrm{mod}}}
+\providecommand \DTM {\ensuremath{\mathbf{DTM}}}
+\providecommand \MTM {\ensuremath{\mathbf{MTM}}}
+
+% -------- Russian ---------
+\def\sha{{\text{\fontencoding{OT2}\selectfont sh}}}
+\def\Sha{{\text{\fontencoding{OT2}\selectfont SH}}}
+
+% -------- Roman ----------
+
+\newcommand   \Ann    {\mathrm{Ann}}
+\newcommand    \Aut    {\mathrm{Aut}}
+\newcommand    \codim  {\mathrm{codim}}
+\newcommand    \coker  {\mathrm{coker}}
+\newcommand   \colim  {\mathrm{colim}}
+\newcommand   \disc    {\mathrm{disc}}
+\newcommand    \End   {\mathrm{End}}
+\newcommand    \ext    {\mathrm{Ext}}
+\newcommand   \Ext    {\mathrm{Ext}}
+\newcommand  \gr	{\mathrm{gr}}
+\newcommand    \Hom    {\mathrm{Hom}}
+\newcommand	\HOM	{\mathrm{HOM}}
+\newcommand    \id     {\mathrm{id}}
+\newcommand    \im     {\mathrm{im}~}
+\newcommand    \iter     {\mathrm{iter}}
+\newcommand  \Ob   {\mathrm{Ob}}
+\newcommand    \pic     {\mathrm{Pic}}
+\newcommand	\proj	{\mathrm{Proj}~}
+\newcommand   \Rep   {\mathrm{Rep}}
+\newcommand    \rk       {\mathrm{rk}~}
+\newcommand	\sch	{\mathrm{(Sch)}}
+\newcommand	\schk	{\mathrm{(Sch/k)}}
+\newcommand \schK   {\mathrm{(Sch/K)}}
+\newcommand	\schS	{\mathrm{(Sch/S)}}
+\newcommand	\schT	{\mathrm{(Sch/T)}}
+\newcommand	\schU	{\mathrm{(Sch/U)}}
+\newcommand    \spec   {\mathrm{Spec}~}
+\newcommand   \supp   {\mathrm{supp}}
+\newcommand     \tr       {\mathrm{tr}}
+\newcommand   \Var     {\mathrm{Var}}
+\newcommand   \Vect   {\mathrm{Vect}}
+
+\newcommand{\catop}{\cat\op}
+\newcommand{\cat}{\mathbf{C}}%{\mathscr{C}}
+\newcommand{\catd}{\mathbf{D}}%{\mathscr{D}}
+\newcommand{\catdg}{(\cat\downarrow G)}
+
+% -------- Numbers --------
+
+\def    \C     {\ensuremath{\mathbb{C}}}
+\newcommand	\R	{\ensuremath{\mathbb{R}}}
+\newcommand    \Q    {\ensuremath{\mathbb{Q}}}
+\newcommand    \Z     {\ensuremath{\mathbb{Z}}}
+\newcommand	\N	{\ensuremath{\mathbb{N}}}
+\newcommand	\A	{\ensuremath{\mathbb{A}}}
+\newcommand   \Aspace {\ensuremath{\mathbb{A}}}
+\newcommand	\An	{\ensuremath{\mathbb{A}^n}}
+\newcommand	\Pspace	{\ensuremath{\mathbb{P}}}
+\newcommand    \Ga     {\ensuremath{\mathbb{G}_a}}
+\newcommand    \Gm     {\ensuremath{\mathbb{G}_m}}
+\newcommand    \Fp     {\ensuremath{\mathbb{F}_p}}
+\newcommand    \Fq     {\ensuremath{\mathbb{F}_q}}
+
+% -------- Groups ---------
+
+\newcommand	\GLn	{\ensuremath{\boldsymbol{GL}_n}}
+\newcommand	\SLn	{\ensuremath{\boldsymbol{SL}_n}}
+\newcommand  \GL    {\ensuremath{\boldsymbol{GL}}}
+\newcommand  \SL      {\ensuremath{\boldsymbol{SL}}}
+
+% -------- Frakture ----------
+
+\newcommand	\fa	{\ensuremath{\mathfrak{a}}}
+\newcommand  \fg   {\ensuremath{\mathfrak{g}}}
+\newcommand   \fH  {\ensuremath{\mathfrak{H}}}
+\newcommand    \fm     {\ensuremath{\mathfrak{m}}}
+\newcommand	\fp	{\ensuremath{\mathfrak{p}}}
+
+% -------- Calligraphy -------
+
+\newcommand    \cA     {\mathcal{A}}
+\newcommand    \cB     {\mathcal{B}}
+\newcommand    \cC     {\mathcal{C}}
+\newcommand    \cE     {\mathcal{E}}
+\newcommand    \cF     {\mathcal{F}}
+\newcommand    \cG     {\mathcal{G}}
+\newcommand    \cK     {\mathcal{K}}
+\newcommand    \cM     {\mathcal{M}}
+\newcommand    \cO     {\mathcal{O}}
+\newcommand    \cP     {\mathcal{P}}
+\newcommand    \cS     {\mathcal{S}}
+\newcommand    \cT     {\mathcal{T}}
+\newcommand    \cU     {\mathcal{U}}
+\newcommand    \cV     {\mathcal{V}}
+\newcommand    \cW     {\mathcal{W}}
+\newcommand    \cX     {\mathcal{X}}
+\newcommand    \cY     {\mathcal{Y}}
+\newcommand    \cZ     {\mathcal{Z}}
+
+% -------- Arrows --------
+
+\newcommand    \inj    {\hookrightarrow}
+\newcommand    \surj  {\twoheadrightarrow}
+\newcommand    \onto   {\twoheadrightarrow}
+\newcommand         {\rar}[1]       {\stackrel{#1}{\longrightarrow}}
+\newcommand         {\isom}         {\rar{\sim}}
+
+% -------- Miscellaneous --------
+
+\newcommand    {\adj}[4]    {#1\negmedspace: #2\rightleftarrows #3:\negmedspace #4}
+
+\newcommand  \TODO  {[Room for improvement]}
+
+\begin{document}
+
+\title{Summer School Alpbach: Multiple Zeta-Values\footnote{The workshop was organized by J. Ayoub, S. O. Gorchinsky and G. W{\"u}stholz (Chair) within the ETH Zurich ProDoc module in Arithmetic and Geometry. The speakers were Mario Huicochea, Roland Paulin, Fritz H\"ormann, Alberto Vezzani, Thomas Weissschuh, Sergey Rybakov, Javier Fres\'an, Rafael von K\"anel, Konrad V\"olkel, Martin Gallauer, Simon Pepin Lehalleur, Lars K\"uhne, Joseph Ayoub and Sergey Gorchinsky. The notes were recorded by Jonathan Skowera and in some cases dramatically altered by the speakers during editing.}}
+
+\maketitle
+
+{\small \setcounter{tocdepth}{1} \tableofcontents}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setcounter{secnumdepth}{0}
+
+\section{About these notes}
+These are notes from the Workshop on Multiple Zeta-Values in Alpbach, Austria organized by the ProDoc Arithmetic and Geometry module of the ETH and the Universit\"at Z\"urich and meeting from September 2nd -- 7th, 2012. The workshop aims to study the motivic approach to multiple zeta values (MZV's) included recent advances due to Francis Brown. We especially rely on the presentation of P. Deligne in and \emph{Multizetas, d'apres Francis Brown} and refer to the paper \emph{Groupes fondamentaux motiviques de Tate mixte} by P. Deligne and A. Goncharov for many basic facts.
+
+\medskip
+\medskip
+
+\noindent \emph{Please attribute all errors first to the scribe.}
+
+\input{prelim-1.tex}
+
+\input{prelim-2.tex}
+
+%\input{talk-0.tex}
+
+\input{talk-1.tex}
+
+\input{talk-2.tex}
+
+\input{talk-3.tex}
+
+\input{talk-4.tex}
+
+\input{talk-5.tex}
+
+\input{talk-6.tex}
+
+\input{talk-7.tex}
+
+\input{talk-8.tex}
+
+\input{talk-9.tex}
+
+\input{talk-10.tex}
+
+\input{talk-11.tex}
+
+\input{talk-12.tex}
+
+%\bibliographystyle{amsalphaabbrv}
+
+\bibliographystyle{amsalpha}
+\bibliography{alpbach-2012}
+
+%\begin{thebibliography}{DM69}
+%\end{thebibliography}
+
+\end{document}

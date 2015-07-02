@@ -1,0 +1,232 @@
+\chapter{Brown's proof: Strategy of the proof by Sergey Gorchinsky}
+%\addcontentsline{toc}{chapter}{Brown's proof: Strategy of the proof by Sergey Gorchinsky}
+
+Sergey Gorchinsky on September 7th, 2012.
+
+\medskip
+\medskip
+
+\section{Statements}
+
+Write $\zeta(2//3)$ to mean $\{\zeta(a_1, \ldots, a_n) \mid n \in \N, a_i = \textrm{2 or 3} \}$.
+\begin{conj}[Hoffman]
+The set $\zeta(2//3)$ forms a $\Q$-basis for $\cZ = \langle \zeta(\overline{n}) \rangle_{\Q} \subset \R$. where $\overline{n} = (n_1, \ldots, n_r), n_r \geq 2$.
+\end{conj}
+\begin{conj}[Brown's theorem]
+Let $\zeta(2//3)$ $\Q$-linearly generate $\cZ$.
+\end{conj}
+\begin{thm}\label{thm:mtmgenerates}
+The mixed Tate motive $cO(\pi_1(X;0,1)_M)$ generates $\MTMZ$ under the tensor product.
+\end{thm}
+\begin{thm}\label{thm:strictquot}
+The morphism $\cO(I(dR,B))_{+} \surj \cZ$ is a strict quotient of a filtered algebra (not just a subquotient).
+\end{thm}
+
+\begin{ques}
+Does Theorem \ref{thm:strictquot} imply stronger upper bounds on $d_n$? For example
+\[
+d_n \leq d_{n-2} + d_{n-3}
+\]
+\end{ques}
+
+\section{Motivic lift of Hodge class}
+\subsection{Set-up}
+\begin{itemize}
+\item $X = \Pspace^1 \setminus \{0,1,\infty\}$
+\item $\pi_1(X;0,1)$-motivic scheme of paths 
+\item $\pi_1(X;0,1)_{dR} = T(\Omega)_1$.
+\item $\Omega = \langle \frac{dz}{z} = \omega^0, \frac{dz}{1-z} = \omega^1 \rangle_{\Q}$
+\item $\mathrm{dch} \in \pi_1(X;0,1)_B(\Q)$\footnote{Recall from Definition \ref{def:dch} that $\mathrm{dch}$ denotes the unit path $[0,1]$.}
+\item \[
+\xymatrix{
+1 \ar[r] & U_M \ar[r] & G_M \ar@<-0.2em>[r] & \Gm \ar@<-0.2em>[l] \ar[r] & 1
+}
+\]
+\item $I := I(\omega_{dR}, \omega_B)$ and $\cO(01)_{dR} := \cO(\pi_1(X;0,1)_{dR}) \cong T(\Omega)$ are in $\mathrm{Ind}(\mathrm{Rep}(G_M))$
+\item $\mathrm{comp} \in I(\C)$.
+\end{itemize}
+
+\begin{defn}
+The path $\mathrm{dch}$ leads to the composition:
+\[
+\xymatrix{
+\cO(01)_{dR} \ar[r] \ar@/_/@{->}[rr]_g & \cO(01)_{dR} \otimes \cO(01)^{\vee}_B \ar[r] & \cO(I) \ar[d]^{\mathrm{comp}^*} \\
+& & \C
+}
+\]
+\end{defn}
+\begin{defn}
+Let
+\[
+\cZ_M := \im g
+\]
+\end{defn}
+$\zeta_M(\overline{n}) \to \zeta(\overline{n}) := \im(\tau_0(\tau_1))$
+
+\begin{rem}
+All maps above are mixed motives of $G_M$ representations. In particular, $\cZ_M$ is a $G_M$-representation. Furthermore, all of the above vector spaces are canonically graded with respect to $\Gm \inj G_M$.
+\begin{itemize}
+\item $\mathrm{comp}^*(\cZ_M) = \cZ$
+\item $\cZ_M \subset \cO(I)^{\epsilon}_+$\footnote{The + denotes taking the positive degree functions.}
+\item $\epsilon \in G_{\omega_B}(\Q)$ is given by complex conjugation and correspondence to non-negative weights using the fact that $\mathrm{dch} \subset X(\R)$.
+\end{itemize}
+\end{rem}
+
+\begin{rem}
+Let $LI$ denote the proposition that $\zeta_M(2//3)$ is linearly independent in $\cO(I)$.
+Then HC implies LI. Via upper bounds on $\cO(I)_+$, this implies in turn Brown's theorem, as well as Theorems \ref{thm:mtmgenerates} and \ref{thm:strictquot}. Use that $\Q(-1)_M$ is a subquotient of $\cO(01)$ by weight applied to $\cO(0,1)_{dR}$.
+
+Since $\cZ_M$ is graded, it is enough to prove $LI_n$ for each weight $n \geq 0$.
+\end{rem}
+
+\subsection{The guiding principle}
+\[
+\xymatrix{
+\cZ_M \ar@{->>}[r]^{\mathrm{comp}^*} & \cZ \\
+\cO(I) \ar[r]^{\mathrm{comp}^*} & \C
+}
+\]
+The left side is algebro-geometric and has functions. The right side is analytic and has numbers.
+
+The Kontsevich-Zagier conjecture implies that $\textrm{comp}^*$ is injective.
+
+Examples of relations of multiple zeta values.
+\begin{center}
+\begin{tabular}{cl}
+Weight & Relations \\
+0 & $1$ \\
+1 & $0$ \\
+2 & $\zeta_M(2)$ \\
+3 & $\zeta_M(3)$ \\
+4 & $\zeta_M(2,2)$ \\
+5 & $\zeta_M(3,2), \zeta_M(2,3)$
+\end{tabular}
+\end{center}
+
+Kontsevich-Zagier implies that
+\[\label{eq:KZ1}
+\left( \begin{array}{c}
+\zeta_M(2,3) \\
+\zeta_M(3,2)
+\end{array} \right)
+=
+\left( \begin{array}{cc}
+\frac{3}{2} & -2 \\
+-\frac{11}{2} & 3
+\end{array} \right)
+\left( \begin{array}{c}
+\zeta_M(5) \\
+\zeta_M(2,3,2)
+\end{array} \right)
+\]
+
+The Lie algebra $\mathfrak{u}_M := \mathrm{Lie~} U_M$ acts by derivations on regular functions in order to reduce to $\zeta_M(2), 1$. It is pro-nilpotent.
+\[\label{eq:KZ2}
+\begin{array}{rcl}
+\mathfrak{u}_M \to \mathfrak{u}_M^{ab} = \mathfrak{u}_M |_{[\mathfrak{u}_M, \mathfrak{u}_M]} & \cong & \coprod_{r \geq 1} \Ext_{\MTMZ}(\Q(0), \Q(2r+1))^{\vee} \\
+\partial_{2r+1} & \mapsto & \Q[\partial_{2r+1}]
+\end{array}
+\]
+\[
+\mathrm{comp}^*(\zeta_M(2, \ldots, 2)) = \zeta(\underbrace{2, \ldots, 2}_m) \sim \pi^{2m}
+\]
+We need to derviate $\zeta_M(2, \ldots, 2)$. Apply Kontsevich-Zagier formula again to infer that $\zeta_M(\underbrace{2,\ldots,2}_n)$ is a function of the period of $\Q(2n)$.
+
+As $\Q(1)_{dR}$ is a $G_M$ representation factors through $G_M \to \Gm$. Hence $\partial_{2r+1}(\zeta(2,\ldots,2)) = 0$.
+
+\subsection{Aside on algebraic groups}
+
+\begin{defn}[Linear function]
+Let $G$ be an algebraic group acting algebraically on a scheme $X$ over $k$. Then a function $f \in \cO(X)$ is \emph{linear} with respect to $G$ if for all $\partial \in \mathrm{Lie~}(G)$, $\partial(f)$ is constant on $X$.
+\end{defn}
+
+For example, if $G = \Ga$ acts on $X = \Ga$, then linear functions $g$ are those such that $dg \leq 1$.
+
+\begin{rem}
+Any linear $f \in \cO(X)$ defines a morphism $X_f : g \to k$ out of $\chi_f$. We get
+\[
+0 \to 1 \to V_f \to 1 \to 0 \qquad V_f = \left( \begin{array}{cc}
+0 & \chi_f \\
+0 & 0
+\end{array} \right)
+\]
+where $V_f$ are the representations of $g$.
+\end{rem}
+
+\begin{lemma}
+Let $\xymatrix{ \cC \ar@<0.2em>[r]^{\omega} \ar@<-0.2em>[r]^{\eta} & \mathrm{Vect}(k) }$.
+\[
+0 \to L_1 \to S \to L_2 \to 0
+\]
+$\rk L_i = 1$, $S \in \cC$, $f \in \cO(I(\omega, \eta))$ any period of $S$ of kind $\left( \begin{array}{cc}
+* & f \\
+0 & *
+\end{array} \right)$. Then $f$ is linear with respect to $U = r_U(G_M)$, where $r_U$ denotes the unipotent radical (Cf. Definition \ref{def:uniradical}). In addition, $V_f \cong \omega(S)$ as $U$-representations.
+\end{lemma}
+
+Borel's result on $\zeta$-values as regulators and the Borel-Beilinson comparison theorem together imply that the periods of $M_{2r+1} = \left( \begin{array}{cc}
+(2\pi i)^{2r+1} & \zeta(2r+1) \\
+0 & 1
+\end{array} \right)$
+
+Kontsevich-Zagier and the lemma together imply that $\zeta_M(2r+1)$ is linear with respect to $U_M$ and
+\[\label{eq:KZ3}
+\partial_{2r+1}(\zeta_M(2s+1)) \sim \delta_{r,s}
+\]
+Why is this proportional? Take the linear function $\zeta$ it gives you an extension which gives you a character of the Lie algebra, and mapping over to the Ext group, we see that it vanishes.
+
+So we've deduced three formulas from Kontsevich-Zagier: Equations \ref{eq:KZ1}, \ref{eq:KZ2} and \ref{eq:KZ3}.
+
+
+
+\subsection{Application}
+\[
+(\partial_{\epsilon} + \partial_s)\left( \begin{array}{cc} \zeta_M(2,3) \\ \zeta_M(3,2) \end{array} \right) = A \left( \begin{array}{c} 1 \\ \zeta_M(2) \end{array} \right)
+\]
+where $A := \left( \begin{array}{cc} 3/2 & -2 \\ -11/2 & 3 \end{array} \right)$ is the matrix of \ref{eq:KZ1}. The matrix $A$ is invertible. Indeed, we may multiple the first column by 2. Then it is an integer matrix. Examine it modulo 2 and it becomes lower triangle with ones on the diagonal, and hence it is invertible. This will be a general tactic for see that a matrix is invertible.
+
+``So'', $\zeta_M(2,3)$ and $\zeta_M(3,2)$ are linearly independent.
+
+After applying these derivations we are still in the subspace generated by $\zeta_M(3)$. By the way if you apply the derivations to $(1 \zeta_M(2))^T$, you get zero.
+
+\section{Strategy of the proof}
+
+\begin{defn}
+We define
+\[
+3_{\ell} \cZ_M := \langle \zeta_M(2 //3) \mid \textrm{at most $\ell$ threes appear} \rangle
+\]
+\end{defn}
+
+\begin{rem} 
+The filtration $3_{\ell}$ commutes with $W_n$.
+\end{rem}
+
+\begin{itemize}
+\item $3_{\ell} \cZ_M$ are stable under $\mathfrak{u}_M \ni \partial = \sum_{k=1}^{\infty} \partial_{2k+1}$.
+\item $\partial : \gr^{3_{\ell}}_e \cZ_M \to \gr^{3_{\ell}}_{e-1} \cZ_M$. But we need to prove the dependency in each (weight) degree. So consider the $n$-part. They all have negative weights, so in degree $n$ we have
+\[
+(\gr^{3_{\ell}}_e \cZ_M)_n \stackrel{\partial}{\to} \bigoplus_{r \geq 1} \left(\gr_{e-1}^{3_{\ell}} \cZ_M\right)_{n-(2r+1)}
+\]
+\end{itemize}
+
+Explicit bases: 
+\[
+\begin{array}{rcl}
+\{ \zeta_M(2 //3) \mid \textrm{with $m$ 2's and $\ell$ 3's where $2m+3\ell = n$} \} & \to & \{ \zeta_M(2//3) \mid \textrm{the same for various weights} \} \\
+\zeta_M(2//3, \ldots, 2//3)(3,2, \ldots,2)) & \mapsto & \zeta_M((2//3, \ldots, 2//3))
+\end{array}
+\]
+
+By the main theorem, there exists an \emph{invertible} matrix $A$ such that
+\[
+\partial(\textrm{LHS basis}) = A \cdot \partial(\textrm{RHS basis})
+\]
+
+\begin{prop}
+M.th. implies LI.
+\end{prop}
+\begin{proof}
+Induction on $\ell$. The induction step is M.th. The base step is $\ell = $. In the base case, $\zeta_M(2, \ldots, 2) \neq 0$. $\R \ni \zeta(2,\ldots, 2) \geq 0$.
+\end{proof}
+

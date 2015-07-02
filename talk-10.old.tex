@@ -1,0 +1,147 @@
+\chapter{Motivic structure: Motivic fundamental group by Simon Pepin Lehalleur}
+%\addcontentsline{toc}{chapter}{*Motivic structure: Motivic fundamental group by Simon Pepin Lehalleur}
+
+Simon Pepin Lehalleur on September 6th, 2012.
+
+\medskip
+\medskip
+
+\begin{itemize}
+\item Let $X = \Pspace^1_k \setminus D$ for $k \inj \C$. 
+\item Let $a, b \in X(k)$.
+\item $(\pi_1(X;a,b)_H)_{a,b}$ $\mathrm{MH}(k)$-affine schemes and groupoid structure
+\item $x, y \in D(k), u \in T_x \Pspace^1 \setminus \{0\}, v \in T_y \Pspace^1 \setminus \{0\}$
+\item $\pi_1(X;a,u)_H$ and $\pi_1(X;u,v)_h$ $\mathrm{MH}(\Q)$-schemes with composition of paths.
+\item Multiple zeta values are real periods of
+\[
+\xymatrix{
+\stackrel{0}{\mathrm{x}} \ar@{-<}[r] & \stackrel{1}{\mathrm{x}} \ar@{-<}[l] & \stackrel{\infty}{\mathrm{x}}
+}
+\]
+\item $\pi_1(\Pspace^1 \setminus \{ 0,1\infty\},u,v)$
+\end{itemize}
+
+\section{Section 1}
+First, under hypothesis $k=\Q$, we lift all of these to $\mathrm{MTM}(\Q)$.
+
+\subsection{Case of interior base points}
+
+The idea is to perform the bar construction on $M(X)^{\vee}$ to produce a motivic bar complex $B_M^*(X;a,b) \in \mathrm{Ind}(\DMk)$. The idea meets the following obstructions.
+\begin{enumerate}
+\item $\DMk$ is too small. Therefore we truncate.
+\item There is no total functor $Tot : K^b(\DMk) \to \DMk$.
+\item Duality is only defined on $\DMk$. So we take duals last of all.
+\end{enumerate}
+
+\[
+\begin{array}{rccccccl}
+\mathrm{CPX}^{a,b}_* = [ & \spec k & \stackrel{d_0}{\to} & X & \stackrel{d_1}{\to} & X^2 & \stackrel{d_2}{\to} & \cdots ] \in K(\SmCorr) \\
+& 0 & -1 & -2 & &
+\end{array}
+\]
+where
+\begin{eqnarray*}
+d_0 = a - b \\
+d_i = \sum_{j=0}^{i} (-1)^j d_i^j, \qquad d_i^j(x_1, \ldots, x_i) = \left\{ \begin{array}{ll}
+(a,x_1, \ldots, x_i), & j=0 \\
+(x_1, \ldots, x_j, x_j, \ldots, x_i), & 0 < j < i \\
+(x_1, \ldots, x_i, b), & j=i
+\end{array} \right.
+\end{eqnarray*}
+\[
+\sigma_{\geq -n} \mathrm{CPX}_*^{a,b} = [ \spec k \to X \to \cdots \to X^n] \in K^b(\SmCorr)
+\]
+\[
+B_M^{\geq -n}(X;a,b) = M([\sigma_{1 \geq -n} \mathrm{CPX}_*^{a,b}])^{\vee} \in \DMk
+\]
+Then
+\[
+B_M(X;a,b) = \varinjlim_n B^{\geq -n}_M(X;a,b) \textrm{``$=$''} \cdots \to \stackrel{-2}{M(X^2)^{\vee}} \to \stackrel{-1}{M(X)^{\vee}} \to \stackrel{0}{\spec k}
+\]
+
+\subsection{Operations}
+We need a coproduct which encodes the shuffle and a product which encodes the composition of paths.
+\subsubsection{Shuffle product}
+Because of $v$, we need various shuffle coproducts:
+\[
+\sigma_{\geq -n} \mathrm{CPX}_*^{a,b} \to \sigma_{\geq -n} \mathrm{CPX}_*^{a,b} \otimes \sigma_{-n} \mathrm{CPX}_*^{a,b}
+\]
+The shuffle coproduct before truncations:
+\[
+\begin{array}{rcl}
+\mathrm{CPX}_*^{a,b} & \to & \mathrm{CPX}_*^{a,b} \otimes \mathrm{CPX}_*^{a,b} \\
+(x_1, \ldots, x_n) & \mapsto & \sum_{\sigma \in \sigma_{p,q}} \mathrm{sgn}(\sigma)(x_{\sigma(1)}, \ldots, x_{\sigma(p)}) \otimes (x_{\sigma(p,n)}, \ldots, x_{\sigma(n)})_{p+q=n}
+\end{array}
+\]
+
+This is the same as Thomas's talk (Ref missing). Everywhere there was multiplication we apply diagonal map. Every place there was a coproduct, we apply the embedding of points into a variety.
+
+\subsubsection{Composition of paths}
+\[
+\begin{array}{rcl}
+\mathrm{CPX}_*^{a,b} \otimes \mathrm{CPX}_*^{a,b} & \to & \mathrm{CPX}_*^{a,b} \\
+(x_1, \ldots, x_k) \otimes (g_1, \ldots, g_l) & \mapsto & \sum_{i=1} \left\{ \begin{array}{l}
+(x_1,x_2,y_1,y_2) \\
+(x_1,b,y_1,y_2) \\
+(x_1,b,b,y_2) \\
+(x_1,x_2,b,y_2)
+\end{array} \right.
+\end{array}
+\]
+where the sum has to do with
+\[
+\begin{array}{cccccccc}
+x & x & x & x & x & x & x & c \\
+a & x_1 & x_2 & b & y_1 & y_2 & &
+\end{array}
+\]
+
+\begin{prop}
+Let $M(X) \in \DTM$. Then $B_M^*(X;a,b) \in \mathrm{Ind}(\DTM)$.
+\end{prop}
+\begin{proof}
+By induction on truncations.
+\end{proof}
+\begin{prop}
+Assume $(B-S)_k$. Then there is a $t$-structure on $\DTM$
+\[
+H_0 = H^0 : \DTM \to \MTM
+\]
+(Here $H^n = H_{-n}$.)
+\end{prop}
+Since we know the tensor product is exact on $\DTM$...
+
+\[
+H^0(B_M(X;a,b)) \in \mathrm{Ind}(\MTM)
+\]
+Because of $\otimes$ t-exact and some arguments?
+Operations on $H^0(B_M^*(X;a,b))$.
+\begin{defn}[Motivic fundamental group]
+Let $X$ be a smooth variety over $k$. Then its motivic fundamental group is
+\[
+\spec (H^0 B_M^*(X;a,b))
+\]
+\end{defn}
+The $M(X)^{\vee}$ has positive weights. Hence $\pi_1(X;a,b)$ has positive weights.
+
+\section{Realizations}
+We prove that $\pi_1(\Pspace^1 \setminus \{0,1,\infty\}, u,v)$ is an $\MTMZ$-scheme.
+
+\[
+\omega_H : \DTM \to \mathrm{D}^b(\MTH) \qquad \omega_H \circ H^0 : \MTM \to \MTH
+\]
+
+\begin{eqnarray*}
+\omega_{H*} \pi_1(X;a,b) & = & \spec \left( H^0 \omega_H B_M^*(X;a,b) \right) \\
+& = & \varprojlim_n \spec \left( H^0 \omega_H B_M^{\geq -n}(X;a,b) \right) \\
+& = & \varprojlim_n \spec \left( H^0 \omega_M \left[ M(\sigma_{\leq n} \mathrm{CPX}_*^{a,b})\right]^{\vee} \right)
+\end{eqnarray*}
+
+Then
+\[
+X_0 \to X_{-1} \to \cdots \to X_{-n} \in K^b(\SmCorr)
+\]
+Replace each $X_i$ by $R\Gamma(X_i)$ and take the total complex.
+\[
+\omega_H(\pi_1(X;a,b)_M) = \spec H^0(B_H^*(X;a,b)) = \pi_1(X;a,b)_H
+\]

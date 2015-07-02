@@ -1,0 +1,55 @@
+This is BibTeX, Version 0.99d (TeX Live 2010)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: alpbach-2012.aux
+The style file: amsalpha.bst
+Database file #1: alpbach-2012.bib
+Warning--I didn't find a database entry for "brbr"
+Warning--I didn't find a database entry for "ab"
+Warning--missing publisher in cartier-ha
+Warning--missing publisher in milne-ag
+Warning--missing journal name in em
+Warning--missing journal, volume, and year in em
+Warning--missing pages in em
+Warning--missing pages in suisse
+You've used 18 entries,
+            2624 wiz_defined-function locations,
+            675 strings with 6861 characters,
+and the built_in function-call counts, 6439 in all, are:
+= -- 590
+> -- 229
+< -- 15
++ -- 69
+- -- 67
+* -- 520
+:= -- 1013
+add.period$ -- 18
+call.type$ -- 18
+change.case$ -- 98
+chr.to.int$ -- 17
+cite$ -- 24
+duplicate$ -- 310
+empty$ -- 547
+format.name$ -- 94
+if$ -- 1323
+int.to.chr$ -- 2
+int.to.str$ -- 0
+missing$ -- 41
+newline$ -- 64
+num.names$ -- 55
+pop$ -- 119
+preamble$ -- 1
+purify$ -- 116
+quote$ -- 0
+skip$ -- 220
+stack$ -- 0
+substring$ -- 360
+swap$ -- 57
+text.length$ -- 15
+text.prefix$ -- 9
+top$ -- 0
+type$ -- 124
+warning$ -- 6
+while$ -- 67
+width$ -- 22
+write$ -- 209
+(There were 8 warnings)

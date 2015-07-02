@@ -1,0 +1,35 @@
+\begin{thebibliography}{1}
+
+\bibitem{cartier-ha}
+P.~Cartier.
+\newblock A primer of hopf algebras.
+\newblock {\em Frontiers in Number Theory, Physics, and Geometry II}, pages
+  537--615, 2007.
+
+\bibitem{em}
+T.~Ekedahl and S.~{M}erkulov.
+\newblock Lecture notes on the {G}rothendieck-{T}eichm{\"u}ller group.
+\newblock \url{http://www2.math.su.se/~sm/Papers/GT.pdf}.
+
+\bibitem{ls}
+J.~Lambek and P.J. Scott.
+\newblock {\em Introduction to higher order categorical logic}, volume~7.
+\newblock Cambridge Univ Pr, 1988.
+
+\bibitem{milne-ag}
+J.S. Milne et~al.
+\newblock Algebraic groups, lie groups, and their arithmetic subgroups, 2010.
+
+\bibitem{quillen-r}
+D.~Quillen.
+\newblock Rational homotopy theory.
+\newblock {\em The Annals of Mathematics}, 90(2):205--295, 1969.
+
+\bibitem{suisse}
+E.~Suisse.
+\newblock Groupes nilpotents sans torsion et compl{\'e}t{\'e}s de {M}al'cev.
+\newblock M{\'e}moire.
+  \url{http://www-magistere.u-strasbg.fr/IMG/pdf/memoire_esther_suisse.pdf},
+  2007.
+
+\end{thebibliography}

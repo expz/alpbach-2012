@@ -1,0 +1,584 @@
+\chapter*{The pro-unipotent completion by Alberto Vezzani}
+%\addcontentsline{toc}{chapter}{***The pro-unipotent completion by Alberto Vezzani}
+
+Alberto Vezzani on September 3rd, 2012.
+
+\medskip
+\medskip
+
+The aim of these notes is to give an overview of Quillen's construction of the pro-unipotent completion of an abstract group (or a Lie algebra). Some consequences of the formulas and special cases are explained in more detail.
+
+\section{Introduction}
+
+We start by presenting the work of Quillen \cite[Appendix A]{quillen-r}, and translating it into the setting of algebraic groups, following the approach of \cite{em}. We also follow Cartier \cite{cartier-ha} for specific facts on Hopf algebras.
+From now on, we work over the base field $\Q$. %We will try to underline the points in which this hypothesis is needed.
+
+\begin{defn}
+Given an abstract group $\Gamma$ [resp. a Lie algebra $\fg$], the pro-unipotent completion $\Gamma^{un}$ [resp. $\fg^{un}$] is the universal pro-unipotent algebraic group $G$ endowed with a map $\Gamma\to G(\Q)$ [resp. $\fg \to \mathrm{Lie~}G$]. 
+\end{defn}
+
+Let us focus on the case of groups. The meaning of the definition is that there is a map $u:\Gamma\to\Gamma^{un}(\Q)$ such that for any map $f:\Gamma\to G(\Q)$ to the $\Q$-points of a pro-unipotent algebraic group $G$, there exists a unique map $\phi:\Gamma^{un}\to G$ such that $f=\phi(\Q)\circ u$. In other words, we are looking for a left adjoint to the functor $G\mapsto G(\Q)$ defined from pro-unipotent algebraic groups to abstract groups. Sadly enough, we anticipate that we will need to restrict to a subcategory of abstract groups in order to find such a functor.
+
+The category of pro-unipotent algebraic groups is a full subcategory of the category of pro-affine algebraic algebraic groups (the category of formal filtered limits of affine algebraic groups over quotients). This category is clearly equivalent to the opposite category of Hopf algebras (not necessarily finitely presented). What we need to do is therefore to associate to an abstract group a particular commutative Hopf algebra over $\Q$. There are some well-known examples of adjoint pairs which are close to reaching this aim.
+
+\begin{prop}
+There is an adjoint pair of functors
+\[
+\adj{\Q[\cdot]}{\Gps}{\Q\lAlg}{(\cdot)^\times}
+\]
+between the category of abstract groups and (not necessarily commutative) $\Q$-algebras.
+\end{prop}
+
+Any group algebra $\Q[\Gamma]$ can be endowed with the structure of a Hopf algebra with respect to the maps
+\[
+\Delta: g\mapsto g\otimes g\qquad
+S: g\mapsto g^{-1}\qquad
+\epsilon: g\mapsto1
+\]
+for all $g\in\Gamma$. Therefore the functor $\Q[\cdot]$ factors over the category of Hopf algebras. Also this new functor has an adjoint:
+\begin{prop}
+There is an adjoint pair of functors
+\[
+\adj{\Q[\cdot]}{\Gps}{\HA}{\cG}
+\]
+between the category of abstract groups and (not necessarily commutative) $\Q$-Hopf algebras where $\cG$ associates to a Hopf algebra $R$ the set of group-like elements:
+\[
+\cG R \colonequals\{x\in R^\times: \Delta x=x\otimes x\}
+\]
+endowed with the product inherited from $R$.
+\end{prop}
+
+\begin{proof}
+This comes from the previous proposition. Indeed, given a map $\Q[\Gamma]\to R$ induced by $f:\Gamma\to R^\times$, the diagram 
+$$\xymatrix{
+\Q[\Gamma]\ar[r]\ar[d]&\Q[\Gamma]\otimes\Q[\Gamma]\ar[d]\\
+R\ar[r]&R\otimes R
+}$$
+commutes if and only if all images of the elements of $G$ are group-like. Moreover, any group-like element $x$ satisfies $\epsilon(x)=1$, hence also the augmentation is preserved.
+\end{proof}
+
+Similarly for Lie algebras:
+\begin{prop}\begin{enumerate}[(i)]
+\item There is an adjoint pair of functors
+\[
+\adj{\cU}{\LA}{\Q\lAlg}{for}
+\]
+between the category of Lie algebras and (not necessarily commutative) $\Q$-algebras. The functor $for$ sends a $\Q$-algebra $R$ to the Lie algebra structure over $R$ induced by commutators.
+\item The left adjoint factors over the category of Hopf algebras by endowing the universal enveloping algebra $\cU\fg$ of a Lie algebra $\fg$ with the structure of a Hopf algebra with respect to the maps
+\[
+\Delta: x\mapsto x\otimes1+1\otimes x\qquad
+S: x\mapsto -x\qquad
+\epsilon: x\mapsto0
+\]
+for all $x\in\fg$.
+\item There is an adjoint pair of functors
+\[
+\adj{\cU}{\LA}{\HA}{\cP}
+\]
+between the category of Lie algebras and (not necessarily commutative) $\Q$-Hopf algebras where $\cP$ associates to a Hopf algebra $R$ the set of primitive elements:
+\[
+\cP R \colonequals\{x\in R: \Delta x=x\otimes 1+1\otimes x\}
+\]
+endowed with the Lie bracket induced by commutators.
+\end{enumerate}
+\end{prop}
+
+Note that $\Q[\Gamma]$ and $\cU\fg$ are cocommutative, but not necessarily commutative (this happens iff $\Gamma$ or $\fg$ is abelian). Since our initial aim was to associate to a group (or to a Lie algebra) a commutative, but not necessarily cocommutative Hopf algebra, the natural idea is now to ``take duals''. Taking duals of vector spaces is a delicate operation whenever the dimension is not finite. Hence, we will need to restrict to a particular case where the situation is self-reflexive as in the finite-dimensional case.
+
+\begin{defn}
+A topological vector space $V$ is linearly compact if it is homeomorphic to $\varprojlim V/V_i$, where $V/V_i$ are discrete and finite dimensional, and the maps in the diagram are quotients.  
+\end{defn}
+
+We will denote by $(\cdot)^\vee$ the dual space and by $(\cdot)^*$ the topological dual.
+
+\begin{exam}
+If $V$ is a discrete vector space, we will always enodow its dual $V^\vee$ with the linearly compact topology $\varprojlim W_i^\vee$ by letting $W_i$ vary among the subvector spaces of $V$ which are finite dimensional.
+\end{exam}
+
+\begin{prop}
+\begin{enumerate}
+	\item If $V$ is discrete [resp. linearly compact], then $(V^\vee)^*\cong V$ [resp. $(V^*)^\vee\cong V$].
+	\item If $V$ is discrete [resp. linearly compact], then $(V\otimes V)^\vee\cong V^\vee\hat{\otimes}V^\vee$ [resp. $(V\hat{\otimes}V)^*\cong V^*\otimes V^*$].
+\end{enumerate}
+\end{prop}
+
+In particular, duality defines an equivalence of categories between commutative Hopf algebra and the category of linearly compact Hopf algebras.
+
+Our attempt is now to use these dualities in order to obtain a commutative and cocommutative Hopf algebra out of $\Q[\Gamma]$ or $\cU\fg$. By what just stated, we need to get a complete topological Hopf algebra. Any Hopf algebra $R$ is augmented by the counit $\epsilon$. Let $I$ denote the augmentation ideal. We can endow $R$ with the $I$-adic topology, and complete it with respect to it.
+
+\begin{defn}
+A complete Hopf algebra is a complete topological augmented algebra $\epsilon: R\to R/I\cong\Q$, homeomorphic to $\varprojlim R/I^k$ and endowed with a map $\Delta: R\to R\hat{\otimes}R$ that fit in the usual diagrams of Hopf algebras.
+% and which issuch that $R$ is homeomorphic to $\varprojlim R/I^k$, where $I$ is the augmentation ideal.
+We denote the category of complete Hopf algebras by $\CHA$.
+\end{defn}
+
+We remark that our definition differs slightly from the one of \cite{quillen-r} since Quillen introduces also the choice of a filtration.
+
+\begin{exam}
+If $R$ is a Hopf algebra, then its $I$-adic completion $\hat{R}$ is a complete Hopf algebra. In particular, $\Gamma\mapsto \widehat{\Q[\Gamma]}$ and $\fg\mapsto\widehat{\cU\fg}$ define functors to the category $\CHA$.
+\end{exam}
+
+The following proposition is a formal consequence of the previous ones.
+
+\begin{prop}
+There are adjoint pairs of functors
+\[
+\adj{\hat{\Q}[\cdot]}{\Gps}{\CHA}{\cG}
+\]
+\[
+\adj{\hat{\cU}}{\LA}{\CHA}{\cP}
+\]
+where $\cG$ and $\cP$ are defined like before.
+\end{prop}
+
+We can now isolate in $\CHA$ the full subcategory $\cat$ of those algebras $R$ which are also linearly compact. Since $R\cong\varprojlim R/I^k$, this condition is equivalent to asking that $R/I^k$ is finite dimensional for all $k$. Since this is obviously true for $k=1$, by induction we conclude that this is equivalent to the finite dimensionality of all $I^k/I^{k+1}$. Multiplication defines a surjection $(I/I^2)^{\otimes k}\to I^k/I^{k+1}$, and therefore this is equivalent to imposing $I/I^2$ finite dimensional.
+
+\begin{exam}
+\begin{enumerate}
+	\item Let $\Gamma$ be an abstract group. Then
+	\[
+	I_{\hat{\Q}[\Gamma]}/I_{\hat{\Q}[\Gamma]}^2\cong I_{{\Q}[\Gamma]}/I_{{\Q}[\Gamma]}^2\cong \Gamma^{ab}\otimes_Z\Q
+	\]
+	where $\Gamma^{ab}$ is the abelianization of $\Gamma$, and where the last isomorphism is induced by $(g-e)\mapsto g$. In particular, if $\Gamma$ is such that $\Gamma^{ab}\otimes_{\Z} \Q$ has finite rank, then $\hat{\Q}[\Gamma]$ is linearly compact. We denote by $\widetilde{\Gps}$ the full subcategory of $\Gps$ of objects satisfying this property.
+	\item 
+	Let $\fg$ be a Lie algebra. Then
+	\[
+	I_{\hat{\cU}\fg}/I_{\hat{\cU}\fg}^2\cong I_{{\cU}\fg}/I_{{\cU}\fg}^2\cong \fg/[\fg,\fg]
+	\]
+	where the last isomorphism is induced by $x\mapsto x$. In particular, if $\fg$ is such that $\fg/[\fg,\fg]$ has finite rank, then $\hat{\cU}\fg$ is linearly compact. We denote by $\widetilde{\LA}$ the full subcategory of $\LA$ of objects satisfying this property.
+\end{enumerate}
+\end{exam}
+
+%\begin{cor}
+%There are adjoint pairs of functors
+%\[
+%\adj{\hat{\Q}[\cdot]}{\widetilde{\Gps}}{\cat}{\cG}
+%\]
+%\[
+%\adj{\hat{\cU}}{\widetilde{\LA}}{\cat}{\cP}
+%\]
+%where $\cG$ and $\cP$ are defined like before.
+%\end{cor}
+
+%Consider now the category $\cat$ of linearly compact Hopf algebras which are also $I$-adically complete. 
+%
+%\begin{prop}
+%There are adjoint pairs of functors
+%\[
+%\adj{\hat{\Q}[\cdot]}{\widetilde{\Gps}}{\cat}{\cG}
+%\]
+%\[
+%\adj{\hat{\cU}}{\widetilde{\LA}}{\cat}{\cP}
+%\]
+%where $\cG$ and $\cP$ are defined like before.
+%\end{prop}
+
+By duality, the category  $\cat$ is equivalent to a full subcategory of $\HA^{op}$, and hence to a subcategory of pro-affine algebraic groups.
+
+\begin{prop}
+Let $G=\spec R$ be a pro-affine algebraic group. Then $R^\vee\in\cat$ if and only if $\cP R$ is finite dimensional and the ``conilpotency filtration''
+\begin{equation}\label{cf}
+0\subset C_0 \colonequals\Ann_R I\subset\ldots\subset C_k \colonequals\Ann_R I^{k+1}\subset\ldots
+\end{equation}
+is exhaustive, i.e. if $R=\bigcup C_i$, where $I$ is the augmentation ideal of $R^\vee$.
+\end{prop}
+
+\begin{proof}
+We know that $R^\vee$ lies in $\cat$ if $I/I^2$ is finite dimensional, and if $R^\vee\cong\varprojlim R^\vee/I^k$. The dual space $(R^\vee/I^k)^*$ coincides with $C_k$. In particular, $C_0=\Q$ and $C_1=\Q^{op}lus\cP R$. Indeed, an element $x$ of $R$ lies in $\Ann I^2$ if and only if $\Delta x=y\otimes 1+1\otimes z$, and by using the axioms of Hopf algebra, this turns out to be equivalent to $\Delta x=x\otimes 1+1\otimes x$ if $\epsilon(x)=0$.
+
+We then conclude that $I/I^2$ is finite dimensional if and only if $(I/I^2)^*=(\ker (R/I^2\to R/I))^*=C_1/C_0=\cP R$ is finite dimensional, and that $R^\vee\cong\varprojlim R^\vee/I^k$ if and only if $R=\varinjlim(R^\vee/I^k)^*=\varinjlim C_k$.
+\end{proof}
+%, which we denote with $\pUAG$ and whose objects are called pro-unipotent algebraic groups. 
+
+We remark that the conilpotency filtration $\{C_i\}$ just defined coincides with the one of Cartier \cite[3.8 (A)]{cartier-ha}. This is part of the following proposition, whose proof comes by induction from the previous one.
+\begin{prop}
+Let $G=\spec R$ be a pro-affine algebraic group and let $\bar{R}$ be its augmentation ideal.
+The elements of the filtration \eqref{cf} can be defined equivalently in the following ways:
+\begin{enumerate}
+	\item $C_i=\Q^{op}lus\ker\bar{\Delta}_n$, where $\bar{\Delta}: \bar{R}\to \bar{R}\otimes \bar{R}$ maps  $x$ to $\Delta x-x\otimes1-1\otimes x$ and $\bar{\Delta}_n: \bar{R}\to \bar{R}^{\otimes n}$ maps $x$ to $(\bar{\Delta}\otimes\id\otimes\ldots\otimes\id)(\bar{\Delta}_nx)$.
+	\item $C_{i+1}/C_i$ is the trivial subrepresentation of $G$ inside $R/C_i$.
+\end{enumerate}
+\end{prop}
+
+\begin{defn}
+A pro-unipotent algebraic group is a pro-affine algebraic group $\spec R$ such that the conilpotency filtration \eqref{cf} is exhaustive.
+%$R^\vee$ is $I$-adically complete, where $I$ is the augmentation ideal with respect to the complete topological Hopf algebra structure induced by duality. 
+A unipotent algebraic group is a pro-unipotent algebraic group $\spec R$ such that $R$ is finitely presented. The category defined by [pro-]unipotent algebraic groups will be denoted with $\UAG$ [resp. $\pUAG$].
+\end{defn} 
+
+In particular, a unipotent algebraic group $G$ such that the Lie algebra $\cP\cO(G)$ is finite dimensional defines an object $\cO(G)^\vee$ of $\cat$.
+
+Our definition is different from the ``standard'' one. We now prove the equivalence of the two notions. Recall that $\mathbf{UT}_n$ is the subgroup of $\GL_n$ defined by upper-triangular matrices, which have $1$'s on the main diagonal. 
+
+\begin{prop}
+Let $G$ be a pro-affine algebraic group. The following are equivalent:
+\begin{enumerate}[(i)]
+    \item The group $G$ is pro-unipotent.
+    \item For every non-zero representation $V$ of $G$, there exists a non-zero vector $v\in V$ such that $G\cdot v=v$.
+\end{enumerate}
+In case $G$ is an algebraic group, the previous conditions are equivalent to:
+\begin{enumerate}[(iii)]
+    \item $G$ is isomorphic to a subgroup of $\mathbf{UT}_n$ for some $n$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+Let $G=\spec R$. Suppose $(i)$ is satisfied. Then any representation $\rho: V\to V\otimes R$ admits an exhaustive filtration $\{V_k\}$ where $V_k\colonequals\{v\in V\otimes C_k\}$. In particular, $V_0$ is a trivial subrepresentation since if $v\in V_0$, then $\rho v=v\otimes1$. We now prove $(ii)$ by showing that $V_k=0$ implies $V_{k+1}=0$.
+
+It can be explicitly seen that $\Delta C_i\subset\sum_{a+b=i} C_a\otimes C_{b}$. Therefore if $x\in V_{k+1}$, then $(1\otimes\Delta)(\rho x)$ lies in $\sum_{a+b=k+1} V\otimes C_{a}\otimes C_{b}$. Since $a$ and $b$ can't be both bigger than $k$, if follows that $V_{k+1}$ is mapped to $0$ via the composite map
+\[
+V\to V\otimes R\stackrel{1\otimes\Delta}{\rightarrow}V\otimes R\otimes R\stackrel{\pi}{\rightarrow}V\otimes R/C_k\otimes R/C_k
+\]
+On the other hand, the previous map coincides (by the axioms of comodules) with
+\[
+V\to V\otimes R\stackrel{\rho\otimes1}{\rightarrow}V\otimes R\otimes R\stackrel{\pi}{\rightarrow}V\otimes R/C_k\otimes R/C_k
+\]
+which is an injection since $V_k=0$. Viceversa, if any representation $V$ has a non-zero trivial subrepresentation, by induction one can define an ascending filtration $\{V_i\}$ such that $V_{i+1}/V_{i}$ is the trivial subrepresentation of $V/V_i$. Since any element of $V$ generates a finite dimensional subrepresentation, it follows that this filtration is exhaustive. The conilpotency filtration corresponds to the filtration associated to the representation defined on $R$ itself. This proves $(i)\Leftrightarrow(ii)$.
+
+If $V$ is finite dimensional, then (by induction on its dimension, since $V_0\neq0$) it is an extension of trivial representations. It follows in particular that, with respect to a suitable basis, $\rho: G\to\GL_V$ factors over $\mathbf{UT}_n$. If $G$ is an algebraic group, one can apply this fact to a faithful finite dimensional representation to prove $(iii)$.
+\end{proof}
+
+Being pro-unipotent is closed under quotients (using the condition $(ii)$ for example). Hence, if $\spec R$ is a pro-unipotent algebraic group, then any sub-Hopf algebra $R'$ of $R$ defines a pro-unipotent algebraic group. It follows that the category of $\pUAG$ coincides with the pro-objects of $\UAG$ and $\cat$ is a subcategory of it.%. Since any Hopf algebra is the union of finitely presented subalgebras, $\pUAG$ is also equivalent to pro-objects of $\cat$ since they both represent the category of pro-unipotent algebraic groups $G$ with a finite dimensional Hopf algebra $\cO(G)$.
+%SECONDO ME SE G E AG, ALLORA PO(G) E' AUTOMATIC FIN DIM. 
+
+We remark that our definition is slightly different from the one of Cartier \cite[end of p. 53]{cartier-ha}, since we do not impose that $R$ has countable dimension. 
+
+\begin{exam}
+\begin{enumerate}
+	\item Let $\Gamma$ be an abstract group such that $\Gamma^{ab} \otimes_{\Z} \Q$ has finite rank. Then $\hat{\Q}[\Gamma]$ endowed with the $I$-adic topology is linearly compact, since it is homeomorphic to $\varprojlim \hat{\Q}[\Gamma]/I^k$ and all $I_k$ have finite codimension. In particular, $\spec(\hat{\Q}[\Gamma]^*)$ is pro-unipotent.
+	\item Similarly, if $\fg$ is a Lie algebra such that $\fg/[\fg,\fg]$ has finite rank, then $\spec(\hat{\cU}\fg^*)$ is pro-unipotent.
+	\item Consider $G=\mathbf{G}_a$. The Hopf algebra is $R=\Q[t]$, its dual vector space is ${\bf{pro}}d\Q\epsilon_k$ where $\epsilon_k(t^i)=\delta_{k,i}$. By duality, the augmentation ideal is $I=\ker((\Q\to R)^\vee)=\{\phi: R\to\Q: \phi(1)=0\}=\left\langle \epsilon_k\right\rangle_{k>0}$. The product is defined via duality from the coproduct of $R$ which sends $t$ to $t\otimes1 +1\otimes t$, so that
+	\[
+	(\epsilon_h\cdot\epsilon_k)(t^i)=(\epsilon_h\otimes\epsilon_k)(\Delta t^i)=(\epsilon_h\otimes\epsilon_k)(\sum_{\alpha+\beta=i} t^\alpha\otimes t^\beta)=\delta_{h+k,i}
+	\]
+	and hence $\epsilon_h\cdot\epsilon_k=\epsilon_{h+k}$.
+	
+	Therefore, $I$ is generated as an ideal by $\epsilon\colonequals\epsilon_1$. In particular, $R^\vee\cong\Q[[\epsilon]]$, which is $I$-adically complete. We conclude that $\mathbf{G}_a$ is unipotent.
+	
+	\item Consider $G=\mathbf{G}_m$. In this case, the coproduct on $R=\Q[t,t^{-1}]$ sends $t$ to $t\otimes t$. Therefore
+	\[
+	(\epsilon_h\cdot\epsilon_k)(t^i)=(\epsilon_h\otimes\epsilon_k)(\Delta t^i)=(\epsilon_h\otimes\epsilon_k)(t^i\otimes t^i)=\delta_{h,k,i}
+	\]
+	We conclude in particular that $I^2=I$, and hence $\mathbf{G}_m$ is not unipotent.
+\end{enumerate}
+\end{exam}
+
+Let's now consider the functors we have obtained from $\pUAG$ to $\Gps$ and to $\LA$.
+\begin{prop}
+Let $G=\spec R$ be a pro-affine algebraic group. Then $\cG (R^\vee)\cong G(\Q)$ and $\cP(R^\vee)\cong\mathrm{Lie~} G$. 
+\end{prop}
+
+\begin{proof}
+The unit of $R^\vee$ is the counit $\epsilon$. Also, for any $\phi\in R^\vee$ and any $x,y\in R$, $(\Delta\phi)(x\otimes y)=\phi(xy)$. Therefore
+\[
+\Delta\phi=\phi\otimes\phi \Leftrightarrow \phi(xy)=\phi(x)\phi(y)
+\]
+and
+\[
+\Delta\phi=\phi\otimes1+1\otimes\phi \Leftrightarrow \phi(xy)=\phi(x)\epsilon(y)+\epsilon(x)\phi(y)\Leftrightarrow \phi(I^2)=\phi(R/I)=0
+\]
+so that $\cG R^\vee\cong G(\Q)$ and $\cP R^\vee\cong (I/I^2)^\vee\cong\mathrm{Lie~} G$.
+\end{proof}
+
+%e postpone the proof of the following proposition to the next section.
+%
+\begin{prop}
+If $G$ is a unipotent algebraic group, then $G(\Q)^{ab}\otimes_{\Z}\Q$ and $\mathrm{Lie~} G$ have finite rank.
+\end{prop}
+
+\begin{proof}
+This is true for $\mathbf{UT}_n$, hence for any unipotent algebraic group.
+\end{proof}
+
+Recall that we have denoted by $\widetilde{\Gps}$ [resp. by $\widetilde{\LA}$] the subcategory of $\Gps$ [resp. of $\LA$] constituted by groups $\Gamma$ such that $\Gamma^{ab}\otimes_{\Z}\Q$ has finite rank [resp. by Lie algebras $\fg$ such that $\fg/[\fg,\fg]$ has finite rank]. Let $\bf{pro}\widetilde{\Gps}$ [resp. $\bf{pro}\widetilde{\LA}$] denote the associated category of pro-objects. It is equivalent to the category of topological groups $\Gamma$ which are homeomorphic to $\varprojlim \Gamma/\Gamma_i$, with $\Gamma/\Gamma_i$ discrete and lying in $\widetilde{\Gps}$ [resp. topological Lie algebras $\fg$ which are homeomorphic to $\varprojlim \fg/\fg_i$, with $\fg/\fg_i$ discrete and lying in $\widetilde{\LA}$]. 
+
+By our construction, we have therefore obtained adjunction pairs
+\begin{equation}\label{a}\begin{aligned}
+\adj{\spec((\hat{\Q}[\cdot])^*)}{{\bf{pro}}\widetilde{\Gps}}{\pUAG}{(\Q)}
+\\
+\adj{\spec(\hat{\cU}(\cdot)^*)}{{\bf{pro}}\widetilde{\LA}}{\pUAG}{\mathrm{Lie~}}
+\end{aligned}
+\end{equation}
+which are actually what we were looking for from the very beginning!
+
+\begin{cor}[Quillen's formula]
+\begin{enumerate}
+	\item Let $\Gamma$ be an object of $\widetilde{\Gps}$ (e.g. if $\Gamma$ is finitely generated). Then $\spec((\hat{\Q}[\Gamma])^*)\cong\Gamma^{un}$. 
+	\item Let $\fg$ be an object of $\widetilde{\LA}$ (e.g. if $\fg$ is finite dimensional). Then $\spec((\hat{\cU}\fg)^*)\cong\fg^{un}$. 
+\end{enumerate}
+\end{cor}
+
+\begin{proof}
+This follows formally from the previous adjunctions. We focus on the case of groups. Suppose that $G=\spec(\cO(G))$ is in $\pUAG$. Then $G$ is a filtered limit of unipotent algebraic groups $G_i$ with $\cP\cO(G_i)$ finite-dimensional. In particular, $\cO(G_i)^\vee$ as well as $\hat{\Q}[\Gamma]$ lie in $\cat$ and therefore:
+\[
+\begin{aligned}
+\Hom(\Gamma,G(\Q))&=\varprojlim_i\Hom(\Gamma,G_i(\Q))=\varprojlim_i\Hom(\Gamma,\cG\cO(G_i)^\vee)=\varprojlim_i\Hom(\hat{\Q}[\Gamma],\cO(G_i)^\vee)=\\&=\varprojlim_i\Hom(\spec((\hat{\Q}[\Gamma])^*),G_i)=\Hom(\spec((\hat{\Q}[\Gamma])^*),G).
+\end{aligned}\]
+\end{proof}
+
+We conclude our panorama on adjunctions by the following remark. There are well known adjunctions from $\Set$ to $\Gps$ and from $\Set$ to $\LA$. We wonder whether they are compatible with the rest of the diagram. In what follows we are crucially using the fact that we are working in characteristic $0$.
+
+Let $R$ be in $\CHA$. Suppose that $x$ lies in the augmentation ideal. Then the series $\sum\frac{x^k}{k!}$ has a limit which we denote by $\exp x$. 
+
+\begin{prop}\label{adj}
+The adjunction diagram
+$$\xymatrix{
+&&\Set\ar@<0.5ex>[dll]\ar@<0.5ex>[drr]\\
+\Gps\ar@<0.5ex>[urr]\ar@<0.5ex>[rr]&&\CHA\ar@<0.5ex>[rr]\ar@<0.5ex>[ll]&&\LA\ar@<0.5ex>[ull]\ar@<0.5ex>[ll]
+}$$
+commutes up to an equivalence of functors induced by the exponential map.
+\end{prop}
+
+\begin{proof}
+It suffices to prove that the two right adjoints are equivalent. The claim then follows from the following lemma.
+\end{proof}
+
+\begin{lemma}
+Let $R$ be an object of $\CHA$. Then $x\in\cP R\Leftrightarrow \exp x\in\cG R$.
+\end{lemma}
+
+\begin{proof}
+This follows from the equalities
+\[
+\Delta x=x\otimes1+1\otimes x\Leftrightarrow \Delta\exp x=\exp(\Delta x)=\exp(x\otimes1+1\otimes x)=\exp(x)\otimes\exp(x)
+\]
+which come from the definition of the exponential.
+\end{proof}
+
+\section{Quillen's theorem and corollaries}
+
+\begin{thm}[Quillen]Let $\MGps$ [resp. $\MLA$] be the subcategory of $\widetilde{\Gps}$ [resp. $\widetilde{\LA}$] constituted by nilpotent, uniquely divisible groups [resp. nilpotent algebras]. Then the adjunctions \eqref{a} induce equivalence of categories:
+$$\xymatrix{{\bf{pro}}\MGps\ar@<0.5ex>[r]_\sim&\pUAG\ar@<0.5ex>[l]\ar@<0.5ex>[r]_\sim&{\bf{pro}}\MLA\ar@<0.5ex>[l]}$$
+\end{thm}
+
+We devote the rest of the section to sktching the proof of this theorem.
+
+We begin with a useful fact from category theory. It is a generalization of well-known cases (Galois correspondences, closures of subsets, algebraic sets etc.) which usually involve ordered sets rather than general categories.
+
+\begin{prop}\label{formal}
+Let $\adj{F}{\cat}{\catd}{U}$ be an adjunction. The following are equivalent
+\begin{enumerate}
+	\item $FUF\to F$ is an isomorphism of functors.
+	\item $U\to UFU$ is an isomorphism of functors.
+\end{enumerate}
+Moreover, if the previous conditions are satisfied, then the adjoint pair decomposes into three adjoint pairs
+$$\xymatrix{\cat\ar@<0.5ex>[r]^{UF}&\cat^{UF}\ar@<0.5ex>[l]\ar@<0.5ex>[r]^{F}_\sim&\catd^{FU}\ar@<0.5ex>[l]^{U}\ar@<0.5ex>[r]&\catd\ar@<0.5ex>[l]^{FU}}$$
+where $\cat^{UF}$ [resp. $\catd^{FU}$] is the full subcategory of $	\cat$ [resp. $\catd$] constituted by the objects $X$ such that $X\to UFX$ is an isomorphism [resp. $FUX\to X$ is an isomorphism], and where the pair in the center is an equivalence of categories.
+\end{prop}
+
+\begin{proof}
+The first part is standard category theory (e.g. \cite[Lemma 4.3]{ls}), the second is a straightforward exercise.
+\end{proof}
+In particular, in order to prove the theorem we are left to prove the following facts:
+\begin{enumerate}[(i)]
+	\item $UF\cong\id$.
+	\item $\Gamma\in{\bf{pro}}\MGps\Leftrightarrow\Gamma\in {\bf{pro}}\widetilde{\Gps}^{UF}$.
+	\item $\fg\in{\bf{pro}}\MLA\Leftrightarrow\fg\in {\bf{pro}}\widetilde{\LA}^{UF}$.
+\end{enumerate}
+where $U$ is either $(\Q)$ or $\mathrm{Lie~}$ and $F$ is its respective left adjoint.
+
+\begin{cor}
+In order to prove the theorem, it suffices to prove
+\begin{enumerate}[(I)]
+	\item If $G\in\pUAG$, then $G(\Q)\in{\bf{pro}}\MGps$ and $\mathrm{Lie~} G\in{\bf{pro}}\MLA$.
+	\item $\Gamma\in{\bf{pro}}\MGps\Rightarrow\Gamma\in {\bf{pro}}\widetilde{\Gps}^{UF}$.
+	\item $\fg\in{\bf{pro}}\MLA\Rightarrow\fg\in {\bf{pro}}\widetilde{\LA}^{UF}$.
+	\item $(\Q)$ and $\mathrm{Lie~}$ reflect isomorphisms.
+\end{enumerate}
+\end{cor}
+
+\begin{proof}
+The only non-trivial fact is the proof of condition $(i)$. Let $X$ be in $\pUAG$. Then by $(I)$ and $(II)$, $UX\to UFUX$ is an isomorphism. Because the compostion $UX\to UFUX\to UX$ is the identity, we also conclude that $UFUX\to UX$ is an isomorphism. By $(IV)$, we conclude $FUX\cong X$, as wanted.
+\end{proof}
+
+\begin{proof}[Sketch of the proof of Quillen's theorem]
+Conditions $(II)$, $(III)$, $(IV)$ are proved by Quillen at the level of $\Gps\leftrightarrows\CHA\leftrightarrows\LA$ (see \cite[Theorem A.3.3]{quillen-r}). Condition $(I)$ comes from the fact that if $G$ is unipotent then $\mathrm{Lie~} G$ and $G(\Q)$ are nilpotent (it suffices to check this for $\mathbf{UT}_n$), $\mathrm{Lie~} G$ is finite dimensional and $G(\Q)^{ab}\otimes_{\Z}\Q$ has finite rank (already remarked), and $G(\Q)$ is uniquely divisible (it is isomorphic to $\exp\mathrm{Lie~} G$ by Proposition \ref{adj}).
+\end{proof}
+
+\begin{cor}\label{univ}
+\begin{enumerate}
+	\item Let $\Gamma$ be in $\widetilde{\Gps}$. Then $\Gamma^{un}$ is characterized by the fact that it is pro-unipotent and $\Gamma^{un}(\Q)$ is the universal pro-nilpotent uniquely divisible group associated to $\Gamma$.
+	\item Let $\fg$ be in $\widetilde{\LA}$. Then $\fg^{un}$ is characterized by the fact that it is pro-unipotent and $\mathrm{Lie~}\fg^{un}$ is the universal pro-nilpotent Lie algebra associated to $\Gamma$.
+\end{enumerate}
+\end{cor}
+
+\begin{proof}
+This comes from Quillen's theorem and the lateral adjunctions of Proposition \ref{formal}.
+\end{proof}
+
+\begin{cor}
+The category of unipotent algebraic group is equivalent to the category of finite dimensional nilpotent Lie algebras.
+\end{cor}
+
+\begin{proof}
+The functor from $\UAG$ to nilpotent Lie algebras is fully faithful by Quillen's theorem. It is essentially surjective by \cite[Theorem 3.27]{milne-ag}.
+\end{proof}
+
+From the previous corollary and Proposition \ref{adj}, we can deduce a similar equivalence between unipotent algebraic groups and abstract groups which are exponentials of nilpotent, finite dimensional Lie algebras.
+
+\section{The free case}
+
+We now consider the free pro-unipotent group $G_S$ associated to a finite set $S=\{e_0,\ldots,e_n\}$. By the commutativity of the adjunction of Proposition \ref{adj}, it is isomorphic to the pro-unipotent completion of the free group over $S$, and of the free Lie algebra over $S$.
+
+By what we already proved, $G_S\cong\spec(((\cU LS)^\wedge)^*)$, where $L$ is the free Lie algebra functor. The functor $\cU L$ from $\Set$ to $\Q\lAlg$ is left adjoint to the forgetful functor, and therefore $\cU LS\cong\Q\left\langle e_1,\ldots,e_n\right\rangle$, the algebra of non-commutative polynomials in $n$ variables. It is straightforward to check that $(\cU LS)^\wedge\cong\Q\left\langle \left\langle e_1,\ldots,e_n\right\rangle\right\rangle$, the formal non-commutative power series in $n$ variables. Its coproduct is defined via the relations $e_i\mapsto e_i\otimes1+1\otimes e_i$. If $I=(i_1,\ldots,i_k)$ is a multi-index, we indicate with $e_I$ the product $e_1\cdot\ldots\cdot e_k$. By induction, it follows $\Delta e_I=\sum_\sigma e_J\otimes e_K$, where $I,J$ vary among multi-indices and $\sigma$ varies among the permutations $\mathrm{Sym}(|J|,|K|)$ such that $\sigma(J,K)=I$. We clarify this with an example.
+
+\begin{exam}
+\[\Delta( e_1^2e_2 )= e_1^2e_2\otimes1+e_1^2\otimes e_2+2e_1 e_2\otimes e_1+2e_1\otimes e_1e_2+e_2\otimes e_1^2+1\otimes e_1^2e_2.\]
+\end{exam}
+
+This algebra is graded with respect to the degree, isomorphic to ${\bf{pro}}d V^{\otimes k}$, where $V$ is the free vector space generated by $S$.
+It follows that 
+\begin{equation}\label{eq:free}
+((\cU LS)^\wedge)^*\cong\bigoplus (V^{\otimes k})^\vee\cong\bigoplus (V^\vee)^{\otimes k}\cong T(V^\vee).
+\end{equation}
+We now investigate its Hopf operations. We denote by $\epsilon_I$ the dual of $e_I$.
+
+From the formulas
+\[(\epsilon_I\cdot\epsilon_J)(e_K)=(\epsilon_I\otimes\epsilon_J)(\Delta e_K)=(\epsilon_I\otimes\epsilon_J)\left(\sum_\sigma e_M\otimes e_N\right)\]
+we deduce that $(\epsilon_I\cdot\epsilon_J)(e_K)=1$ if there is a way to shuffle $I$ and $J$ to form $K$ and is $0$ otherwise. Hence, the product of $T(V^\vee)$ is the shuffle product $\sha$.
+
+From the formula
+\[(\Delta \epsilon_I)(e_J\otimes e_K)=\epsilon_I(e_{JK})\]
+we deduce that $(\Delta\epsilon_I)(e_J\otimes e_K)=1$ if $JK=I$ and is $0$ otherwise. Therefore, $\Delta\epsilon_I=\sum_{JK=I}\epsilon_J\otimes\epsilon_K$, the so-called deconcatenation coproduct.
+
+By Corollary \ref{univ}, we get that $\mathrm{Lie~} G_S$ is the universal pro-nilpotent algebra associated to $LS$, i.e. its completion by the lower central series. Also, by what we proved in the first part, $G_S(\Q)=\cG\Q\left\langle \left\langle e_1,\ldots,e_n\right\rangle\right\rangle$. %More generally, it can be computed $G_S(R)=\cG R\left\langle \left\langle e_1,\ldots,e_n\right\rangle\right\rangle$.
+
+\section{Malcev original construction}
+
+We now give an explicit description of another special case, originally studied by Malcev. We refer to \cite{suisse} for the group theory facts we need here. 
+Suppose $\Gamma$ is nilpotent and finitely generated. In this case, the torsion elements constitute a subgroup $H$. Since any uniquely divisible group has no torsion, by Corollary \ref{adj} we conclude that $\Gamma^{un}\cong(\Gamma/H)^{un}$. We can therefore suppose that $\Gamma$ has no torsion.
+
+Let
+\[
+\Gamma=\Gamma_1\geq\Gamma_2\geq\ldots\geq\Gamma_k=1
+\]
+be the lower central series ($\Gamma_i=[\Gamma_{i-1},\Gamma]$). Each factor $\Gamma_i/\Gamma_{i+1}$ is abelian and finitely generated since $[\Gamma_i,\Gamma_i]\leq[\Gamma_i,\Gamma]=\Gamma_{i+1}$. We can then refine the lower central series to obtain another central series with cyclic quotients. A group with such a central series is called polycyclic. Quotients and subgroup of polycyclic ones are again polycyclic (by studying the induced filtrations). In particular, the quotients of the upper central series ($Z_i/Z_{i+1}=Z(G/Z_{i+1})$)
+\[
+\Gamma=Z_1\geq Z_2\geq\ldots\geq Z_k=1
+\]
+are polycyclic. They are also without torsion by the next lemma.
+
+\begin{lemma}
+If $\Gamma$ is nilpotent and without torsion, then all quotients $\Gamma/Z_i$ are without torsion.
+\end{lemma}
+
+\begin{proof}
+Since $\Gamma/Z_{i+1}\cong({G/Z_i})/({Z_{i+1}/Z_i})\cong({G/Z_i})/({Z(\Gamma/Z_i)})$, it suffices to prove that if $\Gamma$ is nilpotent and without torsion, then $\Gamma/Z(\Gamma)$ is without torsion. 
+
+Suppose $x^m$ is central. We need to prove that also $x$ is. If $x^m$ is central, then for any $y$ we have $(y^{-1}xy)^m=x^m$. It suffices to prove uniqueness of roots in a torsion-free nilpotent group. We make induction on the nilpotency class, being the case of an abelian group trivial.
+
+Let $a^m=b^m$ in a torsion-free nilpotent group $\Gamma$. In order to prove $a=b$, it suffices to prove $[a,b]=1$ since $\Gamma$ is torsion-free. Since $b^{-1}ab=a[a,b]$, both $b^{-1}ab$ and $a$ lie in the subgroup $H=\left\langle [\Gamma,\Gamma],a\right\rangle$, which has a stricly lower nilpotency class (see \cite[Proposition 2.5.5]{suisse}). By induction, from the equality $(b^{-1}ab)^m=b^{-1}a^mb=b^m=a^m$, we conclude $[a,b]=1$ as wanted.
+\end{proof}
+
+In conclusion, the upper central series can be enriched into a filtration 
+\[
+\Gamma=\Gamma^1\geq\Gamma^2\geq\ldots\Gamma^{s+1}=1
+\]
+such that $\Gamma^i/\Gamma^{i+1}\cong\left\langle e_i\right\rangle\cong\Z$. The set $\{e_1,\ldots,e_s\}$ is called a Malcev basis for $\Gamma$. We can associate to any element $g\in\Gamma$ a unique set of $s$ coordinates $t_i(g)\in\Z$ such that $g={\bf{pro}}d e_i^{t_i(g)}$, and $\Gamma^i$ coincides with the subset $\{g\in\Gamma: t_j(g)=0, j<i\}$. This defines a bijection from $\Gamma$ to $\Z^s$. We now recover also the product in terms of the coordinates.
+
+\begin{prop}
+Let $\Gamma$ be finitely generated, nilpotent and without torsion. Let $\{e_1,\ldots,e_s\}$ be a Malcev basis for $\Gamma$ and $t_i(g)$ the Malcev coordinates of an element $g$.
+\begin{enumerate}
+	\item The product is polynomial in the coordinates, i.e. there exist polynomials $P_{i}$ with rational coefficients such that
+	\[t_i(gh)=t_i(g)+t_i(h)+P_{i}(t_j(g),t_j(h)).\]
+	Moreover, the polynomial $P_{i}$ depends only on $t_j$'s with $j<i$.
+	\item The inverse is polynomial in the coordinates, i.e. there exist polynomials $Q_{i,k}$ with rational coefficients such that
+	\[t_i(g^k)=kt_i(g)+Q_{i,k}(t_j(g)).\]
+	Moreover, the polynomial $Q_{i,k}$ depends only on $t_j$'s with $j<i$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+Make induction on the cardianlity of the Malcev basis. Details in \cite[Propri\'et\'e 3.1.5]{suisse}.
+\end{proof}
+
+Since the polynomials $P_{i}$ and $Q_{i,k}$ have rational coefficients, they define an algebraic group $G: R\mapsto (R^s,\cdot)$ where $\cdot$ is the product defined using the above formulas. 
+
+\begin{prop}
+The group $G$ is unipotent.
+\end{prop}
+
+\begin{proof}
+Since $\cO(G)$ is a polynomial ring, $G(\Q)$ is dense in $G$. Therefore, if we prove that there is a faithful finite dimensional representation of $G$ such that $G(\Q)\to\mathbf{GL}_{V}(\Q)$ is made of unipotent morphisms (i.e. , for all $g\in G(\Q)$, $(g-\id)^n=0$ for $n\gg0$), we conclude that, with respect to a suitable basis, $G(\Q)$ factors through $\mathbf{UT}_n(\Q)$. By density, we can isomorphically embed $G$ in $\mathbf{UT}_n$, as wanted. Because the regular representation contains all representation, we can equivalently prove that all endomorphisms of $G(\Q)$ are unipotent with respect to it (i.e. $(g-\id)^n=0$ for $n\gg0$ when restricted to any subrepresentation of finite dimension).
+
+This representation sends $g$ to the endomorphism $T_i\mapsto t_i(g)+T_i+P_i(t_j,T_j)$. By the formulas above, it follows that $(g-\id)$ it sends a monomial $T^I=T_1^{i_1}\cdot\ldots T_s^{i_s}$ to a linear combination of monomials which are stricly smaller with respect to the lexicographic order. In particular, for any multi-index $I$, $(g-\id)^n(T^I)=0$ for $n\gg0$. 
+\end{proof}
+
+We remark that the map $\Gamma\to G(\Q)$ is induced by the inclusion $\Z^s\to\Q^s$. It satisfies a universal property:
+
+\begin{prop}
+The abstract group $G(\Q)$ is the nilpotent, uniquely divisible closure of $\Gamma$.
+\end{prop}
+
+\begin{proof}
+Using the formulas and induction on $i$, it is straightforward to see that $G(\Q)$ is uniquely divisible and if $x\in G(\Q)$, then $x^n\in\Gamma$ for $n\gg1$.
+\end{proof}
+
+\begin{cor}
+$\Gamma^{un}\cong G$.
+\end{cor}
+
+\begin{proof}
+This comes from the previous propositions and Corollary \ref{adj}.
+\end{proof}
+
+\section{Torsors}
+
+Let $\Gamma$ be an abstract group. We remark that the functors we used to define $\Gamma^{un}$ make sense more generally for $\Gamma$-sets:
+\[
+\Gamma\lSet\stackrel{\Q[\cdot]}{\rightarrow}\Q[\Gamma]\Mod\stackrel{^\wedge}{\rightarrow}\hat{\Q}[\Gamma]\Mod\stackrel{\spec((\cdot)^*)}{\rightarrow}\Gamma^{un}\lVar
+\]
+and we denote again their composition with $S\mapsto S^{un}$.
+Moreover, all these functors are tensorial with respect to the tensors defined in each category. The first and the last one are tensorial with respect to the cartesian product. It follows that if $S\in\Gamma\lSet$ is a torsor, i.e. if 
+\[\Gamma\times S\to S\times S\qquad (g,s)\mapsto (g\cdot s,s)\]
+is an isomorphism, then also
+\[\Gamma^{un}\times S^{un}\cong(\Gamma\times S)^{un}\to (S\times S)^{un}\cong S^{un}\times S^{un}\]
+is an isomorphism. Therefore, $S\mapsto S^{un}$ maps torsors to torsors.
+
+
+\section{The Tannakian approach}
+
+\begin{prop}
+Let $\Gamma$ be an abstract group such that $\Gamma^{un}$ il well defined. Then $\Gamma^{un}$ is the pro-affine algebraic group associated to the Tannakian category of unipotent representations of $\Gamma$.
+\end{prop}
+
+\begin{proof}
+The functor $\Gamma^{un}\Rep\to\Gamma \Rep$ sending $\Gamma^{un}\to\mathbf{GL}_V$ to $\Gamma\to\Gamma^{un}(\Q)\to\mathbf{GL}_V(\Q)$ factors over unipotent representations of $\Gamma$ since $\Gamma^{un}$ is pro-unipotent. Viceversa, if $\Gamma\to\mathbf{GL}_V(\Q)$ is unipotent then, with respect to a suitable basis, it factors over $\mathbf{UT}_n$. It follows that the subgroup $H$ of $\mathbf{GL}_V$ generated by $\Gamma$ is isomorphic to a subgroup of $\mathbf{UT}_n$, hence unipotent. By the universal property, the map $\Gamma\to H(\Q)$ then induces a map $\Gamma^{un}\to H\to\mathbf{GL}_V$, as wanted.
+\end{proof}
+
+Since we have proved the existence (and Quillen's construction) of $\Gamma^{un}$ only for groups $\Gamma$ with nice properties (i.e. $\Gamma^{ab}\otimes_{\Z}\Q$ has finite dimension), we wonder if this proposition gives a more general construction of $\Gamma^{un}$, i.e. if the Tannaka dual of unipotent representations of $\Gamma$ satisfies the universal property of the pro-unipotent completion.
+
+\section{More on the conilpotency filtration}
+
+We now present a last corollary of the first section and Quillen's paper. Suppose $G$ is unipotent, and let $\fg$ be its Lie algebra. We have $\fg\cong\cP\cO(G)^\vee$, and it inherits the $I$-adic filtration from $\cO(G)^\vee$:
+\[\cP\cO(G)^\vee=\cP\cO(G)^\vee\cap I\supset \cP\cO(G)^\vee\cap I^2\supset\ldots\]
+
+On the other hand, we can consider the graded Hopf algebra $\gr^\bullet\cO(G)^\vee$, obtained via the $I$-adic filtration. Its primitive elements constitute a graded subset $\cP\gr^\bullet\cO(G)^\vee$.
+
+\begin{prop}\cite[Proposition A.2.14]{quillen-r}
+The natural map $\gr^\bullet\cP\cO(G)^\vee\to\cP\gr^\bullet\cO(G)^\vee$ is an isomorphism.
+\end{prop}
+
+In particular, we deduce $\gr^1\fg\cong I/I^2\cong\fg/[\fg,\fg]$. This abelian Lie algebra has a natural map to $\gr^\bullet\cP\cO(G)^\vee\cong\cP\gr^\bullet\cO(G)^\vee$. It is a quotient of the free Lie algebra $LS$ generated by a chosen basis $S$ of $\fg/[\fg,\fg]$. By adjunction, we obtain a map $\hat{\cU}LS\to\gr^\bullet\cO(G)^\vee$, and by duality a map $(\gr^\bullet\cO(G)^\vee)^*\to\hat{(\cU}LS)^*$, and a map $\spec((\hat{\cU}LS)^*)\to\spec((\gr^\bullet\cO(G)^\vee)^*)$.
+
+We recall that the conilpotency filtration on $\cO(G)$
+\[
+0\subset C_1\subset C_2\subset\ldots
+\]
+is dual to the $I$-adic filtration on $\cO(G)^\vee$
+\[
+\cO(G)^\vee\supset I\supset I^2\supset\ldots
+\]
+in the sense that $(\gr^i\cO(G)^\vee)^*\cong\gr_i\cO(G)$. Hence in particular, $\fg/[\fg,\fg]^*\cong(I/I^2)^*\cong(\gr_1\cO(G))$ and $(\gr^\bullet\cO(G)^\vee)^*\cong\gr_\bullet\cO(G)$.
+
+We remark that $\spec((\hat{\cU}LS)^*)$ is a free pro-unipotent group generated by $S$. By Equation \ref{eq:free}, $\hat{(\cU}LS)^*\cong T(\fg/[\fg,\fg]^\vee)\cong T(\gr_1\cO(G))$.
+
+\begin{prop}
+The map $\gr_\bullet\cO(G)\to T(\gr_1\cO(G))$ is injective.
+\end{prop}
+
+\begin{proof}
+We prove that the dual is surjective. It is the map $\hat{\cU}LS\to\gr^\bullet\cO(G)^\vee\cong\gr^\bullet \hat{\cU}\fg$, where the last equality follows from the unipotency of $G$.
+
+The graded algebra $\gr^\bullet \hat{\cU}\fg$ is generated by its first graded piece $\gr^1 \hat{\cU}\fg=\cP\gr^1\hat{\cU}\cong\gr^1\cP\hat{\cU}\cong\fg/[\fg,\fg]$, hence $ \hat{\cU}LS\to\gr^\bullet \hat{\cU}\fg$ is surjective, as claimed.
+\end{proof}

@@ -1,0 +1,280 @@
+\chapter{Chen's theorem: Pro-unipotent (Malcev) Completion}\label{ch:prounipotent}
+
+Alberto Vezzani on September 3rd, 2012.
+
+\medskip
+\medskip
+
+\noindent This lecture was based on [Q] Quillen: Rational homotopy theory and [M] Milne: Algebraic groups, linear groups, ...
+
+\section{Introduction}
+
+\begin{defn}
+We use the following notation for categories.
+\begin{itemize}
+\item $(\textrm{Gp})$ is the category of groups.
+\item $(\textrm{pG})$ is the category of pro-groups.
+\item $(\textrm{$\Q$-alg})$ is the category of $\Q$-algebras.
+\item $(\textrm{HA})$ is the category of Hopf algebras.
+\item $(\textrm{CHA})$ is the category of complete Hopf algebras.
+\item $(\textrm{AG})$ is the category of algebraic groups.
+\item $(\textrm{pAG})$ is the category of pro-algebraic groups.
+\item $(\textrm{pUAG})$ is the category of pro-unipotent algebraic groups.
+\end{itemize}
+\end{defn}
+
+A basic fact is that we have an adjoint pair which factors
+\[
+\xymatrix{
+(\textrm{Gp}) \ar@<0.3em>[rr]^{\Q[-]} \ar@<0.3em>[drr]_{\gamma} && \ar@<0.3em>[ll]^{(~)^{\times}} (\textrm{$\Q$-alg}) \\
+&& (\textrm{HA}) \ar@<0.3em>[ull]^{\mathcal{G}} \ar[u]
+}
+\]
+where
+\[
+\begin{array}{rcl}
+\Delta : g & \mapsto & g \otimes g \\
+\epsilon : g & \mapsto & 1 \\
+s : g & \mapsto & g^{-1}
+\end{array}
+\]
+gives the Hopf algebra on $\Q[G]$ for a group $G$.
+\[
+R  \mapsto \{ x \in R^{\lambda} : \Delta x = x \otimes x \}
+\]
+These are topological rings with respect to $I$-adic topology. So completing these rings in the $I$-adic topology to produce a functor $(Gp) \to (CHA)$.
+
+If we start with a Lie $\Q$-algebra $\fg$, we can form a Hopf algebra from the universal enveloping algebra $U_{\fg}$.
+
+\TODO
+
+\[
+\xymatrix{
+&\ar[dl] (\textrm{Set}) \ar[dr] & \\
+(\textrm{Gp}) \ar[ur] \ar[r] & (\textrm{CHA}) \ar[l] \ar[r] & (\textrm{LA}) \ar[l] \ar[ul]
+}
+\]
+where all functor pairs are adjoint pairs. We would like to dualize the above diagram to arrive at a Hopf algebra which is commutative instead of cocommutative. 
+
+But there are problems with taking the dual. The double dual might not coincide with the original vector space. But there is a subcategory where all this works, namely the subcategory of Hopf algebras which are linearly compact.
+
+\begin{defn}
+A topological $\Q$-vector space $R$ is \emph{linearly compact} if
+\[
+R \cong \varprojlim i
+\]
+where the above congruence indicates homeomorphism and $i$ is a finite dimensional discrete vector space.
+\end{defn}
+Linearly compact vector spaces satisfy a number of properties:
+\begin{enumerate}
+\item $(R^{\vee})^{\vee} \cong R$.
+
+\item If $V$ is a discrete vector space, then $V^{\vee}$ can be given the structure of a linearly compact vector space. $V^{\vee} \cong \varprojlim_{W \leq V \textrm{~f.d.}} W^{\vee}$.
+
+\item 
+If $R$ is a linearly compact vector space, then
+\[
+(R \widehat{\otimes} R)^{\vee} =  R^{\vee} \otimes R^{\vee}
+\]
+If $R$ is a discrete vector space, then 
+\[
+(R \otimes R)^{\vee} = R^{\vee} \widehat{\otimes} R^{\vee}
+\]
+\end{enumerate}
+
+\[
+\xymatrix{
+(\textrm{CHA}^{LC}) \ar[r] & (\textrm{CHA}^{LC})^{op}
+}
+\]
+
+\TODO %... Extra additions to triangle diagram of adjoints missing...
+
+\begin{defn}
+$G$ is a pro-affine algebraic group.
+\[
+\cO(G)^{\vee} \cong \varprojlim \cO(G)^{\vee} / I^k
+\]
+\end{defn}
+
+where $I$ is the augmentation ideal of $\cO(G)^{\vee}$.
+
+\[
+\cO(G)^{\vee} \supset I \supset I^2 \supset \cdots \supset 0
+\]
+\[
+\cO(G)^{\vee} = \varprojlim (\cO(G)^{\vee} / I^k) = \varprojlim \Ann_{\cO(G)} I^k
+\]
+
+Automatically, whenever we start with a pro-affine algebraic group, we get an exhaustive filtration
+\[
+0 \subset \Ann I \subset \Ann I^2 \subset \cdots \subset \cO(G)
+\]
+where $\Ann I = 0 = c_0$ and $\Ann I^2 = c_1$. Then
+\[
+\Delta C_i \subset \sum_{k+l = i} c_k \otimes c_l
+\]
+
+\begin{cor}
+For any finite dimensional representation $V$ of $G$, there exists a $v \in V$ such that
+\[
+\rho : v \mapsto v \otimes 1.
+\]
+\end{cor}
+
+We have a filtration on our Hopf algebra. But then it will be automatically filtered by $V_i = \{ v \in V \mid \rho v \in V \otimes G \}$. Becaues this filtration is exhaustive, $V_0 = \{ v \in V \mid V \mapsto v \}$.
+
+\begin{rem} 
+If $V_i = 0$, then $V_{i +1}=0$.
+\end{rem}
+
+By the commutativity of the diagram
+\[
+\xymatrix{
+V \ar[r]^{\rho} & V \otimes \cO(G) \ar@<0.3em>[r]^{\rho} \ar@<-0.3em>[r]_{\Delta} & V \otimes \cO(G) \otimes \cO(G) \ar[r]^{\pi} & V \otimes \cO(G) / G \otimes \cO(G) / G
+}
+\]
+and
+\begin{itemize}
+\item $\pi \circ \rho \circ \rho$ is injective if $v_i = 0$.
+\item \TODO
+\end{itemize}
+
+\begin{prop}
+The following are equivalent
+\begin{enumerate}
+\item $G$ is pro-unipotent algebraic group (pUAG).
+\item For all finite dimensional representations $V$ of $G$, there is a nonzero $v \in V$ such that $\rho v = v$ \TODO
+\item For all finite dimensional representations $V$ of $G$, there exists \TODO
+\end{enumerate}
+\end{prop}
+
+\begin{exam}
+The group $G = \mathbf{G}_a$ is a UAG:
+\begin{itemize}
+\item $\cO(G) = \Q[t]$ 
+\item $\cO(G)^{\vee} \cong \prod \Q \epsilon_t k$.
+\item $I = \ker( \cO(G)^{\vee} \to \Q ) = \langle \epsilon t^k \rangle_{t \geq 0}$ where the morphism is the dual of $1 : \Q \to \cO(G)$.
+\end{itemize}
+In order to prove $G$ is linearly compact, it suffices to show $R/I^k$ is finite dimensional for all $k$. This is true exactly when $I/I^2$ is finite dimensional.
+\end{exam}
+
+If we start with a group $\Gamma$, then
+\[
+I_{\widehat{\Q}}[\Gamma] / I^2_{\widehat{\Q}}[\Gamma] = I_{\Q}[\Gamma] / I^2_{\Q[\Gamma]} \to \Gamma^{ab} \otimes_{\Z} \Q
+\]
+where $I = \langle g - e \rangle$ and $I^2 = \langle gh - g - h + e \rangle$. 
+
+If we start with a Lie algebra $\fg$.
+\[
+I_{U_{\fg}} / I_{U_{\fg}}^2 = \fg / [\fg, \fg]
+\]
+
+Another interesting project is to begin with a pro-unipotent algebraic group and to follow the chain of functors along to find a Hopf algebra.
+
+\begin{rem}
+If $G \in (\textrm{pUAG})$, then $\cG \cO(G)^{\vee} = G(\Q)$ and $\Gamma\cO(G)^{\vee} = \textrm{Lie} G$.
+\end{rem}
+
+\begin{proof}
+Let $\phi \in \cO(G)^{\vee}$. Then $\Delta \phi = \phi \otimes \phi$ if and only if $\phi(ab) = \phi(a)\phi(b)$. Also, $\Delta \phi = \phi \otimes 1 + 1 \otimes \phi = \phi(\phi) = \phi(I^2) = 0$.
+
+So now we have all the ingredients to \TODO
+
+\begin{defn}
+Let $(\textrm{AG}^{fr})$ be the subcategory of $(\textrm{pAG})$ consisting of all groups $\Gamma$ such that $\Gamma \otimes^{ab}_k \Q$ is finite rank.
+\end{defn}
+
+\[
+\xymatrix{
+(\textrm{AG}^{fr}) \ar@<0.3em>[r] \ar@<-0.3em>[r] & 
+}
+\]
+The main theorem of Quillen tells us that these two adjunctions induce equivalences between two subcategories.
+\end{proof}
+
+\begin{defn}
+Suppose that $\Gamma$ is an abstract group such that $\Gamma^{ab} \otimes \Q$ has finite rank. Then the Malcev completion of $\Gamma$ is given by $\Gamma^{Mal} = \spec \widehat{Q}[\Gamma]^{\vee}]$. It enjoys a universal morphism $\Gamma^{Mal} \to G(\Q)$ among pUAG's.
+\end{defn}
+
+\begin{thm}[See Q]
+We have an equivalence of categories
+\[
+\xymatrix{
+(pG^{N\Q}) \ar@<0.3em>[r] & (pUAG) \ar@<-0.3em>[l] \ar@<0.3em>[r] & \ar@<-0.3em>[l] (p)
+}
+\]
+where $(pG^{N\Q})$ is the category of pro-groups whose tensor product with $\Q$ is nilpotent and uniquely \TODO
+\end{thm}
+
+\begin{proof}
+Start with a set $S = \{ e_1, \ldots, e_n \}$. Then
+\[
+R = ((ULS)^{\vee})^{\vee} \qquad (ULS)^{\vee} \cong \Q \langle \langle e_1, \ldots, e_n \rangle \rangle = \prod V^{\otimes n}
+\]
+If
+\[
+\Q \langle \langle e_i \rangle \rangle^{\vee} \cong \oplus (V^{\vee})^{\otimes n}
+\]
+then $R$ admits a coproduct given by
+\[
+\epsilon \mapsto \sum_{IJ = \alpha} \epsilon_I \otimes \epsilon_J
+\]
+The coproduct $e_i \mapsto 1 \otimes e_i + e_i \otimes 1$ and $e_I \mapsto \sum_{\alpha \coprod \beta = I} e_{\alpha} \otimes e_{\beta}$. Hence the product in $R$ is isomorphic to the shuffle $W$.
+\end{proof}
+
+\section{Malcev's original description}
+
+\begin{prop}
+\begin{enumerate}
+\item The product is polynomial in the $\{ t_i(\rho) \}$, i.e.,
+\[
+t_i (g \cdot h) = t_i (g) + t_i (h) + \Gamma_{(i)} (t_j(g), t_j(h))_{j < i}
+\]
+\item Powers
+\[
+t_i (g^k) = k \cdot t_i(g) + Q_{(k)}(t_j(g))_{j < i}, \qquad \Gamma_{(i)}, Q_{(k)} \in \Q[T]
+\]
+\end{enumerate}
+\end{prop}
+
+\begin{prop}
+Let $P, Q$ be the polynomials given above. The mapping $R \mapsto (R^s, \bullet_{P, Q})$ is the Malcev copmletion of $\Gamma$.
+\end{prop}
+
+\begin{proof}
+$\Gamma \to G(\Q) = (\Q^s, \bullet)$.
+It is easy to see that $G(\Q)$ is uniquely divisible. It is also dense: $\forall x \in G(\Q)$, $x^n \in \Gamma$ for $n \gg 0$. Finally, it is nilpotent, as one sees from 
+\[
+\begin{array}{rcl}
+G(\Q) & \to & \textrm{End}(\Q[t_i]) \\
+\textrm{\TODO} & \mapsto &
+\end{array}
+\]
+In a way, this is the faithful representation formed from the Hopf algebra $R$.
+\end{proof}
+
+What happens to torsors? Let $\Gamma$ be a group. Then there is a diagram of tensor categories,
+\[
+(\Gamma-Set, \times) \to (\Q[\Gamma]-Mod, \otimes_{\Q}) \to (\widehat{Q}[\Gamma]-Mod, \widehat{\otimes}_{\Q}) \to (\widehat{Q}[\Gamma]^{\vee}-Comod, \widehat{\otimes}_{\Q})^{op} \cong (\Gamma^{Mal}-Mod, \times)
+\]
+
+\begin{prop}
+The functor $S \mapsto S^{Mal} \in (\Gamma^{Mal}-Mod)$ preserves torsors. If $\Gamma \times S \to S \times S$ given by $(g, s) \mapsto (g\cdot s, s)$ is an isomorphism, then $\Gamma^{Mal} \times S^{Mal} \to S^{Mal} \times S^{Mal}$ is an isomorphism.
+\end{prop}
+
+\TODO
+
+Let $G$ be pUAG and let $\fg = \mathrm{Lie} G$. Then
+\[
+\fg / [\fg, \fg] = \mathrm{gr}_1 \mathrm{Lie} G = (\mathrm{gr}^1 \cO(G))^{\vee}
+\]
+The above includes into $\mathrm{gr}_0 \fg$ which satifisfies
+\[
+\mathrm{gr}_0 \fg = \mathrm{gr}_0 \mathrm{Lie} G  = \mathrm{gr}_0 \wp \cO(G)^{\vee} = \wp \mathrm{gr}_0 \cO(G)^{\vee} = \wp (\mathrm{gr}^0 \cO(G))^{\vee} = \mathrm{gr}^0 C_i
+\]
+The third equality says that $\mathrm{gr}_0$ and $\wp$ interchange, as shown in [Q]. Then
+\[
+\widehat{U}_{\fg / [\fg, \fg]} \to \cO(G)^{\vee}
+\]
+\TODO

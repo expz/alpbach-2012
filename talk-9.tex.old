@@ -1,0 +1,537 @@
+\chapter*{Motivic structure: Mixed Tate motives over the integers}
+\addcontentsline{toc}{chapter}{*Motivic structure on the fundamental group: Mixed Tate motives over the integers by Martin Gallauer}
+
+Martin Gallauer on September 6th, 2012.
+
+\section{Contruction of the category of rational motives}
+
+Let $k$ be a field, and let $\Smk$ be the category of smooth schemes over $k$.
+
+\subsection{Rough idea behind the construction}
+We would like to produce categories and functors to produce the diagram.
+\[
+\xymatrix{
+\Smk \ar@{.>}[r] \ar[d]^T & \MMk \ar@{.>}[dl]^{\textrm{realization}} \ar@{.>}[d]^{\textrm{realization}} \\
+A \ar[d] & \DbMMk \\
+\DbA & 
+}
+\]
+
+\subsubsection{Step 1: Correspondences}
+
+\begin{defn}[Elementary correspondence]
+Let  $X, Y \in \Smk$ and let $\alpha \subset X \times Y$ be a closed integral variety in the product. We call $\alpha$ a \emph{elementary correspondence} if it the projections onto the connected components of $X$ are finite and surjective.
+\end{defn}
+\begin{defn}[Finite correspondence]
+An element of the $\Q$-vector space
+\[
+c(X,Y) = \Q[\{ \alpha \subset X \times Y \mid \textrm{$\alpha$ is an elementary correspondence} \}\
+\]
+i.e., a $\Q$-linear combination of elementary correspondences.
+\end{defn}
+
+\begin{exam}
+The graph $\Gamma_f$ of a morphism of schemes, $f : X \to Y$, is a finite correspondence.
+\end{exam}
+
+\begin{rem}
+When Grothendieck was originally considering motives, he defined correspondences without the above restrictions. Composition could be motivated as ``composition of multi-valued functions'', and relies on the ability to integrate the values associated to a particular $x \in X$. But if these values do not form a finite set (or at least a compact one), there is no clear way to compose them. Here we restrict to finite correspondences as Voevodsky did.
+\end{rem}
+
+\begin{defn}[Composition of correspondences]
+Let $\alpha \subset X \times Y$ and $\beta \subset Y \times Z$ be elementary correspondences. Then their composition is
+\[
+\beta \circ \alpha := (\alpha \times Z) \cdot (X \times \beta)
+\]
+\end{defn}
+
+\begin{defn}[Category of smooth correspondences]
+We denote by $\SmCorr$ the category of smooth correspondences. Its objects are exactly the objects of $\Smk$ and for $X, Y \in \Smk$, them morphisms from $X$ to $Y$ are the finite correspondences
+\[
+Mor(X,Y) := c(X,Y).
+\]
+\end{defn}
+
+
+\begin{rem}
+\begin{itemize}
+\item The category of smooth correspondences $\SmCorr$ is $\Q$-linear  tensor category. Its sum is the coproduct, $\coprod$, and its zero object is the empty set, $\emptyset$. The tensor product is the direct product $\times$.
+\item The functor $\Smk \to \SmCorr$ is a tensor functor.
+\end{itemize}
+\end{rem}
+
+\subsubsection{Step 2: Triangulation}
+\begin{defn}
+Let $K^b(k)$ be the category of bounded complexes in $\SmCorr$ up to chain homotopy. In other words, complexes
+\[
+\cdots \to 0 \to X_i \to X_{i+1} \cdots \to X_j \to 0 \to \cdots
+\]
+of smooth varieties over $k$ with finite correspondences for morphisms which eventually are eventually 0 to both the left and the right. Two complexes, $X$ and $Y$, define the same object in $K^b(k)$ if there are chain morphisms $\alpha : X \to Y$ and $\beta : Y \to X$ such that $\alpha \circ \beta \sim 1_Y$ and $\beta \circ \alpha \sim 1_X$, where the homotopy equivalence is given by chain homotopy, e.g., a morphism $\partial : X \to X[-1]$ such that
+\[
+\xymatrix{
+\cdots \ar[r]^d & X_{-1} \ar[r]^d \ar@<0.2em>[d]_{\beta \circ \alpha~} \ar@<-0.2em>[d]^{~1_X} & X_0 \ar[dl]_{\partial} \ar[r]^d \ar@<0.2em>[d]_{\beta \circ \alpha~} \ar@<-0.2em>[d]^{~1_X} & X_1 \ar[dl]_{\partial} \ar[r]^d \ar@<0.2em>[d]_{\beta \circ \alpha~} \ar@<-0.2em>[d]^{~1_X} & \cdots \ar[dl]_{\partial} \\
+\cdots \ar[r]_d & X_{-1} \ar[r]_d & X_0 \ar[r]_d & X_1 \ar[r]_d & \cdots
+}
+\]
+such that
+\[
+d \partial + \partial d = \beta \circ \alpha - 1_X
+\]
+\end{defn}
+
+\begin{rem}
+The category $K^b(k)$ is $\Q$-linear, tensor and triangulated. The distinguished triangles are of the form $A \to B \to \mathrm{cone}(f)$.
+\end{rem}
+
+
+\subsubsection{Step 3: Impose relations}
+\begin{defn}
+Let $K^b(k)_{\A^1, MV}$ be the category $K^b(k)$ with the following relations imposed:
+\begin{itemize}
+\item The structure morphism
+\[
+[A^1_X] \isom [X]
+\]
+is an isomorphism.
+\item If $X = U \cup V$, then
+\[
+\xymatrix{
+[U \cap V] \ar[r]^{\alpha} & [U] \oplus [V] \ar[dr] \ar[r]^{(+, -)} & [X] \ar[r] & \cdots \\
+& & \mathrm{Cone}(\alpha) \ar[u]^{\cong}
+}
+\]
+\end{itemize}
+\end{defn}
+
+\begin{rem}
+$K^b(k)_{\A^1,MV}$ is a $\Q$-linear triangulated tensor category.
+\end{rem}
+
+\subsubsection{Step 4: Pseudo-abelian Hull}
+\begin{defn}[Pseudo-abelian category]
+An additive category $(\cC, \otimes)$ is called \emph{pseudo-abelian} if for all objects $X \in \cC$ and for all idempotents $p : X \to X \in \cC$,
+\[
+X = \ker(p) \oplus \ker(id - p)
+\]
+\end{defn}
+\begin{defn}
+Let
+\[
+\DMeff := \mathrm{Psa(K^b(k)_{\A^1,MV})}
+\]
+the pseudo-abelian hull of $K^b(k)_{\A^1,MV}$, which is the triangulated category of effective mixed motives.
+\end{defn}
+\begin{rem}(Balmer / Schlichtling)
+The category of effective mixed motives, $\DMeff$, is a $\Q$-linear triangulated tensor category.
+\end{rem}
+Let
+\[
+M : 
+\begin{array}{rcl}
+\Smk & \to & \DMeff \\
+X & \mapsto & ( \cdots \to 0 \to [X] \to 0 \to \cdots )
+\end{array}
+\]
+where $[X]$ lies in degree 0 of the complex. This is a tensor functor. We occasionally write $[X]$ for $M(X)$.
+
+\begin{exam}
+The motive of the tensor identity is,
+\[
+\mathbf{1_{\otimes}} = M(\spec k) = \Q(0) =: \Q.
+\]
+\end{exam}
+\begin{exam}
+To compute the motive of $P^1$, one examines its cohomology. We would like the notation to work out so that $\Q(1) = h_2 \Pspace^1$. Hence define,
+\[
+\Q(1) := \widehat{M}(\Pspace^1)[-2].
+\]
+Then,
+\[
+M(\Pspace^1) = \Q(0) \oplus \Q(1)[2].
+\]
+\end{exam}
+
+\begin{defn}[Reduced motive]
+\[
+\widehat{M}(X) := [X_0 \to \spec k]
+\]
+\[
+\widehat{M}(X) \to M(X) \to \Q(0) \to + d.t.
+\]
+We call $\widehat{M}(X)$ the \emph{reduced motive} of $X$.
+\end{defn}
+
+Let $x : \spec k \to \Pspace^1$ be a rational point. Then the composition
+\[
+p : \Pspace^1 \to \spec k \stackrel{\times}{\to} \Pspace^1
+\]
+is idempotent, i.e., $p \circ p = p$. Then
+\[
+M(\Pspace^1) = \Q(0) \oplus \Q(1)[2]
+\]
+
+\[
+\xymatrix{
+\widehat{\Pspace^1} \ar[r] & M(\Pspace^1) \ar[r] \ar@{=}[d] & \Q(0) \ar[r] \ar@{=}[d] &  +\\
+\ar[r] & M(\Pspace^1) \ar[r]^q & \Q(0) \ar[r] & +
+}
+\]
+\TODO
+
+\subsubsection{Step 5: Towards rigidity}
+\begin{defn}
+Let
+\[
+\DMk := \DMeff[\Q(1)^{-1}]
+\]
+\end{defn}
+
+\begin{rem}
+The category $\DMk$ is a $\Q$-linear triangulated tensor category. It remains pseudo-abelian.
+\end{rem}
+\begin{notation}
+Now $M$ will denote the functor $(\mathrm{Sm}/k) \to \DMk$.
+\end{notation}
+
+\subsection{Basic properties}
+For the remainder, we assume $\mathrm{char~} k = 0$.
+
+\subsubsection{Functorial properties of the category of mixed motives}
+
+There exists an extension of $M$ to $Vect/k \to \DMk$. MV d.h., lily invovea, K\"unneth formula, blow-up formula, projective akjskd.
+
+\begin{exam}
+Consider $\Gm^n$. If $n=1$, then there is a useful exact sequence
+\[
+\widehat{M}(\Gm) \to \underbrace{\widehat{M}(\A^1) \oplus \widehat{M}(\A^1)}_{0} \to \widehat{M}(\Pspace^1) \to 1 \qquad d.t.
+\]
+Hence
+\[
+\widehat{M}(\Gm) = \widehat{M}(\Pspace)[-1] = \Q(1)[1]
+\]
+If $n \geq 1$.
+\[
+M(\Gm^n) = \otimes_n M(\Gm) = \otimes_n(\Q(0) \oplus \Q(1)[1]) = \oplus_{i=0}^n \binom{n}{2} \Q(i)[i]
+\]
+\end{exam}
+
+A nontrivial theorem of Voevodsky says the following.
+\begin{thm}
+If the endofunctor 
+\[
+- \otimes \Q(1) : \DMk \to \DMk
+\]
+is fullly faithful, then the inclusion
+\[
+\DMeff \inj \DMk
+\]
+is a full embedding.
+\end{thm}
+
+\[
+v : \DMk^{p} \to \DMk
+\]
+autobidioyl and motived $\DMk$ is rigid.
+
+\begin{notation}
+Let 
+\[
+\Q(-1) := \Q(1)^{-1} = \Q(1)^{\vee}
+\]
+and given a mixed motive $M \in \DMk$, let
+\[
+M(n) := M \otimes \Q(n) = M \otimes Q(\pm 1)^{\otimes n}
+\]
+\end{notation}
+
+If $X$ is a smooth projective variety over $k$, then the dual of its motive has the simple form
+\[
+M(X)^{\vee} = M(X)(-d)[-2d].
+\]
+In this case, $M(X)^{\vee}$ is a chydra object in $\DMk$.
+\begin{lemma}
+\[
+M(X)^{\vee} \otimes M(X)^{\vee} \cong (M(X) \otimes M(X))^{\vee} \cong (M(X \times X)^{vee} \to M(X)^{\vee})
+\]
+\TODO % What does the rightmost term mean?
+\end{lemma}
+
+\subsection{Realization functors}
+
+\begin{exam}
+There is a weight filtration and a Hodge filtration (tensor)
+\[
+\omega_{dR} : \DMk \to \mathrm{D}^b(k-n+1)
+\]
+\end{exam}
+
+\[
+\xymatrix{
+\Smk \ar[r] \ar[d]_{\textrm{dR-Hodge}} & \DMk \ar[dl]^{\omega_{dR}} \\
+\mathrm{D}^b(\mathrm{Var}/k)
+}
+\]
+
+Let $k$ be a subfield of $\C$ with embedding $\sigma : k \inj \C$. Then there is an associated functors
+\[
+\omega_{B,\sigma} : \DMk \to \mathrm{D}^b(\Q-\mathrm{Mod})
+\]
+Let $\ell$ be a prime. $\omega_{\ell} : \DMk \to \mathrm{D}^b(\Q_{\ell}-\mathrm{Mod})$ is a geometric realization. Action of Galois group $\omega_{dR} \otimes \C \cong \omega_{B,\sigma} \otimes \C$. Hence the Hodge realization
+\[
+\omega_H : \DMk \to \mathrm{D}^b(\mathrm{MHC}(k))
+\]
+\begin{exam}
+$\omega_H(\Q(1)) = \Q(1)_H$
+\end{exam}
+
+\subsection{Motivic cohomology}
+
+\begin{defn}[Motivic cohomology]
+Let $X$ be a smooth projective variety over $k$. Then the motivic cohomology of $X$ with $\Q$-coefficients is
+\[
+H^{i,r}(X, \Q) := \DMk(M(X), \Q(r)[i])
+\]
+\end{defn}
+
+A nontrivial theorem is
+\begin{prop}
+Let $X$ be a smooth projective variety over $k$. Then
+\[
+H^{i,r}(X, \Q) = K_{2r-i}(X)^{(r)}_{\Q}
+\]
+\end{prop}
+
+\begin{exam}
+Let $X = \spec k$. Then
+\[
+H^{i,r}(X,\Q) \stackrel{!}{=} 0 \quad \forall r \geq 0 \forall i < 0
+\]
+\end{exam}
+
+\begin{thm}[Borel]
+Let $k = \Q$. Then
+\[
+K_{2r-1}(\Q)_{\Q}^(r) = K_{2r-1}(k)_{\Q} = \left\{ \begin{array}{ll}
+\Q^{\times} \otimes \Q & r=1 \\
+\Q & \textrm{$r>1$ odd} \\
+0 & \textrm{otherwise}
+\end{array} \right.
+\]
+\[
+K_{2r}(\Q)_{\Q} = 0
+\]
+\end{thm}
+Hence $(B-S)_{\Q}$ is true.
+
+\section{Construction of the category of mixed Tate motives over the integers}
+
+\begin{defn}[Mixed Tate motive]
+A mixed Tate motive is an iterated extension\footnote{An iterated extension of $\Q(n)$ is a motive $M$ which fits into an exact sequence $0 \to I \to M \to \Q(n) \to 0$ where $I$ is an iterated extension of $\Q(n)$.} in $\DMk$ of motives of the form $\Q(n), n \in \Z$.
+\end{defn}
+
+\begin{defn}
+The category of mixed Tate motives, $\mathrm{MTM}(k)$, is the full subcategory of $\DMk$ spanned by mixed Tate motive.
+\end{defn}
+\newcommand \DTM {\mathrm{DTM}(k)}
+\newcommand \MTM {\mathrm{MTM}(k)}
+\begin{defn}
+Let $\DTM$ be the full triangulated subcategory of $\DMk$ generated by mixed Tate motives.
+\end{defn}
+
+\begin{rem}
+Hence $\MTM \subset \DTM \subset \DMk$. While forming $\MTM$, we only admit as objects the iterated extensions. For $\DTM$, we require the objects to be closed under shifts and triangles. $\Gm$ is a distinguishing example:
+\[
+M(\Gm) = \Q(0) \oplus \Q(1)[1] \notin \MTM \quad (\textrm{but $\in \DTM$})
+\]
+\end{rem}
+
+\begin{thm}
+If $(B-S)_k$, then
+\begin{itemize}
+\item There exists a $t$-structure on $\DTM$ whose heart is $\MTM$.
+\item $\MTM$ is abelian and closed under extensions.
+\item $\mathrm{D}^b(\MTM) \to \DMT$.
+\item The $\Q$-structure on $\DMk$ restricts to $\MTM$ and makes it rigid. More generally, the $t$-structure is compatible with the tensor structure.
+\item There exists a finite, functorial, increasing $\Z$-filtration, $W$, on $\DMT$ which induces an exact filtration on $MTM(k)$.
+\[
+\gr_{2n}^W M = \oplus_{i=1}^N \Q(-n_i), \qquad \gr_n^W \otimes \gr_m^W = \gr_{n+m}^W
+\]
+\item Let
+\item The functor
+\[
+\omega_W : \begin{array}{rcl}
+\underline{\DMT} & \to & \textrm{$k$-Mod} \\
+M & \mapsto & \oplus_{n \in \Z}\Hom_{\MTM}(\Q(-n), \gr_{2n}^W M) 
+\end{array}
+\]
+is an exact, faithful, tensor functor.
+\item The $\Ext$-groups satisfy
+\begin{eqnarray*}
+\Ext^1_{\MTM}(M,N) & = & \Hom^1_{\underline{\DMT}}(M,N) \\
+\Ext^2_{\MTM}(M,N) & \inj & \Hom^2_{\underline{\DMT}}(M,N)
+\end{eqnarray*}
+where, for objects $A$ and $B$ in a triangulated category $C$, we define
+\[
+\Hom^n_C(A, B) := \Hom_C(A, B[n]).
+\]
+\end{itemize}
+\end{thm}
+
+\begin{cor}
+If $k= \Q$, then we can compute the $\Ext$-groups as
+\[
+\Ext^1_{\MTM}(\Q(0), \Q(n)) = \left\{ \begin{array}{ll}
+\Q^{\times} \otimes \Q & n = 1 \\
+\Q & n \textrm{odd} \\
+0 & \textrm{otherwise}
+\end{array} \right.
+\]
+\[
+\Ext^2_{\MTM}(\Q(0), \Q(n)) = 0
+\]
+\end{cor}
+
+\begin{rem}
+The $n$-homology of a motive $M \in \DTM$ is defined by the functor
+\[
+H_n : \DTM \to \MTM
+\]
+\end{rem}
+\begin{defn}
+Let $f : Y \to X$. Then
+\[
+M(X,Y) := M([Y_1 \to X_0] \in \DTM
+\]
+\end{defn}
+
+\begin{exam}[Kummer motives]
+Let $t \in k^* / \{ 1 \}$.
+\[
+\{ 1,t \} \inj \Pspace^1 \setminus \{0, \infty\}
+\]
+There is a short exact sequence in $\MTM$,
+\[
+0 \to \Q(1) \to H_1(\Gm, \{1,t\}) \to \Q(0) \to 0,
+\]
+which gives a class in $\Ext^1_{\MTM}(\Q(0), \Q(1)) \in \MTM$.
+\end{exam}
+
+\subsection{Realization}
+
+Let $\ell$ be a prime.
+\[
+0 \to \Z_{\ell}(1) \to E \to \Z / \ell^n \Z \to 0
+\]
+\[
+0 \to M_{\ell^n}(\overline{k}) \to E_n \stackrel{f}{\to} Z / \ell^n \Z \to 0
+\]
+The $\ell^n$-th roots of $t$ in $\overline{k}$. 
+\begin{prop}
+The $\ell$-adic realization is unramified at $v$ if and only if $t \in k^*_v$.
+\end{prop}
+
+\subsection{Mixed Tate Motives over $\Z$}
+
+\begin{cor}
+The category $(\mathrm{MTM}(\Q), \omega_1, \otimes..)$ is a neutral Tannakian category.
+\end{cor}
+
+\begin{defn}[Mixed Tate Motives over $\Z$]
+The category of mixed Tate motives over $\Z$, $\mathrm{MTM}(\Z)$ is the full subcategory of $\mathrm{MTM}(\Q)$ spanned by motive $\underline{M}$ such that for some subquotient $N$ of $M$, there exists a short exact sequence,
+\[
+0 \to \Q(n+1) \to N \to \Q(n) \to 0
+\]
+Hence the sequence splits.
+\end{defn}
+
+Why are these called mixed Tate motives over $\Z$? The problem was large $\Ext^1$-groups, so here we take motives with trivial $\Ext^1$-groups.
+
+
+
+\begin{rem}
+\begin{itemize}
+\item The category $\mathrm{MTM}(\Z)$ is a Tannakian subcategory of $\mathrm{MTM}(\Q)$.
+\item 
+\[
+\Ext^1_{\MTMZ}(\Q, \Q(n)) = \left\{ \begin{array}{ll} 
+\Q^* \otimes \Q & \textrm{n=1} \\
+\Q & \textrm{$n>1$ odd} \\
+0 & \textrm{otherwise}
+\end{array} \right.
+\]
+\item $\Ext^2_{\MTMZ}(\Q(0), \Q(n)) = 0$.
+\item Let $M$ be a motive in $\mathrm{MTM}(\Q)$. Then $M$ is also in the subcategory $\MTMZ$ if and only if for all primes $p$, there exists a prime $\ell \neq p$, such that $\omega_{\ell}(M)$ is unramified at $p$.
+\end{itemize}
+\end{rem}
+
+\begin{exam}
+Let $X$ be a smooth scheme over $k$ such that $M(X) \in \mathrm{MTM}(\Q)$, where $X$ has good reduction at all primes\footnote{A scheme $X$ over $\spec \Z$ has good reduction at all primes if...}. Then $M(X) \in \mathrm{MTM}(\Z)$.
+\end{exam}
+
+\section{Applications}
+
+\subsection{The fundamental group and periods}
+Let $G_M$ be and algebraic group over $Q$ such that (Cf. Konrad's talk)
+\[
+\mathrm{Rep}(G_M) = (\mathrm{MTM}(\Z), \omega_{con}, \omega_{dR})
+\]
+\[
+\omega_{con} \cong \omega_{dR}
+\]
+\[
+\gr_{-2n}^WM = \bigoplus \Q(n)
+\]
+$\omega_{2n}$ is exact, functorial and compatible with the tensor product. Hence $G_M = \Gm \ltimes U_M$ for a pro-unipotent group $U_M$ and $\cO(G_M) = \Q[t,t^{-1}] \otimes T(\bigoplus_{n>0} \Q e_{2n+1})$
+\[
+\xymatrix{
+\mathrm{MTM}(\Q) \ar[rr]^{\omega_H} \ar[dr]_{\omega_{dR}} && \mathrm{MTH(\Q)} \ar[dl]_{\omega_{dR}} \\
+& \textrm{$\Q$-Mod} &
+}
+\]
+We get a morphism of fundamental groups, and hence $G_H \to G_M$ (or equivalently, $\Gm \ltimes U_H \to \Gm \ltimes U_M$ is a Tannakian dual.
+
+Degree-wise the associated morphism of Lie algebras $\mathrm{Lie} U_H \to \mathrm{Lie} U_M$ is dual to 1.
+
+The morphism $H^1(U_M) \to H^1(U_H)$ is isomorphic to the Borel-Beilinson regulator.
+\ref{lem:prounisurj}
+
+\begin{defn}[Borel-Beilinson regulator]
+\[
+\bigoplus_{n \in \Z} \left( \Ext^1_{\mathrm{MTM}(\Z)}(\Q, \Q(n)) \to \Ext^1_{\mathrm{MTM}(\Q)}(\Q, \Q(n)_H) \right)
+\]
+\end{defn}
+
+Since the regulator is injective, the morphism $G_H \to G_M$ is surjective.
+
+\[
+\mathrm{Rep(G_M)} = \left\{ \phi \in \mathrm{Rep}(G_H) \mid \textrm{$\phi$ factors through $G_M$} \right\}
+\]
+So $\mathrm{Rep}(G_M)$ is a full subcategory of $\mathrm{Rep}(G_H)$ and closed under subquotients.
+
+\subsection{Upperbounds on periods}
+
+Let $X$ be a variety over $\Q$. Complex conjugation defines an involutive automorphism of $\omega_B$ as a tensor functor
+\[
+\MTMZ \to \mathrm{D}^b(\textrm{$\Q$-Mod})
+\]
+Hence there is an involution $\epsilon$ on $\underline{\mathrm{Isom}}_{\Q}^{\otimes}(\omega_{dR}, \omega_B)$
+\[
+\xymatrix{
+\underline{\mathrm{Isom}}_{\Q}^{\otimes}(\omega_{dR}, \omega_B) \ar[r]^{\epsilon} & \underline{\mathrm{Isom}}_{\Q}^{\otimes}(\omega_{dR}, \omega_B) \\
+\spec \C \ar[r]^c \ar[u]^{\mathrm{comp}} & \spec \C \ar[u]^{\mathrm{comp}}
+}
+\]
+From the previous talk, this is compatible with having the involution be...  
+
+By Theorem \ref{thm:realperiods}, the real periods, $P^c_{\mathrm{comp},t}$, filter a quotient of $\Q[t^2] \otimes T(\bigoplus_{n > 0} \Q e_{2n+1})$.
+\begin{eqnarray*}
+\phi & = & \frac{1}{1-x^2} \sum_{i \geq 0} \frac{x^3}{1-x^3} \\
+& = & \frac{1}{1-x^2} \cdot \frac{1}{1-\frac{x^3}{1-x^2}} \\
+& = & \frac{1}{1-x^2} \cdot \frac{1-x^2}{1-x^2-x^3} \\
+& = & \frac{1}{1-x^2-x^3}
+\end{eqnarray*}
+Hence
+\[
+D_n = D_{n-2} + D_{n-3}, \qquad D_0 = D_2 = 1, D_1 = 0
+\]
+Let $d_n := \dim_{\Q} \gr_n P^c_{\mathrm{comp},t}$. Hence $d_n \leq D_n$ for all $n$.

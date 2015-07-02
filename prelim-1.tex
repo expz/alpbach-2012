@@ -1,0 +1,343 @@
+\chapter*{Preliminary Talk: Unipotence, periods and motivations}
+\addcontentsline{toc}{chapter}{**Preliminary Talk: Unipotence, periods and motivations by Brent Doran}
+
+Brent Doran on August 27th, 2012.
+
+Our introductory talks will concern themselves with three main questions.
+\begin{enumerate}
+\item What are periods?
+\item How do they classically arise in Hodge theory?
+\item How do they arise in our motivic context?
+\end{enumerate}
+
+\section{Toplogical and geometric motivations}
+
+We start at the beginning, in order not to lose sight of the roots. Fix a field $k$, of characteristic 0 if necessary.
+
+\begin{defn}[Algebraic group]
+An algebraic group over $k$ is a $k$-variety with morphisms of varieties, $m : G \times G \to G$ and $i : G \to G$, satisfying the usual group axioms for multiplication, inversion and identity.
+\end{defn}
+\begin{exam}
+Examples of algebraic groups are finite groups, the multiplicative group of $k$ ($\Gm$), the additive group of $k$ ($\Ga$), elliptic curves, etc.
+\end{exam}
+\begin{defn}[Group extension]
+A group $G$ is an \emph{extension} of a group $Q$ by $N$ if there is a short exact sequence
+\[
+1 \to N \to G \to Q \to 1
+\]
+It is called a \emph{central extension} if $N$ lies in the center of $G$.
+\end{defn}
+
+\begin{prop}[Key Fact]
+Every unipotent algebraic group over a field $k$ of characteristic 0 is an iterated central extension of $\Ga$.
+\end{prop}
+\noindent How general are these among algebraic groups?
+
+\section{Classifying algebraic groups}
+
+The classification proceeds according to the following plan.
+\[
+\xymatrix{
+&& \textrm{algebraic groups} \ar[d] & & \ar@{-}[d]^{G/G^0 \textrm{~finite group}} \\
+&& \textrm{connected} \ar[dl] \ar[dr] & & \ar@{-}[d]^{\textrm{Chevalley}} \\
+& \textrm{affine} \ar@{=}[d] && \textrm{abelian variety} & \ar@{-}[d]^{\textrm{Linearize}} \\
+& \textrm{linear} \ar[dl] \ar[dr] && & \ar@{-}[d]^{\textrm{Levi decomp.}} \\
+\textrm{unipotent} \ar@{=}[d] && \textrm{reductive} \ar[d] & & \ar@{-}[d]^{\textrm{torus}} \\
+\textrm{strictly upper triang.} && \textrm{semisimple} & &
+}
+\]
+Classification of representations of reductive groups proceeds by the theory of weights in the co-character lattice of maximal torus. Classification of representations of unipotent groups is hard.
+
+\subsection{Connected algebraic groups}
+\begin{rem}
+Let $G^0$ be the connected component of the identity. Then $G^0 \triangleleft G$, and $G^0$ is finite index. The quotient $G/G^0$ can be chosen to be an arbitrary finite group, so when we classify, we can simply consider connected $G$. The rest of the groups will be extensions of finite groups by these connected groups.
+\end{rem}
+
+\subsection{Reducing to affine and projective groups}
+
+\begin{defn}[Affine algebraic group]
+An algebraic group is \emph{affine} if its underlying $k$-variety is affine.
+\end{defn}
+\begin{defn}[Projective algebraic group]
+Similarly, an algebraic group is \emph{projective} if its underlying $k$-variety is projective.
+\end{defn}
+For example, abelian varieties are projective algebraic groups.
+
+\begin{rem}
+Non-affine, non-projective algebraic groups arise naturally as Jacobians of singular curves and universal additive extensions of abelian varieties.
+\end{rem}
+
+\begin{rem}
+But all algebraic groups are quasi-projective.
+\end{rem}
+
+\begin{thm}[Chevalley]
+An algebraic group $G$ admits a unique normal affine subgroup $H$ such that
+\[
+1 \to H \to G \to A \to 1
+\]
+for an abelian variety $A$.
+\end{thm}
+\noindent The above theorem justifies studying affine and projective groups separately. We focus here on affine groups.
+
+\begin{prop}[Linearize a $G$-variety]
+Let $G$ be an affine algebraic group acting on an affine variety $X$. Then there exists a unique linearization, i.e., a $G$-equivariant closed immersion $X \inj V$ into a finite dimensional $G$-representation $V$.
+\end{prop}
+
+\begin{cor}\label{cor:affineislinear}
+Affine algebraic groups are in fact linear algebraic groups, i.e., admit inclusions $G \inj GL(V)$.
+\end{cor}
+
+\section{Unipotent groups}
+
+The definition of a unipotent group follows rests on the definition of unipotence for linear transformations.
+
+\begin{defn}[Jordan decomposition]
+Given $g \in GL_N$, there exists a unique decomposition $g = g_s \cdot g_u$ such that 
+\begin{itemize}
+\item $g_s$ is semisimple, i.e., diagonalizable over $\overline{k}$.
+\item $g_u$ is unipotent, i.e., all eigenvalues are 1.
+\item $g_s g_u = g_u g_s$.
+\end{itemize}
+\end{defn}
+
+\begin{prop}
+If $f : G \to H$ is a homomorphism of linear algebraic groups, then it preserves the Jordan decomposition
+\[
+f(g)_s = f(g_s) \qquad f(g)_u = f(g_u)
+\]
+\end{prop}
+
+\noindent By the Corollary \ref{cor:affineislinear}, the notion of semisimplicity and unipotence is defined for elements of affine algebraic groups.
+
+\begin{defn}[Unipotent group]
+An affine algebraic group $G$ is \emph{unipotent} if all its elements are unipotent.
+\end{defn}
+
+\begin{rem}[Warning!]
+The analogous is NOT true for the definition of semisimple groups.
+\end{rem}
+
+\begin{prop}
+Any connected unipotent group is isomorphic to a subgroup of strictly upper triangular matrices.
+\end{prop}
+
+\begin{defn}[Derived group]
+Let $G$ be an algebraic group. Then its \emph{derived groups} are given by $G' := \overline{[G, G]}$, $G'' := \overline{[G', G']}$, etc.
+\end{defn}
+\begin{defn}[Solvable group]
+If this sequence terminates, then $G$ is said to be \emph{solvable}.
+\end{defn}
+
+\begin{thm}[Lie-Kolchin]
+Every solvable algebraic group $G$ over an algebraically closed dield can be embedded into some $GL_N$ as upper triangular matrices.
+\end{thm}
+
+\begin{exam}
+The group $\Gm \ltimes U$ is pro-unipotent.
+\end{exam}
+
+\begin{defn}[Unipotent radical]\label{def:uniradical}
+Let $G$ be affine and connected. The \emph{unipotent radical} $r_u(G)$ of $G$ is the maximal connected unipotent normal subgroup of $G$.
+\end{defn}
+
+\begin{defn}[Reductive algebraic group]
+An affine, connected algebraic group $G$ is \emph{reductive} if $r_u(G) = 0$. It is called redutive because its representations always decompose into a direct sum of irreducible representations. Hence to understand $Rep(G)$ for a reductive group $G$, one need only understand the irreducible representation, a feat accomplished by the theory of highest weights.
+\end{defn}
+
+\begin{defn}[Radical]
+let $G$ be affine and connected. Then the \emph{radical} $r(G)$ of $G$ is the maximal connected solvable normal subgroup of $G$.
+\end{defn}
+
+Then $r_u(G) \subset r(G)$.
+
+\begin{defn}[Semisimple algebraic group]
+An affine, connected algebraic group $G$ is \emph{semisimple} if $r(G) = 0$.
+\end{defn}
+\begin{defn}[Torus]
+An affine, connected algebraic group $G$ is a \emph{torus}, if there is a linearization $G \inj \GL_N$ such that all of its elements map to diagonal matrices.
+\end{defn}
+
+\begin{prop}
+Every reductive group is an extension of a semisimple group by a torus, and torii are rigid (their morphisms cannot be deformed) and classified by a discrete invariant.
+\end{prop}
+
+\begin{thm}[Levi decomposition]
+Let $G$ be an affine algebraic group. Then there exists a reductive subgroup $H$ such that
+\[
+G = r_u(G) \rtimes H
+\]
+The subgroup $H$ is unique up to conjugation and called the \emph{Levi factor}.
+\end{thm}
+
+\begin{exam}
+If $G$ is commutative, the Levi decomposition has the form $G = U \times T = (\Ga)^k \times T$.
+\end{exam}
+\noindent So what can we say about representation theory? We study reductive and unipotent groups separately. There are only discrete choices with arbitrary dimensional moduli which are arbitrary badly behaved, a situation known as Murphy's Law.
+
+The classification of unipotent groups themselves is very hard. What can be said:
+
+\begin{itemize}
+\item As a variety, every unipotent group is isomorphic to $\A^n$. 
+\item The orbits of a unipotent group are all closed subvarieties.
+\item Abelian unipotent groups in characteristic zero are of the form $\Ga^k$.
+\item Unipotent groups in characteristic zero are iterated extensions by $\Ga$'s.
+\end{itemize}
+
+\begin{defn}[Lower central series]
+Given a group $G$ (not necessarily algebraic), its \emph{lower central series} is
+\[
+G_1 = G, \qquad G_{i+1} = [G_i, G]
+\]
+\end{defn}
+
+For example, consider the following unipotent group and its lower central series.
+\[
+G = G_1 = \left\{ \left(\begin{array}{ccc}
+1 & a & c \\
+0 & 1 & b \\
+0 & 0 & 1
+\end{array} \right) \left| a, b, c \in k \right. \right\} \qquad
+G_2 = \left\{ \left(\begin{array}{ccc}
+1 & 0 & t \\
+0 & 1 & 0 \\
+0 & 0 & 0
+\end{array} \right) \left| t \in k \right. \right\}
+\]
+and $G_3 = 1$. Because $G_3 = 1$, we say that $G$ has nilpotency class 2, or that $G$ is a step 2 nilpotent group. More generally, the $n \times n$ strictly upper triangular matrices have nilpotency class $n-1$.
+
+\begin{rem}
+Affine algebraic groups $G$ are determined by $\mathrm{Rep}(G)$ in a Tannakian manner.
+\end{rem}
+
+\subsection{Discrete groups}
+There exists a useful formalism for affine algebraic groups, but not for general discrete groups. Given a finitely generated discrete group $\Gamma$, e.g., $\GL(n, \Z)$, what can we say? If $\Gamma$ were an algebraic group, we might study it by looking for a variety $X$ and an embedding of $\Gamma \subset \Aut(X)$. In the discrete case, we find a manifold $M$ with $\Gamma = \pi_1(M)$. This leads to covering spaces! But a direct algebro-geometric interpretation of such $\Gamma$ is difficult, e.g., not every $\Gamma$ is realized as a profinite completion.
+
+\begin{defn}
+A \emph{$\Q$-local system} on a manifold $M$ is a locally constant sheaf\footnote{A locally constant sheaf $\cF$ is a sheaf such that $\cF(U) \cong V$ for all connected $U$ in the same connected component. For example $\underline{\Z}$ or $\underline{\Q}$.} of finite dimensional $\Q$-vector spaces.
+\end{defn}
+\noindent Local systems ``linearize'' the theory of covering spaces:
+\begin{eqnarray*}
+\mathrm{Rep}_{\Q}(\Gamma) & \longleftrightarrow & \textrm{$\Q$-local system on $M$} \\
+\textrm{monodromy group is $\rho(\Gamma)$} & \longleftrightarrow & \textrm{monodromy group actions of $\pi_1(M)$}
+\end{eqnarray*}
+There are a number of issues with the scheme:
+\begin{enumerate}
+\item There is no reason these local systems underlie a variation of Hodge structure. Most do not. (See the next lecture for Hodge structures, Definition \ref{def:mixedhodge}.)
+\item Representations of discrete $\Gamma$ can be arbitrarily bad. But they relate to representations of algebraic groups for which we have the Tannakian formalism for concrete understanding.
+\end{enumerate}
+We could try to overcome these issues by taking the closure of the discrete group $\Gamma$ in $\GL(V)$ for various $\Gamma$-representations $V$. That is sort of what we'll do. From a topologist's viewpoint, the homotopy theory of an arbitrary $M$ is hard. So we would like to ``linearize'' from homotopy theory to cohomology, and add additional structure to it, giving it a more geometric nature. We try ``rational homotopy theory'' (Sullivan, Deligne, Griffiths, Morgan, et al.) which is more manageable and is in a sense the ``rational cohomology'' of $\Gamma$ with homotopy tools (e.g., Postaikov towers). Then everything reduces to the study of a de Rham complex. Here arises a dg-algebra structure (Cf. Definition \ref{def:dgalgebra}).
+
+There is no obvious way to encode all of $Rep_{\Q}(\Gamma)$. However, Sullivan, et al. realized quite early that it is quite powerful to encode all unipotent representations of $\Gamma$ via Malcev pro-unipotent completion of $\Gamma$.
+
+\begin{rem} 
+For a compactifiable K\"ahler manifold, this linearization of homotopy admits a mixed Hodge structure. Ultimately, Deligne-Gonehovov lift this structure to show it is a ``motive'', and hence the period formalism, etc. can be used.
+\end{rem}
+\begin{prop}[Morgan]
+If $M$ is compact K\"ahler, then the Malcev algebra, i.e., $\mathrm{Lie} \pi_1(M)^{un}$ is generated by quadratic terms; K\"ahler groups.
+\end{prop}
+\noindent Many groups do not arise in this way. Even the free group on two generators does not!
+
+By design, $\pi_1(M)^{un}$ encodes unipotent $\Q$-local systems on $M$. In other words, it encodes unipotent monodromy representations. Hence it encodes iterated extensions of trvial local systems.
+
+\subsection{Why should unipotence be relevant to Hodge theory and periods?}
+Maybe we never get unipotent $\Q$-local systems under variation of Hodge structure. Actually, it's almost the opposite: locally we always get, in effect, unipotent $\Q$-local systems. 
+
+The basic picture of periods is found in the Lefschetz degeneration. For example, a torus degenerates to a pinched torus and a cylinder to a cone which produces nodes in both cases.
+
+Let us first associate a local system $\mathcal{L}$. Then $\pi_1(\Delta^*)$, where $\Delta^*$ is the punctured disk, is generated by the obvious loop. Then,
+\[
+\mathcal{L}_{+} = H^1(E_t), t \neq 0 \qquad H^1(E_t, \Q) = Q^2, \left(\begin{array}{cc}
+1 & 1 \\
+0 & 1
+\end{array}\right).
+\]
+There is a Picard-Lefschetz formula for the general case of local monodromy.
+
+\subsection{Period picture}
+$E$ has a unique 1-form $\omega$ and period vector $w(t) = S_{\gamma}$. The cocyles $\omega_i$ and $\gamma_i$ are basis vectors for $H^1(E, \Q)$. Then $\Gamma = \rho(\pi_1(\Delta^*))$ acts on $H^1(E_t, \Q)$. There is a map
+\[
+\Delta^* \to \textrm{$\Gamma$-orbits of periods}, \qquad t \mapsto \Gamma w(t)
+\]
+Then
+\[
+\Pspace(H^1(E_t, \Q)) \cong \Pspace^1 = \{[\omega_1 : \omega_2]\} = \{[1_{\epsilon} : \tau]\}
+\]
+The period domain is $\mathfrak{h} = H^1$ which is isomorphic to the Poincar\'e unit disk.
+
+\begin{thm}[Monodromy theorem]
+Let a local system $\mathcal{L}$ underlie a variation in Hodge structure. Then the monodromy operator $T$ is quasi-unipotent, i.e., its eigenvalues are roots of unity.
+\end{thm}
+\begin{thm}[Deligne's finiteness theorem]
+Fix a compactifiable $B$ and an integer $N$. There exist at most finitely many conjugacy classes of rational maps of $\pi_1(B)$ of dimension $N$ giving local systems that occur as direct factor of a variation in mixed Hodge structure.
+\end{thm}
+\begin{rem} 
+There are far too many unipotent representations, and very few variations of Hodge structure have unipotent monodromy.
+\end{rem}
+\noindent So there exists two examples of ``competing factors'' with unipotent local systems. On the one hand there are $\Q$-local systems with Deligne finiteness; on the other hand, there is global monodromy. Global monodromy is ``typically'' not unique, while local monodromy ``is'' unipotent.
+
+Hence there is an incomplete ``motivic $\pi$'' theory. It was proved 40 years ago that $\pi_1^{un}$ admits a mixed Hodge structure. The proof that $\pi_1^{un}$ is a $\Q$-motive brought this into a modern period formalism.
+
+\section{Nilpotent groups}
+\subsection{What is a pro-nilpotent completion of $\pi_i$?}
+It exists for any discrete group. It is convenient to reduce to a finitely generated group in characteristic 0. We'll be more concrete and conceptual than the formal way.
+
+\begin{defn}[Nilpotent group]
+A group $\Gamma$ (not necessarily algebraic) is \emph{nilpotent} if is lower central series, $F_{i+1} = [\Gamma_i, \Gamma]$, stabilizes in finitely many steps at the trivial group.
+\end{defn}
+
+\begin{rem}
+Over a field of characteristic 0, unipotent groups are nilpotent.
+\end{rem}
+
+\begin{defn}[Pro-nilpotent completion]
+The \emph{pro-nilpotent completion} of a group $\Gamma$ is a group $\Gamma^{nil}$ satisfying the universal property:
+\[
+\xymatrix{
+\Gamma \ar[r] \ar[dr]_{\forall} & \Gamma^{nil} \ar[d]^{\exists !} & \\
+& N & \textrm{$N$ nilpotent}
+}
+\]
+It can be constructed as the limit of the projective system formed by morphisms $\Gamma \to N$ for nilpotent groups $N$. The construction can be simplified by restricting to the system of lower central series quotients, $\Gamma \to \Gamma / \Gamma_{n+1}$, which satisfy universal propreties for morphisms into step $n$ nilpotent groups. Then $\Gamma^{nil}$ can also be calculated as the natural projection of $\Gamma$ to the limit of
+\[
+\cdots \to \Gamma / \Gamma_3 \to \Gamma / \Gamma_2
+\]
+\end{defn}
+
+\begin{lemma}
+Let $N$ be a nilpotent group. The set of torsion elements $\mathrm{Tor~} N$ is a normal subgroup. If $N$ is finitely generated, then $\mathrm{Tor~} N$ is finite.
+\end{lemma}
+
+\noindent Torsion is no big deal, so we define torsion-free pro-nilpotent completion in a similar way.
+\begin{defn}[Torsion-free pro-nilpotent completion]
+\[
+\xymatrix{
+\Gamma \ar[r]^{j_0} \ar[dr] & \Gamma_0^{nil} \ar[d]^{\exists !} \\
+& N_0 = N/\mathrm{Tor~} N
+}
+\]
+It can similarly be calculated as a limit of $\cdots \to (\Gamma / \Gamma_3)_0 \to (\Gamma / \Gamma_2)_0$.
+\end{defn}
+
+\begin{exam}
+A crucial example is a when $G$ is a finitely generated abelian group. Then the pro-nilpotent completion is $id : G \to G$. (This is obvious: $G$ is step 1 nilpotent and the identity satisfies the universal property.) The torsion-free pro-nilpotent completion is the quotient $G \to G / \mathrm{Tor~} G$.
+\end{exam}
+
+\begin{defn}[Pro-unipotent group]
+A pro-unipotent group is an algebraic group over a field such that every representation has an increasing unipotent filtration.
+\end{defn}
+
+\begin{defn}[Pro-unipotent completion]\label{def:prounipotentcomp}
+Let $\Gamma$ be a finitely generated group. Then its pro-unipotent completion $\Gamma^{un}$ (also known as the Malcev completion) is the pro-unipotent algebraic group $\Gamma^{un}$ over $\Q$ satisfying the universal property:
+\[
+\xymatrix{
+\Gamma \ar[r] \ar[dr]_{\forall} & \Gamma^{un}(\Q) \ar[d]^{\exists !} & \\
+& U(\Q) & \textrm{$U$ unipotent alg. group over $\Q$}
+}
+\]
+Alternatively, the pro-unipotent completion can be calculated as
+\[
+\Gamma^{un} = \spec \varinjlim_n(\Q[\Gamma]/I^n)^{\vee}.
+\]
+where $I \subset \Q[\Gamma]$ is the augmentation ideal which will be defined later. This will be explained in the lecture on pro-unipotent completion \ref{ch:prounipotent}.
+\end{defn}

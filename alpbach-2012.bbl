@@ -1,0 +1,91 @@
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
+% \MRhref is called by the amsart/book/proc definition of \MR.
+\providecommand{\MRhref}[2]{%
+  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
+}
+\providecommand{\href}[2]{#2}
+\begin{thebibliography}{CMW06}
+
+\bibitem[And04]{andre04-motifs}
+Y.~Andr\'{e}, \emph{Une introduction aux motifs}, Panoramas et {S}ynth\`{e}ses,
+  vol.~17, Soci\'{e}t\'{e} Math\'{e}matique de France, 2004.
+
+\bibitem[BS01]{Balmer-Schlichting}
+P.~Balmer and M.~Schlichting, \emph{Idempotent completion of triangulated
+  categories}, Journal of Algebra \textbf{236} (2001), no.~2, 819--34.
+
+\bibitem[Car07]{cartier-ha}
+P.~Cartier, \emph{A primer of hopf algebras}, Frontiers in Number Theory,
+  Physics, and Geometry II, 2007, pp.~537--615.
+
+\bibitem[Che73]{chen-1973}
+{Kuo-tsai} Chen, \emph{Iterated integrals of differential forms and loop space
+  homology}, Ann. of Math. (2) \textbf{97} (1973), 217--246. \MR{0380859 (52
+  \#1756)}
+
+\bibitem[CMW06]{MVW-motcoh}
+V.~Voevodsky C.~Mazza and C.~Weibel, \emph{Lecture notes on motivic
+  cohomology}, Clay Mathematics Monographs, vol.~2, American Mathematical
+  Society, Clay Mathematics Institute, 2006.
+
+\bibitem[Del89]{deligne:galoisgroups}
+Pierre Deligne, \emph{Le groupe fondamental de la droite projective moins trois
+  points}, Galois groups over {${\bf Q}$} ({B}erkeley, {CA}, 1987), Math. Sci.
+  Res. Inst. Publ., vol.~16, Springer, New York, 1989, pp.~79--297.
+
+\bibitem[DG05a]{dego:motivicfundamentalgroups}
+Pierre Deligne and Alexander~B. Goncharov, \emph{Groupes fondamentaux
+  motiviques de {T}ate mixte}, Ann. Sci. \'Ecole Norm. Sup. (4) \textbf{38}
+  (2005), no.~1, 1--56.
+
+\bibitem[DG05b]{deligne-goncharov05}
+\bysame, \emph{Groupes fondamentaux motiviques de {T}ate mixte}, Ann. Sci.
+  Ecole Norm. Sup. \textbf{38} (2005), 1--56.
+
+\bibitem[ea10]{milne-ag}
+J.S.~Milne et~al., \emph{Algebraic groups, lie groups, and their arithmetic
+  subgroups}, 2010, \url{http://www.jmilne.org/math/CourseNotes/ALA.pdf}.
+
+\bibitem[EM]{em}
+T.~Ekedahl and S.~{M}erkulov, \emph{Lecture notes on the
+  {G}rothendieck-{T}eichm{\"u}ller group},
+  \url{http://www2.math.su.se/~sm/Papers/GT.pdf}.
+
+\bibitem[GM04]{goncharov-2004}
+Alexander~B. Goncharov and Yuri~I. Manin, \emph{Multiple {$\zeta$}-motives and
+  moduli spaces {$\overline{\mathcal{M}}_{0,n}$}}, Compos. Math. \textbf{140}
+  (2004), no.~1, 1--14. \MR{2004120 (2005c:11090)}
+
+\bibitem[Hub00]{huber00-realization}
+A.~Huber, \emph{Realization of {V}oevodsky's motives}, Journal of Algebraic
+  Geometry \textbf{9} (2000), no.~4, 755--99, Corrigendum in 13 (2004),
+  p.~195--207.
+
+\bibitem[Lev92]{levine92-tatemotives}
+M.~Levine, \emph{Tate motives and the vanishing conjectures for algebraic
+  $k$-theory}, Algebraic K-Theory and Algebraic Topology (J.~F.~Jardine
+  P.G.~Goerss, ed.), NATO ASI Series, vol. 407, 1992, pp.~113--146.
+
+\bibitem[LS88]{ls}
+J.~Lambek and P.J. Scott, \emph{Introduction to higher order categorical
+  logic}, vol.~7, Cambridge Univ Pr, 1988.
+
+\bibitem[PS08]{peters-2008}
+C.~Peters and J.~Steenbrink, \emph{Mixed hodge structures}, Springer, 2008.
+
+\bibitem[Qui69]{quillen-r}
+D.~Quillen, \emph{Rational homotopy theory}, The Annals of Mathematics
+  \textbf{90} (1969), no.~2, 205--295.
+
+\bibitem[Sui07]{suisse}
+E.~Suisse, \emph{Groupes nilpotents sans torsion et compl{\'e}t{\'e}s de
+  {M}al'cev}, M{\'e}moire (2007),
+  \url{http://www-magistere.u-strasbg.fr/IMG/pdf/memoire_esther_suisse.pdf}.
+
+\bibitem[Voe00]{voevodsky00-mm}
+V.~Voevodsky, \emph{Triangulated categories of motives over a field}, Cycles,
+  transfers, and motivic homology theories, Annals of Mathematics Studies,
+  Princeton University Press, Princeton, NJ, 2000.
+
+\end{thebibliography}

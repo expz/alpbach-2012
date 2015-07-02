@@ -1,0 +1,570 @@
+\chapter{Motivic structure: Motivic fundamental group by Simon Pepin Lehalleur}
+%\addcontentsline{toc}{chapter}{Motivic structure: Motivic fundamental group by Simon Pepin Lehalleur}
+
+Simon Pepin Lehalleur on September 6th, 2012.
+
+\medskip
+\medskip
+
+Our starting point is the following basic situation and facts from talk 7 :
+
+\begin{itemize}
+\item Let $X = \Pspace^1_k \setminus D$ for $k \inj \C$, $D$ the support of a divisor defined over $k$ and containing $\infty$, and $a, b \in X(k)$. When needed, we denote by $t$ a coordinate function on $X$.
+\item We have defined $\pi_1(X;a,b)_H$, a $\mathrm{MH}(k)$-affine scheme, and the ``composition of paths'' groupoid structure when varying $a,b$.
+\item Let $x, y \in D(k), u \in T_x \Pspace^1 \setminus \{0\}, v \in T_y \Pspace^1 \setminus \{0\}$. We have $\pi_1(X;a,u)_H$ and $\pi_1(X;u,v)_h$ $\mathrm{MH}(\Q)$-affine schemes, again with composition of paths.
+\item Multiple zeta values are real periods of  $\pi_1(\Pspace^1 \setminus \{ 0,1,\infty\},\overrightarrow{01},\overrightarrow{10})$ :
+\[
+\xymatrix{
+\stackrel{0}{\mathrm{x}} \ar@{-<}[r] & \stackrel{1}{\mathrm{x}} \ar@{-<}[l] & \stackrel{\infty}{\mathrm{x}}
+}
+\]
+\end{itemize}
+
+The goal of this talk is to prove similar facts in the category $\MTM(k)$ (even $\MTM(\Z)$ for the last item), and to combine this with the bounds on periods that was derived from the structure of $\MTM(\Z)$ in talks 8 and 9 to prove the Goncharov-Terasoma bounds on the dimension of spaces of multizeta values.
+
+We start in the more general setting of $X\in \Smk$ for any field $k$ of characteristic $0$, and add increasingly strong hypotheses (which are all satisfied in the case of $\Pspace^1_\Q\setminus\{0,1,\infty\}$) to perform the construction. 
+
+\section{The case of interior base points}
+
+\subsection{The motivic bar complex}
+
+The idea is to perform the bar construction on $M(X)^{\vee}$ in order to produce a motivic bar complex $B_M^*(X;a,b) \in \mathrm{Ind}(\DMk)$. The idea meets the following technical problems :
+
+\begin{enumerate}
+\item $\DMk$ is too small, it does not contain the analogues of unbounded complexes used in the bar construction. Therefore we define the analogue of the truncated bar complexes and get an Ind-object.
+\item The triangulated structure of $\DMk$ alone does not provide a functor $Tot : K^b(\DMk) \to \DMk$. So we need to do the construction at the level of $K^b(\SmCorr)$.
+\item On the other hand, duality is only defined on $\DMk$. So we have to take duals at the end.
+\end{enumerate}
+
+We define :
+\[
+\begin{array}{rccccccl}
+\mathrm{CPX}^{a,b}_* = [ & \spec k & \stackrel{d_0}{\longrightarrow} & X & \stackrel{d_1}{\longrightarrow} & X^2 & \stackrel{d_2}{\longrightarrow} & \cdots ] \in K^b(\SmCorr) \\
+& 0 &  & -1 & & -2 & &
+\end{array}
+\]
+where
+\begin{eqnarray*}
+d_i = \sum_{j=0}^{i} (-1)^j d_i^j, \qquad d_i^j(x_1, \ldots, x_i) = \left\{ \begin{array}{ll}
+(a,x_1, \ldots, x_i), & j=0 \\
+(x_1, \ldots, x_j, x_j, \ldots, x_i), & 0 < j < i \\
+(x_1, \ldots, x_i, b), & j=i
+\end{array} \right.
+\end{eqnarray*}
+
+We do a naive truncation of this complex :
+\[
+\sigma_{\geq -n} \mathrm{CPX}_*^{a,b} = [ \spec k \to X \to \cdots \to X^n] \in K^b(\SmCorr)
+\]
+\[
+B_M^{\geq -n}(X;a,b) = M([\sigma_{\geq -n} \mathrm{CPX}_*^{a,b}])^{\vee} \in \DMk
+\]
+And finally :
+\[
+B_M(X;a,b) = \varinjlim_n B^{\geq -n}_M(X;a,b) \textrm{``$=$''}[ \cdots \to \stackrel{-2}{M(X^2)^{\vee}} \to \stackrel{-1}{M(X)^{\vee}} \to \stackrel{0}{\spec k}]
+\]
+This is the motivic bar complex.
+
+\subsection{Operations}
+By analogy with the bar construction of Talk 4., we want to define on the motivic bar complex : a product $\nabla$ which encodes the shuffle, a coproduct $\Delta$ which encodes the composition of paths and an antipode $S$ which encodes the reversal of paths. Because of the duality step in the construction, we need operations the other way at the geometric level.
+\subsubsection{Shuffle product}
+We need to define shuffle coproducts:
+\[
+\nabla^\vee:\sigma_{\geq -n} \mathrm{CPX}_*^{a,b} \to \sigma_{\geq -n} \mathrm{CPX}_*^{a,b} \otimes \sigma_{-n} \mathrm{CPX}_*^{a,b}
+\]
+The shuffle coproduct before truncations:
+\[
+\begin{array}{rcl}
+\nabla^\vee\mathrm{CPX}_*^{a,b} & \to & \mathrm{CPX}_*^{a,b} \otimes \mathrm{CPX}_*^{a,b} \\
+(x_1, \ldots, x_n) & \mapsto & (\sum_{\sigma \in \Sigma_{p,q}} \mathrm{sgn}(\sigma)(x_{\sigma(1)}, \ldots, x_{\sigma(p)}) \otimes (x_{\sigma(p+1)}, \ldots, x_{\sigma(n)}))_{p+q=n}
+\end{array}
+\]
+The sum is indexed by $(p,q)$-shuffles, as in Talk 4.
+
+The counit map before truncations is simply the projection $u^\vee:\mathrm{CPX}_*^{a,b}\rightarrow [Spec(k)]$.
+
+\begin{lemma}
+This coproduct is :
+\begin{itemize}
+\item coassociative
+\item graded cocommutative
+\item counital with respect to $u^{\vee}$
+\end{itemize}
+\end{lemma}
+
+\subsubsection{Composition of paths products}
+This time we need to define composition of paths products for $a,b,c\in X(k)$ :
+\[
+\begin{array}{rcl}
+\mathrm{CPX}_*^{a,b} \otimes \mathrm{CPX}_*^{b,c} & \to & \mathrm{CPX}_*^{a,c} \\
+(x_1, \ldots, x_k) \otimes (y_1, \ldots, y_l) & \mapsto & (x_1,b,\ldots,b,y_1,\ldots,y_l)+(x_1,x_2,b,\ldots b,y_1,\ldots,y_l)+\ldots\\
+& & +(x_1,\ldots,x_k,y_1,\ldots y_l)+(x_1,\ldots,x_k,b,y_2,\ldots y_l)+(x_1,\ldots,x_k,b,\ldots,b,y_l)
+\end{array}
+\]
+
+When $a=b$, the differential $d_0$ of $\mathrm{CPX}_*^{a,a}$ is zero, which allows to define a unit map $\epsilon^\vee:[Spec(k)]\rightarrow \mathrm{CPX}_*^{a,a}$.
+
+\begin{lemma}
+The composition of paths is :
+\begin{itemize}
+\item associative
+\item unital with respect to $\epsilon^\vee$
+\end{itemize}
+\end{lemma}
+
+\begin{lemma}
+The shuffle coproduct and the composition of paths products on $\mathrm{CPX}_*^{a,b}$ are compatible.
+\end{lemma}
+
+\subsubsection{Reversal of paths antipode}
+\[
+\begin{array}{cccc}
+S^{\vee}: & \mathrm{CPX}_*^{a,b}&\to & \mathrm{CPX}_*^{b,a}\\
+& (x_1,\ldots,x_n) & \mapsto & (x_n,\ldots,x_1)
+\end{array}
+\]
+
+\begin{lemma}
+The map $S^{\vee}$ makes the previous bialgebra structure on $(\mathrm{CPX}_*^{a,a})$ into an Hopf algebra.
+\end{lemma}
+
+\subsubsection{Truncations}
+It remains to check that these operations on the non-truncated complex $\mathrm{CPX}_*^{a,b}$ induce similar operations on the truncations, which we can then dualize, and take the direct limit (checking that the operations are compatible with the direct system). This is somewhat complicated by the fact that the tensor product of complexes mixes various degrees. A clearer picture of what goes on will be sketched below using the cosimplicial point of view. We simply admit it for the time being.
+
+To sum up the four previous sections :
+
+\begin{prop}
+There is a natural structure of Hopf algebroid structure on the system $(B_M(X;a,b))_{a,b\in X(k)}$.
+\end{prop}
+
+Like in Talk 4., one can define a normalized version $\tilde{B}_M(X;a,b)$ of the motivic bar complex, and this is the choice made in the original paper \cite{deligne-goncharov05}.
+
+\subsection{Passing to $\MTMZ$}
+
+We want to use the more precise results we have for mixed Tate motives. We have :
+
+\begin{prop}
+ Assume that $M(X)\in \DMT$. Then $B_M(X;a,b) \in \mathrm{Ind}(\DMT)$.
+\end{prop}
+\begin{proof}
+We have to check that the truncated complexes $B_M^{\geq -n}(X;a,b)$ are in $\DMT$. Since duality preserves $\DMT$, we have to show that $M(\sigma_{\geq -n}\mathrm{CPX}^{a,b}_*)$ is in $\DMT$. We proceed by induction on $n$. This is clear for $M(\sigma_{\geq 0}\mathrm{CPX}^{a,b}_*)=M(Spec(k))=\Q(0)$. We have a short exact sequence in $K^b(\SmCorr)$ :
+\[
+0\rightarrow X^{n+1}[-n-1]\rightarrow \sigma_{\geq -(n+1)}\mathrm{CPX}^{a,b}_*\rightarrow \sigma_{\geq n}\mathrm{CPX}^{a,b}_*\rightarrow 0
+\]
+This provides an exact triangle in $\DMT$ :
+\[
+M(X^{n+1}[-n-1])\rightarrow M(\sigma_{\geq -(n+1)}\mathrm{CPX}^{a,b}_*)\rightarrow M(\sigma_{\geq n}\mathrm{CPX},^{a,b}_*)\rightarrow +
+\]
+ But $M(X^{n+1}[-n-1])=M(X)^{\otimes n+1}[-n-1]\in \DMT$, and we conclude using the induction hypothesis.
+\end{proof}
+
+Recall the following proposition from Talk 9 :
+
+\begin{prop}
+Assume $(B-S)_k$. Then there is a $t$-structure on $\DMT$, with heart $\MTM(k)$.
+\end{prop}
+
+We denote the cohomological functor to the heart by :
+\[
+H^0 = H_0 : \DMT \to \MTM(k)
+\]
+(Here $H^n = H_{-n}$.)
+
+For the rest of the section, we assume that $M(X)\in \DMT$ and that $(B-S)_k$ holds. This is satisfied in the basic situation. We then define :
+\[
+H^0(B_M(X;a,b)):=\varinjlim_{n}H^0(B_M^{\geq -n}(X;a,b))\in\mathrm{Ind}(\MTM(k))
+\]
+A more elegant approach would be to extend the triangulated structure and the $t$-structure to $\DMT$, but we will not need this.
+
+Since the tensor product is $t$-exact, we have for any objects $M,M'\in \DMT$ :
+\[
+H^0(M\otimes M')\simeq \sum_{n\in\Z}H^n(M)\otimes H^{-n}(M')
+\]
+and we get lax (resp. oplax) monoidal structures on the functor $H^0$, namely the inclusion of the $H^0\otimes H^0$ factor (resp. the projection to it). (It is not so obvious that the projection is oplax)
+
+This allows to transfer our algebraic structures on $B_M(X;a,b)$ to $H^0(B_M(X;a,b))\in \mathrm{Ind}(\MTM(k))$ (one has to go back to finite level and use the truncated operations...). So we get a shuffle product, and ``composition of paths'' coproduct. The end result is :
+
+\begin{defn}[Motivic fundamental group]
+Let $X$ be a smooth variety over $k$, $a,b\in X(k)$. Then its motivic fundamental path torsor (motivic fundamental group if $a=b$) $\pi_1(X;a,b)$ is the $\MTM(k)$-affine scheme $\spec (H^0(B_M(X;a,b)))$. For varying $a,b$, it forms a pro-algebraic groupoid.
+\end{defn}
+
+Now we make the following extra assumption on $X$ : $M(X)\in \DMT$ has non-positive weights, i.e. $M(X)=W_0M(X)\in \DMT$, or equivalently that $W_{-1}(M(X)^{\vee})=0$. This does not seem to follow from $M(X)\in \DMT$ and $(B-S)_k$, because this would imply the Beilinson-Soul\'e conjecture for any such variety. But it is satisfied in the basic situation, because $M(\Pspace^1)=\Q\oplus \Q(1)[2]$ has negative weights and the localization exact sequence only adds $\Q(1)[1]$ factors.
+
+Note that because of the functoriality of the weight filtration on $\MTM(k)$, it extends to a functorial filtration on $\mathrm{Ind}(\MTM(k))$ defined by :
+\[
+W_k(\varinjlim_{i\in I}M_i):=\varinjlim_{i\in I} W_kM_i
+\]
+
+\begin{prop}
+The $\MTM(k)$-scheme $\pi_1(X;a,b)$ has non-negative weights, i.e. $W_{-1}\mathcal{O}(\pi_1(X;a,b))=0$.
+\end{prop}
+\begin{proof}
+We have :
+\begin{eqnarray*}
+W_{-1}(H^0(B_M(X;a,b)) & = & W_{-1}(\varinjlim_{n\in\N}H^0(B^{\geq -n}_M(X;a,b)))\\
+& = & \varinjlim_{n\in\N} H^0(W_{-1}B^{\geq -n}_M(X;a,b))\\
+\end{eqnarray*}
+Now, by duality :
+\[
+W_{-1}B^{\leq n}_M(X;a,b) = 0\Leftrightarrow W_0\sigma_{\geq -n}\mathrm{CPX}^{a,b}_*=\sigma_{\geq -n}\mathrm{CPX}^{a,b}_*
+\]
+We prove this by induction on $n$. It is clear for $n=0$. In general, we apply the weight truncation functor $W_0$ on a previous exact triangle to get the following :
+\[
+W_0(M(X)^{n+1})[n+1]\rightarrow W_0(M(\sigma_{\geq -(n+1)}\mathrm{CPX}^{a,b}_*))\rightarrow W_0(M(\sigma_{\geq n}\mathrm{CPX}^{a,b}_*))\rightarrow +
+\]
+Now $M(X)$ has non-positive weights, so $M(X^{n+1})$ has non-positive weights, and we conclude by the induction hypothesis.
+\end{proof}
+
+\subsubsection{The cosimplicial point of view on the operations}
+\label{cosimp}
+This section is not strictly necessary to understand the end of this talk, but it may help to understand where the formulas come from and how to replace some computations by functoriality arguments. This requires to know the language of cosimplicial objects. For an introduction see for instance \cite{brbr}, Chapters 2 and 7.
+
+Let $\Delta^\bullet$ be the standard cosimplicial simplicial set (i.e., a cosimplicial set in the category of simplicial sets), and $\Delta^1$ the constant cosimplicial simplicial set built out of an interval. For any $X\in \SmCorr$, there is a cosimplicial ``free path space'' : $\mathrm{PX}^\bullet:=X^{Hom(\Delta^\bullet,\Delta^1)}\in \Delta \SmCorr$, with a map  $\partial :\mathrm{PX}^\bullet\rightarrow X\times X=X^{Hom(\Delta^\bullet,\partial \Delta^1)}$ (which should be thought of as (starting point, ending point)), and for $a,b\in X(k)$, we define $\mathrm{PX}^\bullet_{a,b}$ as the fiber product $\mathrm{PX}^{\bullet} _{\partial}\times_{X\times X,(a,b)}Spec(k)$.
+
+More concretely, $\mathrm{PX}^{n}_{a,b}\simeq X^n$, with cofaces $d^i:\mathrm{PX}^{n}_{a,b}\rightarrow\mathrm{PX}^{n+1}_{a,b}$, $i=0\ldots n+1$ given by :
+\[
+d^i(x_1,\ldots x_n)=\left\{\begin{array}{c}(a,x_1,\ldots x_n), i=0\\(x_1,\ldots,x_i,x_i,\ldots,x_n), i\neq 0,n+1\\(x_1,\ldots,x_n,b), i=n+1\end{array} \right.
+\]
+and codegeneracies $s^i:\mathrm{PX}^{n}_{a,b}\rightarrow\mathrm{PX}^{n-1}_{a,b}$, $i=0,\ldots n-1$ :
+\[
+s^i(x_1,\ldots,x_n)=(x_1,\ldots, \widehat{x_{i+1}},\ldots, x_n)
+\]
+These path objects come with two natural algebraic structures coming from the geometry of $X$. First, a diagonal embedding coproduct :
+\[
+\begin{array}{cccc} \nabla^{\vee}: &\mathrm{PX}^\bullet_{a,b} & \rightarrow &\mathrm{PX}^\bullet_{a,b}\times\mathrm{PX}^\bullet_{a,b}\\ & (x_1,\ldots,x_n) & \mapsto & ((x_1,\ldots x_n), (x_1,\ldots, x_n))\end{array}
+\] 
+with a counit map $u^\vee$ being simply the structure map as $k$-schemes, and composition of paths products :
+\[
+\begin{array}{cccc} \Delta^{\vee}: &\mathrm{PX}^\bullet_{a,b}\times\mathrm{PX}^\bullet_{b,c} & \rightarrow &\mathrm{PX}^\bullet_{a,c}\\ & ((x_1,\ldots,x_n),(y_1,\ldots y_n)) & \mapsto & \sum_{i=0}^{n}(x_1,\ldots x_i,y_{i+1},\ldots,y_n) 
+\end{array}
+\]
+The formula should be interpreted as a finite correspondance sum of actual morphisms of schemes, hence as a morphism in $\SmCorr$. When $a=b$, there is a unit map $\epsilon^\vee$ given by $Spec(k)\rightarrow\mathrm{PX}^\bullet_{a,a}, *\mapsto (a,\ldots,a)$.
+
+There is also an reversal of path antipode :
+\[
+\begin{array}{cccc} S^{\vee}: &\mathrm{PX}^\bullet_{a,b} & \rightarrow &\mathrm{PX}^\bullet_{b,a}\\ & (x_1,\ldots,x_n) & \mapsto & (x_n,\ldots,x_1)\end{array}
+\]
+
+The structures are compatible with each other, i.e., the composition of paths products are morphisms of counital coalgebra objects, and the Hopf algebra diagrams commute. This is easy to check because the coproduct is a diagonal embedding.
+
+Because $\SmCorr$ is additive, there is the ``associated chain complex'' functor :
+\[
+C:\Delta\SmCorr\rightarrow C_{\leq 0}(\SmCorr)
+\]
+We have $CPX^{a,b}_*=C(PX^\bullet_{a,b})$, justifying the notation.
+
+Now, the functor $C$ is not strongly monoidal with respect to the product of simplicial objects and the tensor product of complexes, so transferring algebraic structures is not straightforward, but there is a well-known fix to this, namely the Eilenberg-Zilber (or shuffle) map and the Alexander-Whitney map. For any $X^\bullet,Y^\bullet\in \Delta\SmCorr$, those are maps (functorial in $X^\bullet$, $Y^\bullet$) :
+\[
+\begin{array}{cccc}
+EZ :& C(X^\bullet\times Y^\bullet) &\rightarrow & C(X^\bullet)\otimes C(Y^\bullet)\\
+& x\otimes y & \mapsto & (\sum_{\sigma\in \Sigma_{p,q}}sgn(\sigma)s^{\sigma(1)-1}\ldots s^{\sigma(p)-1}x\otimes s^{\sigma(p+1)-1}\ldots s^{\sigma(n)-1}y)_{p,q}
+\end{array}
+\]
+where again we index on shuffles, and :
+\[
+\begin{array}{cccc}
+AW :& C(X^\bullet)\otimes C(Y^\bullet)&\rightarrow & C(X^\bullet\times Y^\bullet)\\
+& x\otimes y & \mapsto & (d^nd^{n-1}\ldots d^{p+1},d^0\ldots d^0y)
+\end{array}
+\]
+The map $AW$ gives $C$ the structure of a lax monoidal functor, and the map $EZ$ gives $C$ the structure of an oplax monoidal functor. This allows to transfer algebra object (using $AW$) and coalgebra objects (using $EZ$). 
+
+When applied to $\mathrm{PX}^{\bullet}_{a,b}$ we recover the operations $\nabla^{\vee},\ldots$ considered previously. 
+
+For $n\in\N$, there are truncation functors both on the cosimplicial and chain complex level :
+\[
+sk_n:\Delta\SmCorr\rightarrow \Delta\SmCorr
+\]
+\[
+\sigma_{\geq -n}:C_{\geq 0}(\SmCorr)\rightarrow C_{\geq 0}(\SmCorr)
+\]
+The functor $sk_n$ commutes with products of simplicial sets because it is a left adjoint.
+
+We do not have a natural isomorphism of functors $C\circ sk_n\simeq \sigma_{\geq -n}\circ C$. However, we do have natural maps in both direction : an inclusion of $\sigma_{\geq -n}\circ C\rightarrow C\circ sk_n$ and a projection (modding out degenerate simplices) $C\circ sk_n
+\rightarrow \sigma_{\geq -n}\circ C$. One could also replace the functor $C$ by its normalized subcomplex $N$ as in \cite{deligne-goncharov05}, in which case there is a natural equivalence of functors $N\circ sk_n\simeq \sigma_{\geq -n}\circ N$.
+
+ We can now define the operations on the truncated bar complex by functoriality. For instance, the shuffle coproduct  $\nabla^\vee_n:\sigma_{\geq -n}\mathrm{CPX}^{a,b}_*\rightarrow \sigma_{\geq -n}\mathrm{CPX}^{a,b}_*\otimes \sigma_{\geq -n}\mathrm{CPX}^{a,b}_*$ is defined as the composition :
+\begin{eqnarray*}
+\sigma_{\geq -n}C(\mathrm{PX}^\bullet_{a,b}) & \rightarrow  & C(sk_n\mathrm{PX}^\bullet_{a,b})\\
+& \stackrel{\sigma_{\leq n}\nabla^\vee}{\rightarrow} & C(sk_n(\mathrm{PX}^\bullet_{a,b}\times \mathrm{PX}^\bullet_{a,b}))\\
+& \simeq & C(sk_n(\mathrm{PX}^\bullet_{a,b})\times (sk_n\mathrm{PX}^\bullet_{a,b}))\\
+& \stackrel{EZ}{\rightarrow} & C(sk_n(\mathrm{PX}^\bullet_{a,b}))\otimes C(sk_n(\mathrm{PX}^\bullet_{a,b}))\\
+& \rightarrow &  \sigma_{\geq -n}\mathrm{CPX}^{a,b}_*\otimes \sigma_{\geq -n}\mathrm{CPX}^{a,b}_*
+\end{eqnarray*}
+
+The functoriality makes it then relatively easy to check the compatibility of these operations with the maps relating the various trunctations.
+
+\section{The motivic fundamental group of $\Gm$}
+In this section, we work out the special case of $\Gm=\Pspace^1_k\setminus \{0,\infty\}$. Compare with the computations in the Hodge setting in Talk. 7.
+
+\begin{prop}
+For all $x\in\Gm(k)$, we have a canonical isomorphism :
+\[
+\pi_1(\Gm;x)_M\simeq Spec(T(\Q(-1)))
+\]
+with the usual Hopf algebra structure on a tensor algebra. In particular, the fundamental group $\pi_1(\Gm;x)_M$ does not depend on the choice of base-point
+\end{prop}
+\begin{proof}
+Let $n\geq 0$. We write :
+\[
+C^n:=\sigma_{\geq -n}(CP\Gm)_*^{x,x}=[\spec(k)\rightarrow 
+\Gm\rightarrow\Gm^2\rightarrow\ldots\rightarrow\Gm^n\rightarrow 0]\in 
+K^b(\SmCorr)
+\]
+To simplify the proof, we use the normalized complexes using the underlying cosimplicial structure. For this, we need to pass to the pseudo-abelian completion $K^b(\SmCorr)_{psa}:=Psa(K^b(\SmCorr))$. This is possible because $DMT(k)$ is pseudo-abelian by construction so that the functor $M:K^b(\SmCorr)\rightarrow DMT(k)$ extends to $K^b(\SmCorr)_{psa}$. This leads to the following :
+\[
+\bar{C}^n: [Spec(k)\rightarrow \Gm\rightarrow (\Gm^{\wedge 2})^{Alt}\rightarrow\ldots\rightarrow (\Gm^{\wedge n})^{Alt}]\in Psa(\SmCorr(k))
+\]
+with $\Gm^{\wedge n}=Im(p_n)$, $p_n=(id-[x])\times (id-[x])\times\ldots \times (id-[x])$ projector on $\Gm^n$ with $[x]:\Gm\rightarrow \{x\}\rightarrow \Gm$.
+
+Now, arguments from the proof of the Dold-Kan correspondance show that $\varinjlim \bar{C}^n$ is quasi-isomorphic to $\varinjlim C^n$, although this is not true at finite levels. Moreover, the operations on the complex can also be defined at the level of the normalized version, as mentioned in the previous section. 
+
+ We have short exact sequences of complexes :
+\[
+0\rightarrow \bar{C}^{n}\rightarrow \bar{C}^{n+1}\rightarrow (\Gm^{\wedge (n+1)})[-n-1]\rightarrow 0
+\]
+which leads to a distinguished triangle :
+\[
+M((\Gm^{\wedge (n+1)}))^\vee[n+1]\rightarrow M(\bar{C}^{n+1})^{\vee}\rightarrow M(\bar{C}^n)^{\vee}\rightarrow +
+\]
+We have $M(\Gm^{\wedge (n+1)})\simeq \Q(n+1)[n+1]$.
+
+Now, consider the actions on the terms $C^n_i=\Gm^i$ by the symmetric group $\Sigma_i$ by permutations of the factors. This action induces one on $\bar{C}^n_i=\Gm^{\wedge i}$. Now put $(\bar{C}^n_{Alt})_i=(\bar{C}^n_i)^{\sigma^*=\epsilon}$ the sub-object where the action of the symmetric group is via the signature character (This is a subobject because we are in a $\Q$-linear category). Recall the definition of the differential on $C^n$ :
+
+\begin{eqnarray*}
+d_i = \sum_{j=0}^{i} (-1)^j d_i^j, \qquad d_i^j(x_1, \ldots, x_i) = \left\{ \begin{array}{ll}
+(a,x_1, \ldots, x_i), & j=0 \\
+(x_1, \ldots, x_j, x_j, \ldots, x_i), & 0 < j < i \\
+(x_1, \ldots, x_i, b), & j=i
+\end{array} \right.
+\end{eqnarray*}
+
+From it, we see that :
+\begin{itemize}
+\item $\bar{C}^n_{Alt}$ forms a subcomplex of $\bar{C}_n$
+\item The differentials of $\bar{C}^n_{Alt}$ are zero (the differentials $d_i^0$ and $d_i^i$ are killed by passing to $\bar{C}^n$, and the differentials $d_i^j$ for $0<j<i$ feature a repeated term so they are killed in $\bar{C}^n_{Alt}$)
+\end{itemize}
+We get :
+\[
+\bar{C}^n_{Alt}=\bigoplus_{i=0}^n(\Gm^{\wedge i})^{Alt}[-i]
+\]
+
+Now, the special feature of $\Gm$ compared to more general curves is that the action of $\Sigma_n$ on $M(\Gm^{\wedge n})\simeq \Q(n+1)[n+1]$ is via the signature character, so that $M((\Gm^{\wedge n})^{Alt})\simeq M(\Gm^{\wedge n})$.  Using the previous exact triangle and induction on $n$, we conclude that $M(\bar{C}^n_{Alt})^\vee\rightarrow M(\bar{C}^n)^\vee$ is an isomorphism. This implies :
+\[
+M(\bar{C}^n)^\vee\simeq \bigoplus_{i=0}^n \Q(-n)
+\]
+and passing to the limit :
+\[
+\mathcal{O}(\pi_1(\Gm;x))\simeq T(\Q(-1))
+\]
+We skip the verification that the algebraic operations are the same.
+\end{proof}
+
+\section{Realizations}
+
+We want to compare the motivic construction to the Hodge construction, and also to use the ramification criterion via $l$-adic cohomology on mixed Tate motives. For this we need a little more information on the construction of the Hodge realization and the $l$-adic realization.
+
+The general principle is the following : since $\DMk$ is built out of $C^b(\SmCorr)$ by modding out chain homotopy, localization, pseudo-abelianization and inversion of $\Q(1)$, the essential step is to define the realization on $C^b(\SmCorr)$, and then checking that the other steps go through (that the would-be realization is invariant by chain homotopy, satisfies Mayer-Vietoris, $\A^1$-invariance, etc.). We will only give the construction on $C^b(\SmCorr)$. Moreover, all the finite correspondances that enter the construction of $\pi_1(X;a,b)_M$ are actually morphisms of schemes or sums of morphisms of schemes. So we will construct the realization only on such complexes. To see details about how to handle finite correspondances in this context, see \cite[Paragraph 1.5]{deligne-goncharov05}, \cite{huber00-realization}, \cite{ab}. Let $X^*\in C^b(\SmCorr)$.
+
+\underline{l-adic realization :} Fix an algebraic closure $\bar{k}$ of $k$. For any $n\in\N$ and $S$ a $k$-variety, denote by $R\Gamma(S_{\bar{k}},\Z/l^n\Z)$ the global sections of an functorial injective resolution of the \'etale sheaf $(\Z/l^n\Z)_S$ (for instance obtained via the Godement resolution). Applying this functorially to $X^*$ defines then a double complex $(R\Gamma(X^*_{\bar{k}},\Z/l^n\Z))$ of $\Z/l^n$-modules with an action of $Gal_k$. We define the $l$-adic realization $\omega_l(M(X^*\bullet))\in D^b(\Q_l[Gal_K]-Mod)$ by :
+\[
+\omega_l(M(X^{\bullet})):=(\varprojlim_{n\in \N}(Tot((R\Gamma(X^*,\Z/l^n)(X^*)))\otimes \Q_l)^\vee
+\]
+The final duality is used because we want the homological (covariant) resolution.
+
+\underline{Hodge realization :} For a smooth variety $S/k$ with a smooth compactification $\bar{S}$ by a divisor with normal crossings $T$, we denote by $R\Gamma(\Omega^*_{\bar{S}}(log T))$ the global sections of the total complex of a functorial injective resolution of the complex of coherent sheaves of logarithmic differential form on $(\bar{S},T)$. We equip it with its two natural filtrations : the Hodge filtration (= naive decresing filtration) and the weight filtration (by order of poles). We can then add in the Betti realization and the comparison isomorphism to form the Hodge complex $R\Gamma_{MHC}(X)$, as in Talk 6.
+
+ Using Hironaka's theorem on resolution of singularities and its corollary for resolving ambiguities of rational maps, one can find smooth compactifications $\bar{X}^n$ of each $X^n$ such that the boundary is a divisor with normal crossings $D^n$ and the differentials of $X^*$ extend to $\bar{X}^*$ (giving a complex by continuity). In our basic situation, we have a natural choice of such compactifications : $\bar{X}^n=(\Pspace^1_k)^n$ and $D^n$ is built out of $D$.
+
+We then form the complex of Mixed Hodge complex $R\Gamma(\Omega^*_{\bar{X}^*}(log D^*))$, form the total complex (The weight filtration has to be translated in an appropriate way) and take its dual. This is the Hodge realization.
+
+We now get to the applications :
+
+\begin{prop}
+The Hodge realization of $\pi_1(X;a,b)_M$ is $\pi_1(X;a,b)_H$.
+\end{prop}
+
+This results from the parallel constructions of the Hodge and motivic bar complexes. By anology, we will also use the notation :
+\[
+\pi_1(X;a,b)_l=\omega_l(\pi_1(X;a,b)_M)\in \mathrm{Ind}\Q_l[Gal_k]-Mod
+\]
+
+\begin{prop}
+\label{pi_1_a_unr}
+Let $k$ be a number field. Let $\mathfrak{p}$ be a prime ideal of $\mathcal{O}_k$ such that $D_{k_{\mathfrak{p}}}\subset \Pspace^1_{\mathfrak{p}}$ extends to a divisor $\mathcal{D}$ in $\Pspace^1_{\mathcal{O}_\mathfrak{p}}$ smooth over $Spec(\mathcal{O}_{\mathfrak{p}})$, giving us a smooth model $\mathcal{X}=\Pspace^1_{\mathcal{O}_\mathfrak{p}}\setminus \mathcal{D}$ of $X_{k_\mathfrak{p}}$ over $Spec(\mathcal{O}_{\mathfrak{p}})$, and such that the points $a$ and $b$ extend to $a,b\in \mathcal{X}(\Z_p)$. Let $l$ prime such that $\mathfrak{p}\nmid l$. 
+
+Then $\omega_l(\pi_1(X;a,b)_M)\in \mathrm{Ind}-Gal_k-Mod$ is unramified at $\mathfrak{p}$.
+\end{prop}
+\begin{proof}
+The existence of the model $\mathcal{X}$ implies that the complex $R\Gamma(S,\Z/l^n\Z)$ of $\Z/l^n\Z[Gal_k]$-modules can be represented by a complex $R\Gamma(S,\Z/l^nZ)'$ of Galois representations unramified at $\mathfrak{p}$. The differentials in $CPX^{a,b}_*$ are defined in terms of $a$ and $b$, and their extension to $\mathcal{X}$ allows to choose $R\Gamma(S,\Z/l^n\Z)'$ such that the differentials extend. Finally, we see that we can compute the $l$-adic realization of the (truncated) motivic bar construction using complexes of representations unramified at $\mathfrak{p}$, so that the $l$-adic realization of $B_M(X;a,b)$ is unramified at $\mathfrak{p}$. Since the functor $\omega_l$ on $\DMT$ interchanges the motivic $t$-structure and the standard $t$-structure on $D^b(\Q_l-Gal_k-Mod)$, this implies that $\omega_l(\pi_1(X;a,b)_M)$ is unramified at $\mathfrak{p}$. 
+\end{proof}
+
+\section{Tangential base points}
+
+The previous constructions do not cover the case of tangential base points. We will sketch the approach used by \cite{deligne-goncharov05} : it is indirect and works by reduction to the case of interior base points.
+
+We put ourselves, from here on, in the basic situation of the start of the talk. Let $x,y\in D(k)$ be points of the boundary, $u\in T_x\Pspace^1_k\setminus \{0\}$ and $v\in T_y\Pspace^1_k\setminus\{0\}$. Talk 7. has defined $\mathrm{MH}(k)$-schemes $\pi_1(X;a,v)_H$, $\pi_1(X;u,v)_H$, etc. together with composition of paths operations giving them structures of groups or torsors. The space $\pi_1(X;u,v)_H$ of paths between two tangential base points is built out of the case of $\pi_1(X;a,v)_H$, i.e. of paths between an interior point and a tangential point. We will also follow this procedure.
+
+In this section, we make the hypothesis that $k$ is a number field. Recall from Talk 9. that by Borel's theorem, this implies not only $(B-S)_k$, but also the stronger result that $\omega_H:\MTM(k)\rightarrow \mathrm{MH}(k)$ is fully faithful and its image is stable by subquotients. We say that an object in the image is \emph{motivic}, and it will admit an unique $\MTM(k)$-structure up to isomorphism. Moreover, any $\mathrm{MH}(k)$-algebraic structure on a motivic object will lift to an $\MTM(k)$-algebraic structure.
+
+From this also follows a recognition principle for $\MTM(k)$-affine schemes :
+
+\begin{prop}
+Let $Y$ be an $\MTM$-affine scheme, and $Z_H\subset \omega_H(Y)$ be a closed $\mathrm{MH}(k)$-subscheme. Then there exists a unique $\MTM$-affine subscheme $Z$ such that $Z_H=\omega_H(Z)$,i.e. $Z_H$ is motivic.
+\end{prop}
+\begin{proof}
+The closed subscheme of the affine scheme $\omega_H(Y)$ is defined by an $\mathrm{MH}(k)$-ideal $I$ in $\cO(\omega_H(Y))=\omega_H(\cO(Y))$. Now $\cO(Y)$ is an inductive limit of sub-$\MHM$-algebras $A_i$, and we look at the intersection $I_i$ of $I$ with $A_i$. Because the image of $\omega_H$ is stable by subobjects, $I_i$ is in the image of $\omega_H$, and because $\omega_H$ is fully faithful, there is a unique lift to $I^M_i\in \MHM$. By uniqueness, these fit together in the direct limit to make a lift $I^M$ which is an $\MHM$-ideal of $\cO(Y)$. We then put $Z=Spec(\cO(Y)/I^M)$. 
+\end{proof}
+
+\subsection{The case of $\pi_1(\Gm,x,v)$}
+In this section, $X=\Gm$ with coordinate $t$, $a=x\in \Gm(k)$, $v\in T_0\Pspace^1_k\setminus\{0\}$ such that $dt(v)=z$. We have the following :
+\begin{prop}
+\label{pi_1_Gm}
+There exists isomorphisms of $\mathrm{MH}(k)_H$-affine schemes
+\[
+\pi_1(\Gm;x,v)_H\simeq \pi_1(\Gm;x,z)_H\simeq \pi_1(\Gm;1,z/x)_H
+\]
+which are isomorphisms of left $\pi_1(\Gm)_H$-torsors.
+\end{prop}
+\begin{proof}
+The second isomorphism simply comes from the unique automorphism $t\mapsto t/x$ of $\Gm(k)$ sending $x$ to $1$.
+
+We define the first isomorphism $\theta:\pi_1(\Gm;x,z)_H\simeq \pi_1(\Gm;x,v)_H$ as follows. Let $\gamma_{z,v}\in\pi_1(\Gm(\C);z,v)$ be the straight path from $z$ to $0$. We put $\theta_B:\gamma\in \pi_1(\Gm(\C);x,z)\mapsto \gamma\gamma_{z,v}\in\pi_1(\Gm(\C);x,v)$ and $\theta_{dR}=id_{T(\Omega^1)}:\pi_1(\Gm;x,v)_{dR}\simeq T(\Omega^1)\rightarrow \pi_1(\Gm;x,z)_{dR}\simeq T(\Omega^1)$. It remains to show that these two maps define an morphism of Hodge structure (automatically an isomorphism since $\theta_{dR}$ is), i.e. to check the compatibility with the comparison map given by iterated integrals. Let $\gamma\in \pi_1(\Gm(\C);x,z)$ and $\omega_1,\ldots,\omega_n\in \Omega^1$. Since on $\Gm$, all closed 1-forms are proportional, we can assume $\omega_1=\ldots=\omega_n=\omega=\frac{dt}{t}$. We compute, using the definition of the tangential iterated integrals :
+\[
+\int_{\gamma\gamma_{z,v}}\omega^{\otimes n} = \lim_{\epsilon\rightarrow 0}\sum_{i=0}^n\frac{(-1)^{n-i}}{(n-i)!}\int_{(\gamma\gamma_{z,v})_\epsilon}\omega^{\otimes i} \log(\epsilon)^{n-i}
+\]
+Let us show that this last expression is equal to $\int_{\gamma}\omega^{\otimes n}$, even before taking the limit. We use the formula $\int_\gamma\omega^\otimes k=\frac{1}{k!}(\int_\gamma\omega)^k$.
+\[
+\sum_{i=0}^n\frac{(-1)^{n-i}}{(n-i)!}\int_{(\gamma(\gamma_{z,v})_\epsilon}\omega^{\otimes i} log(\epsilon)^{n-i} = \sum_{i=0}^n\frac{(-1)^{n-i}}{i!(n-i)!}\left(\int_{\gamma}\omega +\int_{(\gamma_{z,v})_\epsilon}\omega\right)^i \log(\epsilon)^{n-i}
+\]
+We have $\int_{\gamma_{z,v},\epsilon}\frac{dt}{t}=log(dt(v)\epsilon)-log(z)=log(z\epsilon)-log(z)=log(\epsilon)$ (Because $\gamma_{z,v}$ has derivative $v$ at $1$ ; this is where we use that $dt(z)=v$). So 
+\begin{eqnarray*}
+\sum_{i=0}^n\frac{(-1)^{n-i}}{(n-i)!}(\int_{\gamma}\omega +\int_{(\gamma_{z,v})_\epsilon}\omega)^i \log(\epsilon)^{n-i} & = & \frac{1}{n!}\sum_{i=0}^n(-1)^{n-i}\binom{n}{i}\left(\int_{\gamma}\omega+\log(\epsilon)\right)^i\log(\epsilon)^{n-i}\\
+& = & \frac{1}{n!}(\int_{\gamma}\omega)^n\\
+& = & \int_{\gamma}\omega^{\otimes n}
+\end{eqnarray*}
+This concludes the proof.
+\end{proof}
+
+These isomorphisms are consistent with the idea that $\pi_1(\Gm)$ is commutative and that the choice of a base point, even tangential, do not matter. 
+
+\begin{cor}
+The $\mathrm{MH}(k)$-group scheme $\pi_1(\Gm;x,v)$ is motivic with positive weights, and the isomorphisms of Proposition \ref{pi_1_Gm} hold at the motivic level.
+\end{cor}
+
+
+\subsection{The case of $\pi_1(X;a,v)$}
+
+Our aim is the following :
+
+\begin{prop}
+\label{pi_1_av}
+Let $X'=\Pspace^1\setminus \{y,\infty\}$ ($X'\simeq \Gm$ as $k$-variety).
+
+There exists a closed embedding of $\mathrm{MH}(k)$-affine schemes :
+\[
+\pi_1(X;a,v)_H\hookrightarrow \pi_1(X';a,v)_H\times Lie(\pi_1(X;a)_H)(-1)
+\]
+where we identify $Lie(\pi_1(X;a)_H)\in \mathrm{MH}(k)$ with the corresponding $\mathrm{MH}(k)$-vector scheme.
+\end{prop}
+\begin{proof}
+We will define the map and refer to \cite[4.4-4.10]{deligne-goncharov05} for the proof that it is a closed embedding.
+
+First, the map $\pi_1(X;a,v)_H\rightarrow \pi_1(X';a,v)_H$ is induced by the inclusion $X'\subset X$.
+
+Then, the map $\pi_1(X;a,v)_H\rightarrow Lie(\pi_1(X;a)_H)(-1)$ is defined in the following way. We have a morphism of $MH(k)$-affine schemes :
+\[
+\pi_1(X;a,v)_H\times \Q(1)_H\rightarrow \pi_1(X;a)_H
+\]
+which one can see as the following composition of morphisms already defined in Talk 7 (reversal of paths, local monodromy, composition of paths) :
+\[
+\pi_1(X;a,v)_H\times \Q(1)_H\rightarrow \pi_1(X;a,v)_H\times \Q(1)_H\times\pi_1(X;v,a)_H
+\]
+\[
+\rightarrow \pi_1(X;a,v)_H\times \pi_1(X;v)_H\times \pi_1(X;v,a)_H\rightarrow \pi_1(X;a)_H
+\]
+Using internal Homs in $MH(k)$, we can write this as a morphism :
+\[
+\pi_1(X;a,v)_H\rightarrow \underline{Hom}_{MH(k)-\mbox{grp sch.}}(\Q(1)_H,\pi_1(X;a)_H)
+\]
+But since those are unipotent pro-algebraic groups in characteristic 0, the homomorphisms between them are determined by the induced morphism on Lie algebras, and we have (with the abuse of notation $Lie(\Q(1)_H)\simeq \Q(1)_H$ since $\Q(1)_H$ is a vector group scheme) :
+\[
+\pi_1(X;a,v)_H\Rightarrow \underline{Hom}_{MH(k)-\mbox{Lie alg.}}(\Q(1)_H,Lie(\pi_1(X;a)_H)
+\]
+Finally, since $\Q(1)_H$ is an invertible object, this corresponds to
+\[
+\pi_1(X;a,v)\longrightarrow Lie(\pi_1(X;a)_H)(-1)
+\]
+as required.
+\end{proof}
+
+\begin{lemma}
+\label{pi_1_X'}
+There is an isomophism of $\MTM(k)$-affine schemes :
+\[
+\pi_1(X',a,v)_M\simeq \pi_1(\Gm,1,\frac{dt(v)}{a-y})_M
+\]
+\end{lemma}
+\begin{proof}
+We use the translation isomorphism $x\mapsto x-y$ to identify $X'$ and $\Gm(k)$ and then apply the result of the previous section.
+\end{proof}
+
+\begin{cor}
+The $\mathrm{MH}(k)$-group scheme $\pi_1(X;a,v)_H$ is motivic, with positive weights.
+\end{cor}
+\begin{proof}
+  The fact that it is motivic follows from the proposition and the recognition principle. We have the positivity of the weights for $\pi_1(X',a,v)_H\simeq \pi_1(\Gm,1,\frac{dt(v)}{a-y})_H$ (from previous lemma) and $\pi_1(X,a)_H$, and it is preserved by products, passing to the Lie algebra, and twisting by $\Q(-1)_H$.
+\end{proof}
+
+Now we can also lift the operations. Namely, $\pi_1(X;a,v)_M$ is a left $\pi_1(X;a)_M$-torsor. If $b\in X(k)$ is another point, there is an isomorphism of torsors :
+\[
+\pi_1(X;a,v)_M\simeq \pi_1(X;a,b)_M\times_{\pi_1(X;b)_M}\pi_1(X;b,v)_M
+\]
+
+All the results of the section hold for the case of $\pi_1(X;u,a)$ as well.
+
+\subsection{The case of $\pi_1(X;u,v)$}
+
+\begin{defn}
+Let $a\in X(k)$. We can now define :
+\[
+\pi_1(X;u,v)_M=\pi_1(X;u,a)_M\times_{\pi_1(X,a)_M}\pi_1(X;a,v)_M
+\]
+\end{defn}
+This definition is actually independent of the choice of $a$ by the last isomorphism of the previous section. Of course, since we defined $\pi_1(X;u,v)_H$ in the same fashion, we have $\omega_H(\pi_1(X;u,v)_M)\simeq \pi_1(X;u,v)_H$.
+
+\section{The theorem of Goncharov-Terasoma}
+
+To sum up, we now know that the multizeta values are periods of the $\MTM(k)$-scheme $\pi_1(\Pspace^1\setminus\{0,1,\infty),\overrightarrow{01},\overrightarrow{10})_M$, with positive weights. 
+
+\begin{prop}
+The $\MTM(k)$-scheme $pi_1(\Pspace^1\setminus\{0,1,\infty),\overrightarrow{01},\overrightarrow{10})_M$ is an $\MTMZ$-scheme.
+\end{prop}
+
+\begin{proof}
+Write $X=\Pspace^1_k\setminus\{0,1,\infty\}$, $\mathcal{X}=\Pspace^1_\Z\setminus\{0,1,\infty\}$, $u=\overrightarrow{01}$, $v=\overrightarrow{10}$. Let $p$ be a prime number. From Talk 9, we now that it suffices to show that for some $l\neq p$ prime, the $l$-adic realization $\pi_1(X, u,v)_l$ is unramified at $p$. 
+
+We choose an auxiliary point $a\in X(\Q)\subset \Q$, arbitrary for the time being. We will gather sufficient conditions on $a$ and show at the end that they can be met. Then by definition, it suffices to check that $\pi_1(X;u,a)_l$, $\pi_1(X;a)_l$ and $\pi_1(X;a,v)_l$ are unramified at $p$. 
+
+To ensure that $\pi_1(X;a)_l$ is unramified at $p$, by Proposition \ref{pi_1_a_unr} it suffices to choose $a\in \Q\subset \Q_p$ such that it extends to a $\Z_p$-point of $\mathcal{X}$, i.e., that $a\in \Q\cap \Z_p^\times=\Z_{(p)}$ and $a-1\in \Z_{(p)}^\times$.
+
+Let $X'=\Gm(k)\subset X$ and $X''=\Pspace^1_k\setminus \{1,\infty\}$. By \ref{pi_1_av}, it suffices to show that $\pi_1(X';u,a)_l$, $\pi_1(X'';a,v)$ and $Lie(\pi_1(X;a)_l)(-1)$ are unramified at $p$. Passing to the Lie algebra is a quotient at the level of functions and $\Q(-1)\in \MTMZ$, so the last one is unramified if $\pi_1(X;a)_l$ is. By \ref{pi_1_X'}, we have isomorphisms :
+\[
+\pi_1(X';u,a)_l\simeq \pi_1(\Gm(k);1,a)_l
+\]
+\[
+\pi_1(X'';a,v)_l\simeq \pi_1(\Gm(k);1,\frac{1}{a-1})_l
+\]
+By Talk 9, we know that those Kummer torsors are unramified at $p$ if and only if $a,\frac{1}{a-1}\in \Z_{(p)}^{\times}$.
+
+To sum up, if we can find an $a\in \Q\setminus \{0,1\}$ such that $a\in \Z_{(p)}^\times,a-1\in\Z_{(p)}^\times$, then we are done. This always exist... except when $p=2$, because $\mathbb{F}_2$ has 2 elements. In this case, we extend the situation to the quadratic extension $K=\Q(\sqrt{5})$ where the prime $2$ is unramified and inert. Then $\omega_l(\pi_1(X;a,b))\simeq \omega_l(\pi_l(X_K,a,b))$ as $\Q_l[Gal_{\Q}]$-modules. Since $2$ is unramified in $K$, the inclusion $Gal(\bar{K}_2/K_2)\rightarrow Gal(\bar{\Q}_2/\Q_2)$ (well defined up to conjugation) is an isomorphism on inertia, so we can test for ramification at $2$ after extension. Now we do have a $K$-point $a$ such that $a,1-a\in\mathcal{O}_{(2)}^{\times}$ (take any antecedent of a residue class in $\mathbb{F}_4$ different from $0$ or $1$), and the argument goes through.
+\end{proof}
+
+Applying the final result from Talk 9, we get :
+
+\begin{thm}[Goncharov-Terasoma]
+The dimension $d_n$ of the $\Q$-vector space of multizeta values is bounded by $D_n$ with $D_n = D_{n-2} + D_{n-3}, \qquad D_0 = D_2 = 1, D_1 = 0$.
+\end{thm}
+
+
+
